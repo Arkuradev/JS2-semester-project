@@ -1,0 +1,15 @@
+{
+  "name": "js2-semester-project",
+  "version": "1.0.0",
+  "description": "Semester Project in JS2 at Noroff.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./css/input.css -o ./css/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^4.1.3"
+  }
+}
