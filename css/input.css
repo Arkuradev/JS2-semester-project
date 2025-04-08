@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.message.error {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.message.success {
+  background-color: #3c943f;
+  color: white;
+}
+
+.message.info {
+  background-color: #2196f3;
+  color: white;
+}
+
+.message.warning {
+  background-color: #ce8922;
+  color: white;
+}

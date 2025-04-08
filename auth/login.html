@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/output.css" />
-    <script type="module" src="/js/user/login.mjs"></script>
+    <script type="module" src="../js/user/login.mjs"></script>
+    <script type="module" src="../js/listeners/nav.mjs"></script>
     <title>Login</title>
   </head>
   <body>
@@ -21,15 +22,17 @@
           <a href="#" class="text-gray-700 hover:text-indigo-600">Listings</a>
           <a href="#" class="text-gray-700 hover:text-indigo-600">Dashboard</a>
           <a
-            href="./auth/login.html"
+            href="./auth/login.html" id="loginNavButton"
             class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
             >Login</a
           >
         </div>
       </nav>
       </header>
+
+      <div class="min-h-screen flex items-center justify-center bg-gray-100">
     <section id="loginSection" class="w-full max-w-md mt-16">
-      <div id="message" class="message"></div>
+      <div id="message" class="message px-4 py-2 rounded mb-4"></div>
       <div
         class="loginContainer bg-gray-800 text-white shadow-lg rounded-2xl p-8"
       >
@@ -61,5 +64,6 @@
           >
             Login
           </button>
+        </div>
   </body>
 </html>

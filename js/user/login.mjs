@@ -1,4 +1,5 @@
-import { API_LOGIN } from "./utils/constants.mjs";
+import { API_LOGIN } from "../utils/constants.mjs";
+import { displayMessage } from "../utils/displayMessage.mjs";
 
 const loginForm = document.querySelector("#loginForm");
 const emailInput = document.querySelector("#username");
@@ -12,9 +13,7 @@ loginForm.addEventListener("submit", async (event) => {
 
   if (!email || !password) {
     const errorMessage = "Please enter both email and password.";
-    const messageElement = document.querySelector(".message");
-    messageElement.textContent = errorMessage;
-    /* Insert display message here.  */
+    displayMessage("#message", "error", errorMessage);
     return;
   }
 
@@ -36,9 +35,7 @@ loginForm.addEventListener("submit", async (event) => {
     localStorage.setItem("name", data.data?.name);
 
     // TEMP - EDIT LATER
-    console.log("Logged in successfully!");
-    const messageElement = document.querySelector(".message");
-    messageElement.textContent = "Login successful!";
+    displayMessage("#message", "success", "Login successful!");
     /* Set more statuses here if needed after user has logged in */
     setTimeout(() => {
       window.location.href = "../index.html";
