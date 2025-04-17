@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listing Details</title>
+    <link rel="stylesheet" href="../css/output.css" />
+    <script type="module" src="../js/api/renderSingleListing.mjs"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <header>
+      <nav class="bg-white shadow p-4 flex justify-between items-center">
+        <a href="/index.html" class="text-2xl font-bold text-indigo-600"
+          ><img src="../images/CrestAuction.png" class="object-contain h-20"
+        /></a>
+        <div class="space-x-4">
+          <a
+            href="/listing/new.html"
+            class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-700"
+            >Create Listing</a
+          >
+          <a href="#" class="text-gray-700 hover:text-indigo-600">Home</a>
+          <a href="#" class="text-gray-700 hover:text-indigo-600">Listings</a>
+          <a
+            href="/profile/dashboard.html"
+            class="text-gray-700 hover:text-indigo-600"
+            >Dashboard</a
+          >
+          <a
+            href="./auth/login.html"
+            id="loginNavButton"
+            class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
+            >Login</a
+          >
+        </div>
+      </nav>
+    <main class="max-w-4xl mx-auto p-6" id="listingContainer">
+      <p>Loading listing...</p>
+    </main>
+  </body>
+</html>
