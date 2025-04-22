@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/output.css" />
+    <script src="/js/api/userListings.mjs" type="module"></script>
     <title>Dashboard</title>
   </head>
   <body>
@@ -36,49 +37,14 @@
         </div>
       </nav>
     </header>
-    <section class="max-w-xl mx-auto mt-16 p-6 bg-white rounded-lg shadow">
-      <h2 class="text-2xl font-bold mb-6">Create New Listing</h2>
-      <div id="message" class="mb-4"></div>
 
-      <form id="createListingForm" class="space-y-4">
-        <input
-          type="text"
-          id="title"
-          placeholder="Title *"
-          required
-          class="w-full p-2 border rounded"
-        />
-        <textarea
-          id="description"
-          placeholder="Description"
-          class="w-full p-2 border rounded"
-        ></textarea>
-        <input
-          type="url"
-          id="mediaUrl"
-          placeholder="Image URL (public and direct)"
-          class="w-full p-2 border rounded"
-        />
-        <input
-          type="text"
-          id="mediaAlt"
-          placeholder="Image Alt Text"
-          class="w-full p-2 border rounded"
-        />
-        <input
-          type="datetime-local"
-          id="endsAt"
-          required
-          class="w-full p-2 border rounded"
-        />
-
-        <button
-          type="submit"
-          class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          Create Listing
-        </button>
-      </form>
-    </section>
+    <main>
+      <section class="flex flex-col max-w-3xl mx-auto py-12 px-4">
+        <div
+          id="dashboardListings"
+          class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        ></div>
+      </section>
+    </main>
   </body>
 </html>

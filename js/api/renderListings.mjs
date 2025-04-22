@@ -12,11 +12,6 @@ export async function renderListings(containerSelector) {
 
   const data = response?.data;
 
-  if (!data || !Array.isArray(data)) {
-    container.innerHTML = `<p>No listings found, missing data.</p>`;
-    return;
-  }
-
   if (data.length === 0) {
     container.innerHTML = `<p>No listings found.</p>`;
     return;
@@ -31,22 +26,20 @@ export async function renderListings(containerSelector) {
 
     // Fix this error in console from this: image.src = listing.media?.[0]?.url;
     const image = document.createElement("img");
-    image.src = listing.media?.[0]?.url;
-    image.alt = listing.media?.[0]?.alt || "Listing image";
-    image.className = "w-full h-40 object-cover";
+    image.src = listing.media?.[0]?.url || "#";
+    image.alt = listing.media?.[0]?.alt || "No image";
+    image.className = "w-full h-30 object-cover  ";
 
     const content = document.createElement("div");
-    content.className = "p-4 flex flex-col gap-2";
+    content.className = "p-4 mt-4 flex flex-col gap-2";
 
     const title = document.createElement("h3");
     title.className = "text-lg font-semibold text-gray-900";
     title.textContent = listing.title;
 
     const endsAt = document.createElement("p");
-    endsAt.className = "text-sm text-gray-600";
-    endsAt.textContent = `Ends at: ${new Date(
-      listing.endsAt
-    ).toLocaleString()}`;
+    endsAt.className = "text-sm text-gray-600 items-center gap-2";
+    endsAt.textContent = `Ends: ${new Date(listing.endsAt).toLocaleString()}`;
 
     content.appendChild(title);
     content.appendChild(endsAt);

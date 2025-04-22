@@ -2,9 +2,9 @@ import { apiFetch } from "./apiFetch.mjs";
 
 const params = new URLSearchParams(window.location.search);
 const listingId = params.get("id");
-
 const container = document.querySelector("#listingContainer");
 
+//Replace with error handling later....
 if (!listingId) {
   const error = document.createElement("p");
   error.textContent = "No listing ID found.";
@@ -17,6 +17,7 @@ if (!listingId) {
 async function renderListingDetails(id) {
   const response = await apiFetch(`/auction/listings/${id}`);
   const listing = response?.data;
+  // const currentUser = localStorage.getItem("name");
 
   container.innerHTML = "";
 
@@ -28,8 +29,16 @@ async function renderListingDetails(id) {
     return;
   }
 
-  const card = document.createElement("div");
+  const backButton = document.createElement("a");
+  backButton.href = "/index.html";
+  backButton.className =
+    "inline-block mb-4 text-blue-600 hover:underline text-sm";
+  backButton.textContent = "← Back to Listings";
+  container.appendChild(backButton);
+
+  const card = document.createElement("article");
   card.className = "bg-white rounded-2xl shadow-lg overflow-hidden";
+  card.setAttribute("aria-labelledby", "listing-title");
 
   const image = document.createElement("img");
   image.src = listing.media?.[0]?.url;
@@ -50,6 +59,15 @@ async function renderListingDetails(id) {
   const description = document.createElement("p");
   description.className = "text-gray-700";
   description.textContent = listing.description || "No description available.";
+
+  const bidInfo = document.createElement("div");
+  const bids = listing.bids || [];
+  const highestBid = bids.length ? Math.max(...bids.map((b) => b.amount)) : 0;
+
+  bidInfo.innerHTML = `
+  <p class="text-gray-800 font-medium">Total Bids: ${bids.length}</p>
+  <p class="text-gray-800 font-medium">Highest Bid: ${highestBid} credits</p>
+  `;
 
   content.appendChild(title);
   content.appendChild(endsAt);
@@ -73,4 +91,5 @@ async function renderListingDetails(id) {
   card.appendChild(image);
   card.appendChild(content);
   container.appendChild(card);
+  content.appendChild(bidInfo);
 }
