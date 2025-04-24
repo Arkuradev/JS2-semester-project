@@ -7,7 +7,10 @@ export async function renderListings(containerSelector) {
   container.innerHTML = `<p>Loading listings...</p>`;
 
   const response = await apiFetch(
-    "/auction/listings?sort=created&sortOrder=desc&_limit=25"
+    "/auction/listings?sort=created&sortOrder=desc&_limit=24",
+    "GET",
+    null,
+    "#listingContainer"
   );
 
   const data = response?.data;
@@ -22,16 +25,16 @@ export async function renderListings(containerSelector) {
   data.forEach((listing) => {
     const card = document.createElement("div");
     card.className =
-      "bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:border-blue-300 w-full sm:w-72";
+      "bg-white border border-gray-200 shadow-xl overflow-hidden transition-all duration-300 transform  hover:shadow-xl hover:border-blue-300 w-full sm:w-72";
 
     // Fix this error in console from this: image.src = listing.media?.[0]?.url;
     const image = document.createElement("img");
     image.src = listing.media?.[0]?.url || "#";
     image.alt = listing.media?.[0]?.alt || "No image";
-    image.className = "w-full h-30 object-cover  ";
+    image.className = "w-full h-48 object-cover  ";
 
     const content = document.createElement("div");
-    content.className = "p-4 mt-4 flex flex-col gap-2";
+    content.className = "p-4 flex flex-col justify-between flex-grow";
 
     const title = document.createElement("h3");
     title.className = "text-lg font-semibold text-gray-900";

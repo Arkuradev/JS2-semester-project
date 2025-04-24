@@ -1,8 +1,14 @@
 import { API_KEY } from "../utils/constants.mjs";
 import { BASE_API_ENDPOINT } from "../utils/constants.mjs";
 import { displayMessage } from "../utils/displayMessage.mjs";
+import { showSkeletonLoader, hideSkeletonLoader } from "../utils/loader.mjs";
 
-export async function apiFetch(endpoint, method = "GET", body = null) {
+export async function apiFetch(
+  endpoint,
+  method = "GET",
+  body = null,
+  loaderContainer = null
+) {
   const token = localStorage.getItem("token");
   const headers = {
     "Content-Type": "application/json",
@@ -18,6 +24,10 @@ export async function apiFetch(endpoint, method = "GET", body = null) {
   if (body) {
     options.body = JSON.stringify(body);
   }
+
+  if (loaderContainer) showSkeletonLoader(loaderContainer); // START LOADER.
+  await new Promise((r) => setTimeout(r, 1000)); // 1 second fake delay
+
   try {
     const response = await fetch(`${BASE_API_ENDPOINT}${endpoint}`, options);
 
@@ -46,6 +56,6 @@ export async function apiFetch(endpoint, method = "GET", body = null) {
       displayMessage("#message", "error", error.message);
     }
   } finally {
-    // stopLoader();
+    if (loaderContainer) hideSkeletonLoader(loaderContainer); // REMOVE LOADER.
   }
 }

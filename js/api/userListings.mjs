@@ -1,4 +1,5 @@
 import { apiFetch } from "./apiFetch.mjs";
+
 import { deleteListing } from "../user/deleteListing.mjs";
 const container = document.querySelector("#dashboardListings");
 const token = localStorage.getItem("token");
@@ -11,7 +12,12 @@ export async function renderUserListings() {
   }
 
   try {
-    const response = await apiFetch(`/auction/profiles/${username}/listings`);
+    const response = await apiFetch(
+      `/auction/profiles/${username}/listings`,
+      "GET",
+      null,
+      "#dashboardListings"
+    );
     const userListings = response?.data || [];
 
     if (!userListings || userListings.length === 0) {
@@ -42,11 +48,11 @@ export async function renderUserListings() {
       endsAt.textContent = `Ends: ${new Date(listing.endsAt).toLocaleString()}`;
 
       const actions = document.createElement("div");
-      actions.className = "flex gap-2 mt-auto";
+      actions.className = "flex gap-1 justify-between mt-auto";
 
       const editBtn = document.createElement("button");
       editBtn.className =
-        "bg-yellow-400 hover:bg-yellow-500 text-xs text-black py-1 rounded";
+        "mt-4 mb-4 px-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300";
       editBtn.textContent = "Edit";
       // editBtn.addEventListener("click", () => {
       // Display the edit form. So we are gonna add the edit form to the dashboard page and keep it hidden until we click the edit button.
@@ -54,7 +60,8 @@ export async function renderUserListings() {
 
       const deleteBtn = document.createElement("button");
       deleteBtn.className =
-        "focus:outline-none text-black bg-red-400 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900";
+        "mt-4 mb-4 px-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300";
+
       // "color-red-500 hover:bg-red-600 text-xs text-black py-1 rounded";
       deleteBtn.textContent = "Delete";
 
