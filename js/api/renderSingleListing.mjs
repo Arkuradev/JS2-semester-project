@@ -1,36 +1,36 @@
 import { apiFetch } from "./apiFetch.mjs";
+import { createListingHeader } from "../components/listingHeader.mjs";
+import { createBidForm } from "../components/bidForm.mjs";
+import { createBidInfo } from "../components/bidInfo.mjs";
+import { createBidHistory } from "../components/bidHistory.mjs";
 
-const token = localStorage.getItem("token");
-
+// const token = localStorage.getItem("token");
 const params = new URLSearchParams(window.location.search);
 const listingId = params.get("id");
 const container = document.querySelector("#listingContainer");
 
 //Replace with error handling later....
+
 if (!listingId) {
-  const error = document.createElement("p");
-  error.textContent = "No listing ID found.";
-  error.className = "text-red-600";
-  container.appendChild(error);
+  showError("No listing ID found.");
 } else {
   renderListingDetails(listingId);
 }
 
-async function renderListingDetails(id) {
+function showError(message) {
+  const error = document.createElement("p");
+  error.textContent = message;
+  error.className = "text-red-600";
+  container.appendChild(error);
+}
+
+export async function renderListingDetails(id) {
   const response = await apiFetch(`/auction/listings/${id}?_bids=true`);
   const listing = response?.data;
-  console.log("Bids:", listing.bids);
-  // const currentUser = localStorage.getItem("name");
 
   container.innerHTML = "";
 
-  if (!listing) {
-    const error = document.createElement("p");
-    error.textContent = "Listing not found.";
-    error.className = "text-red-600";
-    container.appendChild(error);
-    return;
-  }
+  if (!listing) return showError("Listing not found."); // Double check?? Remove?
 
   const backButton = document.createElement("a");
   backButton.href = "/index.html";
@@ -41,16 +41,31 @@ async function renderListingDetails(id) {
 
   const card = document.createElement("article");
   card.className = "bg-white mt-4 rounded-2xl shadow-lg overflow-hidden";
-  card.setAttribute("aria-labelledby", "listing-title");
 
   const image = document.createElement("img");
   image.src = listing.media?.[0]?.url;
   image.alt = listing.media?.[0]?.url;
-  image.className = "w-full h-45 object-cover rounded-t-2xl"; // COME BACK TO FIX THIS.
+  image.className = "w-full h-80 object-cover rounded-t-2xl"; // COME BACK TO FIX THIS.
 
   const content = document.createElement("div");
   content.className = "p-6 space-y-4";
 
+  const header = createListingHeader(listing);
+  const bidForm = createBidForm(id);
+  const bidInfo = createBidInfo(listing.bids || []);
+  const bidHistorySection = createBidHistory(listing.bids || []);
+
+  content.appendChild(header);
+  content.appendChild(bidForm);
+  content.appendChild(bidInfo);
+  if (bidHistorySection) content.appendChild(bidHistorySection);
+
+  card.appendChild(image);
+  card.appendChild(content);
+  container.appendChild(card);
+}
+
+/*
   const title = document.createElement("h1");
   title.className = "text-2xl font-bold";
   title.textContent = listing.title;
@@ -165,3 +180,4 @@ async function renderListingDetails(id) {
 }
 
 // Fix error handling, on bid. Show error message.
+*/
