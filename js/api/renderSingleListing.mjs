@@ -32,6 +32,8 @@ export async function renderListingDetails(id) {
 
   if (!listing) return showError("Listing not found."); // Double check?? Remove?
 
+  const bids = listing.bids || [];
+
   const backButton = document.createElement("a");
   backButton.href = "/index.html";
   backButton.className =
@@ -52,7 +54,8 @@ export async function renderListingDetails(id) {
 
   const header = createListingHeader(listing);
   const bidForm = createBidForm(id);
-  const bidInfo = createBidInfo(listing.bids || []);
+  // const bidInfo = createBidInfo(listing.bids || []);
+  const bidInfo = createBidInfo(bids, listingId);
   const bidHistorySection = createBidHistory(listing.bids || []);
 
   content.appendChild(header);

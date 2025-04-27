@@ -29,6 +29,8 @@ export function createBidForm(listingId) {
     if (!amount || amount >= 0)
       return alert("Please enter a valid bid amount.");
 
+    if (amount < 1) return alert("Bid amount must be at least 1.");
+
     try {
       const bidResponse = await apiFetch(
         `/auction/listings/${listingId}/bids`,
