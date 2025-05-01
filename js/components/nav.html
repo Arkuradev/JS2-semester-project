@@ -1,0 +1,129 @@
+<html>
+  <nav class="sticky top-0 z-50 bg-secondary border-b border-border shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <!-- Left: Logo -->
+        <div class="flex-shrink-0 flex items-center">
+          <a
+            href="/index.html"
+            class="md:text-2xl font-bold text-text hover:text-hover"
+            >AuctionHouse</a
+          >
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex md:items-center md:space-x-6">
+          <a
+            href="/index.html"
+            class="text-text hover:text-hover transition font-medium"
+            >Home</a
+          >
+          <a
+            href="/listings.html"
+            class="text-text hover:text-hover transition font-medium"
+            >Listings</a
+          >
+          <a
+            href="/about.html"
+            class="text-text hover:text-hover transition font-medium"
+            >About</a
+          >
+        </div>
+
+        <!-- Right: User Section -->
+        <div class="flex items-center space-x-4">
+          <!-- Credits -->
+          <div id="creditsContainer" class="hidden text-text font-semibold">
+            <span class="mr-1">Credits:</span>
+            <span id="userCredits" class="text-text">0</span>
+          </div>
+
+          <!-- Profile Dropdown -->
+          <div class="relative hidden" id="profileNavContainer">
+            <button
+              id="profileButton"
+              aria-label="Go to profile"
+              class="hidden md:flex items-center space-x-2 bg-background p-2 rounded-full hover:bg-hover transition"
+            >
+              <img
+                src="../images/default.avatar.png"
+                alt="Go to profile"
+                id="userAvatar"
+                class="h-8 w-8 rounded-full"
+              />
+              <span class="sr-only">Go to profile</span>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div
+              id="profileMenu"
+              class="hidden absolute right-0 mt-2 w-48 bg-background shadow-lg py-2 z-20"
+            >
+              <a
+                href="../profile/dashboard.html"
+                class="block px-4 py-2 text-center text-text font-semibold hover:bg-nav hover:text-hover"
+                >Dashboard</a
+              >
+              <button
+                id="logoutButton"
+                class="w-full px-4 py-2 text-text font-semibold hover:bg-red-500 hover:text-white"
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+
+          <!-- Login Button -->
+          <button
+            id="loginButton"
+            class="px-4 py-2 bg-btn-primary text-text font-semibold rounded hover:bg-hover transition hidden"
+          >
+            Login
+          </button>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobileMenuButton"
+            class="md:hidden text-text hover:text-hover"
+          >
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobileMenu"
+      class="hidden md:hidden px-2 pt-2 pb-3 space-y-1 bg-background"
+    >
+      <a
+        href="/index.html"
+        class="block text-text font-semibold hover:bg-nav hover:text-hover px-3 py-2"
+        >Home</a
+      >
+      <a
+        href="/listings.html"
+        class="block text-text font-semibold hover:bg-nav hover:text-hover px-3 py-2"
+        >Listings</a
+      >
+      <a
+        href="/about.html"
+        class="block text-text font-semibold hover:bg-nav hover:text-hover px-3 py-2"
+        >About</a
+      >
+    </div>
+  </nav>
+</html>

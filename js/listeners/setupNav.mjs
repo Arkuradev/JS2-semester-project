@@ -1,4 +1,4 @@
-function setupNavbar() {
+export function setupNavbar() {
   // Element references
   const loginButton = document.getElementById("loginButton");
   const profileButton = document.getElementById("profileButton");
@@ -59,7 +59,7 @@ function setupNavbar() {
 }
 
 // ✅ CALL the function after it's defined
-setupNavbar();
+// setupNavbar();
 
 /*
 const authButton = document.getElementById("loginNavButton");
