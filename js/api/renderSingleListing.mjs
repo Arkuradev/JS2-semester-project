@@ -37,17 +37,17 @@ export async function renderListingDetails(id) {
   const backButton = document.createElement("a");
   backButton.href = "/index.html";
   backButton.className =
-    "inline-block mb-10 text-blue-600 hover:underline text-sm";
+    "inline-block mb-10 text-blue-600 hover:underline text-sm mb-4 font-medium";
   backButton.textContent = "← Back to Listings";
   container.appendChild(backButton);
 
   const card = document.createElement("article");
-  card.className = "bg-white mt-4 rounded-2xl shadow-lg overflow-hidden";
+  card.className = "bg-white mt-4 shadow-lg overflow-hidden";
 
   const image = document.createElement("img");
   image.src = listing.media?.[0]?.url;
   image.alt = listing.media?.[0]?.url;
-  image.className = "w-full h-80 object-cover rounded-t-2xl"; // COME BACK TO FIX THIS.
+  image.className = "w-full h-80 object-cover"; // COME BACK TO FIX THIS.
 
   const content = document.createElement("div");
   content.className = "p-6 space-y-4";

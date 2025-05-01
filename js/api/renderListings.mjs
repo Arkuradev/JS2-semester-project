@@ -34,17 +34,27 @@ export async function renderListings(containerSelector) {
     image.className = "w-full h-48 object-cover  ";
 
     const content = document.createElement("div");
-    content.className = "p-4 flex flex-col justify-between flex-grow";
+    content.className = "font-sm p-4 flex flex-col justify-between flex-grow";
 
     const title = document.createElement("h3");
     title.className = "text-lg font-semibold text-gray-900";
     title.textContent = listing.title;
 
     const endsAt = document.createElement("p");
-    endsAt.className = "text-sm text-gray-600 items-center gap-2";
+    endsAt.className = "text-sm text-gray-600 mt-2 flex items-center gap-2";
     endsAt.textContent = `Ends: ${new Date(listing.endsAt).toLocaleString()}`;
 
+    let description = listing.description.trim() || "No description provided.";
+    if (description.length > 50) {
+      description = description.substring(0, 50) + "...";
+    }
+
+    const descriptionEl = document.createElement("p");
+    descriptionEl.className = "text-gray-700";
+    descriptionEl.textContent = description;
+
     content.appendChild(title);
+    content.appendChild(descriptionEl);
     content.appendChild(endsAt);
 
     if (Array.isArray(listing.tags) && listing.tags.length > 0) {

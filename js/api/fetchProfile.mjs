@@ -3,6 +3,7 @@ import { updateProfile } from "../user/updateProfile.mjs";
 
 function renderProfile(data) {
   const profileContainer = document.getElementById("profileContainer");
+  profileContainer.className = "w-180";
 
   /*
   // Replace skeleton with real HTML (you can also append here instead of replace)

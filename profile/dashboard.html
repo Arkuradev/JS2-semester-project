@@ -13,7 +13,7 @@
   </head>
   <body>
     <header>
-      <nav class="bg-white shadow p-4 flex justify-between items-center">
+      <nav class="bg-nav shadow p-4 flex justify-between items-center">
         <a href="/index.html" class="text-2xl font-bold text-indigo-600"
           ><img src="../images/CrestAuction.png" class="object-contain h-20"
         /></a>
@@ -74,9 +74,12 @@
 
       <section
         id="userProfile"
-        class="bg-white p-4 rounded shadow items-center flex justify-center"
+        class="bg-white p-4 shadow items-center flex justify-center"
       >
-        <div id="profileContainer" class="flex flex-col justify-center">
+        <div
+          id="profileContainer"
+          class="bg-gray-300 flex flex-col justify-center p-2"
+        >
           <button id="editProfileButton">Edit</button>
         </div>
 
@@ -86,43 +89,41 @@
           id="editProfileForm"
           class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
         >
-          <div class="bg-gray-900 p-6 rounded-lg shadow-lg max-w-md w-full">
-            <h2 class="text-white text-xl font-semibold mb-4">Edit Profile</h2>
-            <label
-              for="editBanner"
-              class="block text-sm font.medium text-gray-300"
+          <div class="bg-gray-300 p-6 shadow-lg max-w-md w-full">
+            <h2 class="text-black text-xl font-semibold mb-4">Edit Profile</h2>
+            <label for="editBanner" class="block text-sm font.medium text-black"
               >Banner URL:</label
             >
             <input
               type="text"
               id="editBanner"
-              class="w-full p-2 bg-gray-800 border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+              name="editBanner"
+              class="w-full p-2 bg-gray-600 border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
               placeholder="Enter banner URL"
             />
-            <label
-              for="editAvatar"
-              class="block text-sm font.medium text-gray-300"
+            <label for="editAvatar" class="block text-sm font.medium text-black"
               >Avatar URL:</label
             >
             <input
               type="text"
               id="editAvatar"
-              class="w-full p-2 bg-gray-800 border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+              name="editAvatar"
+              class="w-full p-2 bg-gray-600 border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
               placeholder="Enter avatar URL"
             />
 
-            <label for="editBio" class="block text-sm font.medium text-gray-300"
+            <label for="editBio" class="block text-sm font.medium text-black"
               >Bio:</label
             >
             <textarea
               id="editBio"
-              class="w-full p-2 bg-gray-800 border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+              class="w-full p-2 bg-gray-600 border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
               placeholder="Tell us about yourself..."
             ></textarea>
 
             <button
               id="saveProfileButton"
-              class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition duration-300"
+              class="px-4 py-2 bg-blue-500 hover:bg-blue-500 text-black font-semibold rounded-lg transition duration-300"
             >
               Save
             </button>

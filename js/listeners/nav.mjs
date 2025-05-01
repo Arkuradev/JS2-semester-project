@@ -2,6 +2,7 @@ function setupNavbar() {
   // Element references
   const loginButton = document.getElementById("loginButton");
   const profileButton = document.getElementById("profileButton");
+  const profileNavContainer = document.getElementById("profileNavContainer");
   const profileMenu = document.getElementById("profileMenu");
   const logoutButton = document.getElementById("logoutButton");
   const creditsContainer = document.getElementById("creditsContainer");
@@ -22,11 +23,13 @@ function setupNavbar() {
       loginButton.classList.add("hidden");
       profileButton.classList.remove("hidden");
       creditsContainer.classList.remove("hidden");
+      profileNavContainer.classList.remove("hidden");
       // userCredits.textContent = userFunds;
     } else {
       loginButton.classList.remove("hidden");
       profileButton.classList.add("hidden");
       creditsContainer.classList.add("hidden");
+      profileNavContainer.classList.add("hidden");
     }
 
     // Toggle profile dropdown
@@ -42,7 +45,7 @@ function setupNavbar() {
         localStorage.removeItem("token");
         localStorage.removeItem("name");
         localStorage.removeItem("credits");
-        window.location.href = "../auth/login.html";
+        window.location.href = "/index.html";
       });
     }
 

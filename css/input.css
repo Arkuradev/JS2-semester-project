@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --nav: 196 217 255;
+  --background: 246 240 240;
+  --main: 27 38 44;
+  --border: 209 219 213;
+  --primary: 196 217 255;
+  --secondary: 196 217 255;
+  --text-secondary: 236 253 245;
+  --hover: 166 77 121;
+  --btn-primary: 143 135 241;
+  --btn-secondary: 255 138 138;
+}
+/* 
+Fix this next! CORRECT COLOR PALETTE. 
+*/
+.dark {
+  --nav: 49 54 63;
+  --background: 27 38 44;
+  --main: 187 225 250;
+  --hover: 143 135 241;
+  --text-secondary: 236 253 245;
+  --primary: 15 76 117;
+  --secondary: 49 54 63;
+  --tertiary: 146 144 195;
+  --btn-primary: 106 30 85;
+  --btn-secondary: 136 48 78;
+}
+
+/* 
+This has to be re-factored and removed from this file. 
+*/
 .message.error {
   background-color: #ff4d4d;
   color: white;
