@@ -652,12 +652,12 @@ video {
   right: 0px;
 }
 
-.top-4 {
-  top: 1rem;
-}
-
 .top-0 {
   top: 0px;
+}
+
+.top-4 {
+  top: 1rem;
 }
 
 .z-20 {
@@ -1008,6 +1008,10 @@ video {
   border-width: 1px;
 }
 
+.border-b {
+  border-bottom-width: 1px;
+}
+
 .border-t {
   border-top-width: 1px;
 }
@@ -1112,11 +1116,6 @@ video {
   background-color: rgb(129 140 248 / var(--tw-bg-opacity, 1));
 }
 
-.bg-indigo-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(238 242 255 / var(--tw-bg-opacity, 1));
-}
-
 .bg-indigo-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(99 102 241 / var(--tw-bg-opacity, 1));
@@ -1125,6 +1124,10 @@ video {
 .bg-indigo-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(79 70 229 / var(--tw-bg-opacity, 1));
+}
+
+.bg-main\/20 {
+  background-color: rgb(var(--main) / 0.2);
 }
 
 .bg-nav {
@@ -1137,41 +1140,14 @@ video {
   background-color: rgb(var(--secondary) / var(--tw-bg-opacity, 1));
 }
 
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-}
-
-.bg-main {
-  --tw-bg-opacity: 1;
-  background-color: rgb(var(--main) / var(--tw-bg-opacity, 1));
-}
-
-.bg-hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(var(--hover) / var(--tw-bg-opacity, 1));
-}
-
-.bg-text-muted {
-  --tw-bg-opacity: 1;
-  background-color: rgb(var(--text-muted) / var(--tw-bg-opacity, 1));
-}
-
-.bg-main\/50 {
-  background-color: rgb(var(--main) / 0.5);
-}
-
-.bg-main\/20 {
-  background-color: rgb(var(--main) / 0.2);
-}
-
-.bg-main\/70 {
-  background-color: rgb(var(--main) / 0.7);
-}
-
 .bg-tertiary {
   --tw-bg-opacity: 1;
   background-color: rgb(var(--tertiary) / var(--tw-bg-opacity, 1));
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
 .bg-opacity-50 {
@@ -1269,6 +1245,10 @@ video {
 
 .pt-2 {
   padding-top: 0.5rem;
+}
+
+.pt-16 {
+  padding-top: 4rem;
 }
 
 .text-center {
@@ -1672,9 +1652,4 @@ This has to be re-factored and removed from this file.
     padding-left: 2rem;
     padding-right: 2rem;
   }
-}
-
-.dark\:bg-gray-900:where(.dark, .dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
 }

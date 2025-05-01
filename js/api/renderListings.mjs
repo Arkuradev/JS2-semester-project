@@ -44,7 +44,7 @@ export async function renderListings(containerSelector) {
     endsAt.className = "text-sm text-gray-600 mt-2 flex items-center gap-2";
     endsAt.textContent = `Ends: ${new Date(listing.endsAt).toLocaleString()}`;
 
-    let description = listing.description.trim() || "No description provided.";
+    let description = listing.description?.trim() || "No description provided.";
     if (description.length > 50) {
       description = description.substring(0, 50) + "...";
     }
