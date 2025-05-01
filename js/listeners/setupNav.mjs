@@ -1,4 +1,6 @@
-export function setupNavbar() {
+import { apiFetch } from "../api/apiFetch.mjs";
+
+export async function setupNavbar() {
   // Element references
   const loginButton = document.getElementById("loginButton");
   const profileButton = document.getElementById("profileButton");
@@ -54,6 +56,18 @@ export function setupNavbar() {
       mobileMenuButton.addEventListener("click", () => {
         mobileMenu.classList.toggle("hidden");
       });
+    }
+  }
+
+  const userCreditsEl = document.getElementById("userCredits");
+  const username = localStorage.getItem("name");
+
+  if (userCreditsEl && username) {
+    try {
+      const { data } = await apiFetch(`/auction/profiles/${username}`, "GET");
+      userCreditsEl.textContent = data.credits.toString();
+    } catch (error) {
+      console.error("Error fetching credits:", error);
     }
   }
 }

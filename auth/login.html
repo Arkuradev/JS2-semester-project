@@ -70,7 +70,10 @@
         </div>
         <script type="module">
           import { loadNav } from "../js/components/loadNav.mjs";
-          loadNav();
+          import { setupNavbar } from "../js/listeners/setupNav.mjs";
+          loadNav().then(() => {
+            setupNavbar();
+          });
         </script>
   </body>
 </html>

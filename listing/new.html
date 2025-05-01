@@ -9,33 +9,7 @@
   </head>
   <body>
     <header>
-      <nav class="bg-white shadow p-4 flex justify-between items-center">
-        <a href="/index.html" class="text-2xl font-bold text-indigo-600"
-          ><img src="../images/CrestAuction.png" class="object-contain h-20"
-        /></a>
-        <div class="space-x-4">
-          <a
-            href="/listing/new.html"
-            class="hidden bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-700"
-            >Create Listing</a
-          >
-          <a href="/index.html" class="text-gray-700 hover:text-indigo-600"
-            >Home</a
-          >
-          <a href="#" class="text-gray-700 hover:text-indigo-600">Listings</a>
-          <a
-            href="/profile/dashboard.html"
-            class="text-gray-700 hover:text-indigo-600"
-            >Dashboard</a
-          >
-          <a
-            href="./auth/login.html"
-            id="loginNavButton"
-            class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
-            >Login</a
-          >
-        </div>
-      </nav>
+      <div id="navContainer"></div>
     </header>
     <section
       class="max-w-xl mx-auto mt-16 p-6 bg-indigo-400 rounded-lg shadow-2xl"
@@ -83,5 +57,12 @@
         </button>
       </form>
     </section>
+    <script type="module">
+      import { loadNav } from "../js/components/loadNav.mjs";
+      import { setupNavbar } from "../js/listeners/setupNav.mjs";
+      loadNav().then(() => {
+        setupNavbar();
+      });
+    </script>
   </body>
 </html>

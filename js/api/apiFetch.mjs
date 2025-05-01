@@ -32,6 +32,7 @@ export async function apiFetch(
     const response = await fetch(`${BASE_API_ENDPOINT}${endpoint}`, options);
 
     let data = null;
+
     if (response.status !== 204) {
       data = await response.json();
     }

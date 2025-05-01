@@ -10,27 +10,18 @@
   </head>
   <body>
     <header>
-      <nav class="bg-white shadow p-4 flex justify-between items-center">
-        <a href="#" class="text-2xl font-bold text-indigo-600">AuctionFeed</a>
-        <div class="space-x-4">
-          <a
-            href="#"
-            class="hidden bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-700"
-            >Create Listing</a
-          >
-          <a href="#" class="text-gray-700 hover:text-indigo-600">Home</a>
-          <a href="#" class="text-gray-700 hover:text-indigo-600">Listings</a>
-          <a href="#" class="text-gray-700 hover:text-indigo-600">Dashboard</a>
-          <a
-            href="./auth/login.html"
-            id="loginNavButton"
-            class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
-            >Login</a
-          >
-        </div>
-      </nav>
+      <div id="navContainer"></div>
     </header>
 
     <div id="message" class="message px-4 py-2 rounded mb-4"></div>
+    <script type="module">
+      import { loadNav } from "../js/components/loadNav.mjs";
+      import { setupNavbar } from "../js/listeners/setupNav.mjs";
+      loadNav().then(() => {
+        setupNavbar();
+      });
+    </script>
+
+    <h1>ALL LISTINGS</h1>
   </body>
 </html>

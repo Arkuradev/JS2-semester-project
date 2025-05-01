@@ -5,17 +5,18 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/output.css" />
-    <script type="module" src="../js/listeners/nav.mjs"></script>
+
     <script type="module" src="../js/api/renderListings.mjs"></script>
 
     <title>Home | Auction Feed</title>
   </head>
   <body class="bg-background">
-    <header>
+    <div id="navContainer"></div>
+    <!-- <header>
       <nav class="bg-secondary border-b border-border shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex justify-between h-16">
-            <!-- Left: Logo -->
+           
             <div class="flex-shrink-0 flex items-center">
               <a
                 href="/index.html"
@@ -24,7 +25,7 @@
               >
             </div>
 
-            <!-- Desktop Menu -->
+            
             <div class="hidden md:flex md:items-center md:space-x-6">
               <a
                 href="/index.html"
@@ -43,15 +44,15 @@
               >
             </div>
 
-            <!-- Right: User Section -->
+        
             <div class="flex items-center space-x-4">
-              <!-- Credits -->
+              
               <div id="creditsContainer" class="hidden text-text font-semibold">
                 <span class="mr-1">Credits:</span>
                 <span id="userCredits" class="text-text">0</span>
               </div>
 
-              <!-- Profile Dropdown -->
+             
               <div class="relative" id="profileNavContainer">
                 <button
                   id="profileButton"
@@ -67,7 +68,7 @@
                   <span class="sr-only">Go to profile</span>
                 </button>
 
-                <!-- Dropdown Menu -->
+                
                 <div
                   id="profileMenu"
                   class="hidden absolute right-0 mt-2 w-48 bg-background shadow-lg py-2 z-20"
@@ -86,7 +87,7 @@
                 </div>
               </div>
 
-              <!-- Login Button -->
+              
               <button
                 id="loginButton"
                 class="px-4 py-2 bg-btn-primary text-text font-semibold rounded hover:bg-hover transition hidden"
@@ -94,7 +95,7 @@
                 Login
               </button>
 
-              <!-- Mobile Menu Button -->
+              
               <button
                 id="mobileMenuButton"
                 class="md:hidden text-text hover:text-hover"
@@ -117,7 +118,7 @@
           </div>
         </div>
 
-        <!-- Mobile Menu -->
+       
         <div
           id="mobileMenu"
           class="hidden md:hidden px-2 pt-2 pb-3 space-y-1 bg-background"
@@ -139,7 +140,7 @@
           >
         </div>
       </nav>
-    </header>
+    </header> -->
     <main class="pt-16">
       <template id="skeleton-loader">
         <div
@@ -188,5 +189,12 @@
     <footer class="text-center text-text text-sm py-6 border-t">
       &copy; 2025 AuctionSite. All rights reserved.
     </footer>
+    <script type="module">
+      import { loadNav } from "../js/components/loadNav.mjs";
+      import { setupNavbar } from "../js/listeners/setupNav.mjs";
+      loadNav().then(() => {
+        setupNavbar();
+      });
+    </script>
   </body>
 </html>
