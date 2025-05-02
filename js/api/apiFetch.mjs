@@ -7,6 +7,7 @@ export async function apiFetch(
   endpoint,
   method = "GET",
   body = null,
+  auth = true,
   loaderContainer = null
 ) {
   const token = localStorage.getItem("token");
@@ -14,8 +15,8 @@ export async function apiFetch(
     "Content-Type": "application/json",
     "X-Noroff-API-Key": API_KEY,
   };
-  if (token) {
-    headers.Authorization = `Bearer ${token}`;
+  if (auth && token) {
+    headers["Authorization"] = `Bearer ${token}`;
   }
   const options = {
     method,

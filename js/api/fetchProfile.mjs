@@ -119,12 +119,14 @@ export async function fetchProfile() {
     return (window.location.href = "/account/login.html");
   }
 
+  const container = document.querySelector("#profileContainer");
   // Fetch data and show skeleton loader in the meantime
   const { data } = await apiFetch(
     `/auction/profiles/${username}`,
     "GET",
     null,
-    "#profileContainer"
+    true,
+    container
   );
   // Now render the profile once data is loaded
   renderProfile(data);

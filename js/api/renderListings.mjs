@@ -1,7 +1,7 @@
 import { apiFetch } from "./apiFetch.mjs";
 
-export async function renderListings(containerSelector) {
-  const container = document.querySelector(containerSelector);
+export async function renderListings() {
+  const container = document.querySelector("#listingContainer");
   if (!container) return;
 
   container.innerHTML = `<p>Loading listings...</p>`;
@@ -10,7 +10,7 @@ export async function renderListings(containerSelector) {
     "/auction/listings?limit=20&sort=created&sortOrder=desc",
     "GET",
     null,
-    "#listingContainer"
+    container
   );
 
   const data = response?.data;
@@ -85,4 +85,4 @@ export async function renderListings(containerSelector) {
   });
 }
 
-renderListings("#listingContainer");
+renderListings();
