@@ -49,6 +49,18 @@
         </div>
       </template>
 
+      <div
+        id="message"
+        class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50"
+      ></div>
+      <section class="max-w-6xl mx-auto py-12 px-4">
+        <h2 class="text-text text-3xl font-bold mb-6">Latest Listings</h2>
+        <div
+          id="listingContainer"
+          class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center p-4"
+        ></div>
+      </section>
+
       <section class="text-center py-16 px-4 bg-tertiary">
         <h1 class="text-4xl font-bold mb-4">Buy & Sell in Real Time</h1>
         <p class="text-lg text-text mb-6">
@@ -60,28 +72,10 @@
           >Get Started</a
         >
       </section>
-      <div
-        id="message"
-        class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50"
-      ></div>
-      <section class="max-w-6xl mx-auto py-12 px-4">
-        <h2 class="text-2xl font-bold mb-6">Latest Listings</h2>
-        <div
-          id="listingContainer"
-          class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center p-4"
-        ></div>
-      </section>
     </main>
 
     <footer class="text-center text-text text-sm py-6 border-t">
       &copy; 2025 AuctionSite. All rights reserved.
     </footer>
-    <script type="module">
-      import { loadNav } from "../js/components/loadNav.mjs";
-      import { setupNavbar } from "../js/listeners/setupNav.mjs";
-      loadNav().then(() => {
-        setupNavbar();
-      });
-    </script>
   </body>
 </html>

@@ -7,7 +7,7 @@ export async function renderListings() {
   container.innerHTML = `<p>Loading listings...</p>`;
 
   const response = await apiFetch(
-    "/auction/listings?limit=20&sort=created&sortOrder=desc",
+    "/auction/listings?limit=15&sort=created&sortOrder=desc",
     "GET",
     null,
     container
