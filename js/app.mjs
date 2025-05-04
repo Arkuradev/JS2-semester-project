@@ -11,6 +11,12 @@ function route() {
   switch (true) {
     case path.includes("dashboard"):
       import("./api/userListings.mjs").then((mod) => mod.renderUserListings());
+      // import("../js/api/fetchProfile.mjs").then((mod) => mod.fetchProfile());
+      // import("../js/user/editProfile.mjs").then((mod) => mod.editProfile());
+      // import("../js/user/updateProfile.mjs").then((mod) => mod.updateProfile());
+      break;
+
+    case path.includes("manage"):
       import("../js/api/fetchProfile.mjs").then((mod) => mod.fetchProfile());
       import("../js/user/editProfile.mjs").then((mod) => mod.editProfile());
       // import("../js/user/updateProfile.mjs").then((mod) => mod.updateProfile());
