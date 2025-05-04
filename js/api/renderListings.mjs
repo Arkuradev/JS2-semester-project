@@ -36,7 +36,7 @@ export async function renderListings() {
   activeListings.forEach((listing) => {
     const card = document.createElement("a");
     card.className =
-      "bg-background border border-border shadow-xl overflow-hidden transition-all duration-300 transform  hover:shadow-xl w-full hover:border-hover hover:-translate-y-1";
+      "bg-background  shadow-xl overflow-hidden transition-all duration-300 transform  hover:shadow-xl w-full hover:border-hover hover:-translate-y-1";
     card.href = `/listing/viewlisting.html?id=${listing.id}`;
     // Fix this error in console from this: image.src = listing.media?.[0]?.url;
     const image = document.createElement("img");
@@ -46,7 +46,7 @@ export async function renderListings() {
 
     const content = document.createElement("div");
     content.className =
-      "font-sm p-4 text-text flex flex-col justify-between flex-grow";
+      "font-sm p-4 bg-nav text-text flex flex-col justify-between flex-grow";
 
     const title = document.createElement("h3");
     title.className = "text-lg font-semibold text-text";

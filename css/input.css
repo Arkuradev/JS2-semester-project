@@ -6,7 +6,7 @@
   --nav: 196 217 255;
   --background: 246 240 240;
   --main: 27 38 44;
-  --border: 209 219 213;
+  --border: 93 95 94;
   --primary: 196 217 255;
   --secondary: 196 217 255;
   --text-secondary: 236 253 245;
@@ -16,6 +16,7 @@
 }
 /* 
 Fix this next! CORRECT COLOR PALETTE. 
+--border: 42 46 44;
 */
 .dark {
   --nav: 49 54 63;

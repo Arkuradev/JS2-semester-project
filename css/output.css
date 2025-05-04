@@ -1414,7 +1414,7 @@ video {
   --nav: 196 217 255;
   --background: 246 240 240;
   --main: 27 38 44;
-  --border: 209 219 213;
+  --border: 93 95 94;
   --primary: 196 217 255;
   --secondary: 196 217 255;
   --text-secondary: 236 253 245;
@@ -1425,6 +1425,7 @@ video {
 
 /* 
 Fix this next! CORRECT COLOR PALETTE. 
+--border: 42 46 44;
 */
 
 .dark {
@@ -1572,11 +1573,6 @@ This has to be re-factored and removed from this file.
 .hover\:bg-indigo-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(67 56 202 / var(--tw-bg-opacity, 1));
-}
-
-.hover\:bg-nav:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(var(--nav) / var(--tw-bg-opacity, 1));
 }
 
 .hover\:bg-red-500:hover {

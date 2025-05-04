@@ -44,6 +44,15 @@ function route() {
     case path.includes("new"):
       import("./auctions/newListing.mjs").then((mod) => mod.newListing()); //newListing();
       break;
+
+    case path.includes("viewlisting"):
+      import("./api/renderSingleListing.mjs").then((mod) =>
+        mod.renderListingDetails()
+      );
+      break;
+    case path.includes("about"):
+      // Create the page.
+      break;
   }
 }
 
