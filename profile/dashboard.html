@@ -5,11 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/output.css" />
     <script src="../js/app.mjs" type="module"></script>
-    <!-- <script type="module" src="../js/listeners/nav.mjs"></script>
-    <script type="module" src="../js/api/fetchProfile.mjs"></script>
-    <script type="module" src="../js/user/editProfile.mjs"></script>
-    <script type="module" src="../js/user/updateProfile.mjs"></script>
-    <script src="../js/api/userListings.mjs" type="module"></script>-->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/images/site.webmanifest" />
     <title>Dashboard</title>
   </head>
   <body>
@@ -71,7 +84,7 @@
               type="text"
               id="editBanner"
               name="editBanner"
-              class="w-full p-2 bg-gray-600 border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+              class="w-full p-2 bg-background border border-border rounded text-text focus:outline-none focus:ring-2 focus:ring-hover mb-4"
               placeholder="Enter banner URL"
             />
             <label for="editAvatar" class="block text-sm font.medium text-black"
@@ -81,7 +94,7 @@
               type="text"
               id="editAvatar"
               name="editAvatar"
-              class="w-full p-2 bg-gray-600 border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+              class="w-full p-2 bg-background border border-border rounded text-text focus:outline-none focus:ring-2 focus:ring-hover mb-4"
               placeholder="Enter avatar URL"
             />
 
@@ -90,73 +103,26 @@
             >
             <textarea
               id="editBio"
-              class="w-full p-2 bg-gray-600 border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+              class="w-full p-2 bg-background border border-border rounded text-text focus:outline-none focus:ring-2 focus:ring-hover mb-4"
               placeholder="Tell us about yourself..."
             ></textarea>
 
             <button
               id="saveProfileButton"
               type="submit"
-              class="px-4 py-2 bg-blue-500 hover:bg-blue-500 text-black font-semibold rounded-lg transition duration-300"
+              class="px-4 py-2 bg-btn-primary hover:bg-hover text-black font-semibold rounded-lg transition duration-300"
             >
               Save
             </button>
             <button
               id="cancelEditButton"
               type="button"
-              class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white font-semibold rounded-lg transition duration-300"
+              class="px-4 py-2 bg-red-500 hover:bg-hover text-white font-semibold rounded-lg transition duration-300"
             >
               Cancel
             </button>
           </div>
         </form>
-        <!-- <button id="editProfileButton">Edit</button> 
-        <form id="editProfileForm" class="hidden">
-          <!-- form fields here 
-          <label
-            for="editBanner"
-            class="block text-sm font.medium text-gray-300"
-            >Banner URL:</label
-          >
-          <input
-            type="text"
-            id="editBanner"
-            class="w-full p-2 bg-gray-800 border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
-            placeholder="Enter banner URL"
-          />
-          <label
-            for="editAvatar"
-            class="block text-sm font.medium text-gray-300"
-            >Avatar URL:</label
-          >
-          <input
-            type="text"
-            id="editAvatar"
-            class="w-full p-2 bg-gray-800 border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
-            placeholder="Enter avatar URL"
-          />
-
-          <label for="editBio" class="block text-sm font.medium text-gray-300"
-            >Bio:</label
-          >
-          <textarea
-            id="editBio"
-            class="w-full p-2 bg-gray-800 border border-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
-            placeholder="Tell us about yourself..."
-          ></textarea>
-
-          <button id="saveProfileButton" type="button">Save</button>
-          <button id="cancelEditButton" type="button">Cancel</button>
-        </form>
-      </section>
-    </main>
-    <!--
-    <script type="module">
-      import { loadNav } from "../js/components/loadNav.mjs";
-      import { setupNavbar } from "../js/listeners/setupNav.mjs";
-      loadNav().then(() => {
-        setupNavbar();
-      });
-    </script>-->
+      
   </body>
 </html>

@@ -5,7 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/output.css" />
     <script src="../js/app.mjs" type="module"></script>
-    <!-- <script src="/js/auctions/newListing.mjs" type="module"></script>-->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/images/site.webmanifest" />
     <title>Create new listing</title>
   </head>
   <body>
@@ -58,12 +75,5 @@
         </button>
       </form>
     </section>
-    <script type="module">
-      import { loadNav } from "../js/components/loadNav.mjs";
-      import { setupNavbar } from "../js/listeners/setupNav.mjs";
-      loadNav().then(() => {
-        setupNavbar();
-      });
-    </script>
   </body>
 </html>

@@ -31,7 +31,8 @@ export async function renderUserListings() {
 
     userListings.forEach((listing) => {
       const card = document.createElement("div");
-      card.className = "flex flex-col bg-white border shadow p-2 max-w-[180px]";
+      card.className =
+        "flex flex-col bg-white border shadow p-2 max-w-[180px] transition-all duration-300 transform  hover:shadow-xl hover:border-hover hover:scale-105";
 
       const image = document.createElement("img");
       image.src = listing.media?.[0]?.url || "#";
@@ -51,12 +52,12 @@ export async function renderUserListings() {
 
       const editBtn = document.createElement("button");
       editBtn.className =
-        "mt-4 mb-4 px-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300";
+        "mt-4 mb-4 px-4 bg-btn-primary hover:bg-hover text-white font-semibold py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300";
       editBtn.textContent = "Edit";
 
       const deleteBtn = document.createElement("button");
       deleteBtn.className =
-        "mt-4 mb-4 px-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300";
+        "mt-4 mb-4 px-4 bg-red-500 hover:bg-hover text-white font-semibold py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300";
 
       // "color-red-500 hover:bg-red-600 text-xs text-black py-1 rounded";
       deleteBtn.textContent = "Delete";
