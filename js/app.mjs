@@ -1,5 +1,6 @@
 import { loadNav } from "./components/loadNav.mjs";
 import { setupNavbar } from "./listeners/setupNav.mjs";
+import { themeToggle } from "./components/themeToggle.mjs";
 
 loadNav().then(() => {
   setupNavbar();
@@ -30,6 +31,12 @@ function route() {
       // Create the page.
       break;
 
+    case path.includes("index"):
+      import("../js/api/renderListings.mjs").then((mod) =>
+        mod.renderListings()
+      );
+      break;
+
     case path.includes("allListings"):
       // Create the page.
       break;
@@ -41,3 +48,4 @@ function route() {
 }
 
 route();
+themeToggle();
