@@ -20,12 +20,23 @@ export async function renderListings() {
     return;
   }
 
+  const now = new Date();
+
+  const activeListings = data.filter(
+    (listing) => new Date(listing.endsAt) > now
+  );
+
+  if (activeListings.length === 0) {
+    container.innerHTML = `<p>No active listings found.</p>`;
+    return;
+  }
+
   container.textContent = "";
 
-  data.forEach((listing) => {
+  activeListings.forEach((listing) => {
     const card = document.createElement("a");
     card.className =
-      "bg-white border border-gray-200 shadow-xl overflow-hidden transition-all duration-300 transform  hover:shadow-xl w-full hover:border-hover hover:-translate-y-1";
+      "bg-background border border-border shadow-xl overflow-hidden transition-all duration-300 transform  hover:shadow-xl w-full hover:border-hover hover:-translate-y-1";
     card.href = `/listing/viewlisting.html?id=${listing.id}`;
     // Fix this error in console from this: image.src = listing.media?.[0]?.url;
     const image = document.createElement("img");
@@ -34,14 +45,15 @@ export async function renderListings() {
     image.className = "w-full h-48 object-cover  ";
 
     const content = document.createElement("div");
-    content.className = "font-sm p-4 flex flex-col justify-between flex-grow";
+    content.className =
+      "font-sm p-4 text-text flex flex-col justify-between flex-grow";
 
     const title = document.createElement("h3");
-    title.className = "text-lg font-semibold text-gray-900";
+    title.className = "text-lg font-semibold text-text";
     title.textContent = listing.title;
 
     const endsAt = document.createElement("p");
-    endsAt.className = "text-sm text-gray-600 mt-2 flex items-center gap-2";
+    endsAt.className = "text-sm text-text mt-2 flex items-center gap-2";
     endsAt.textContent = `Ends: ${new Date(listing.endsAt).toLocaleString()}`;
 
     let description = listing.description?.trim() || "No description provided.";
@@ -50,7 +62,7 @@ export async function renderListings() {
     }
 
     const descriptionEl = document.createElement("p");
-    descriptionEl.className = "text-gray-700";
+    descriptionEl.className = "text-text";
     descriptionEl.textContent = description;
 
     content.appendChild(title);
@@ -64,7 +76,7 @@ export async function renderListings() {
       listing.tags.forEach((tag) => {
         const tagEl = document.createElement("span");
         tagEl.className =
-          "bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full";
+          "bg-secondary text-text text-xs px-2 py-0.5 rounded-full";
         tagEl.textContent = tag;
         tagsContainer.appendChild(tagEl);
       });
@@ -75,7 +87,7 @@ export async function renderListings() {
     const viewLink = document.createElement("a");
     viewLink.href = `/listing/viewlisting.html?id=${listing.id}`;
     viewLink.className =
-      "mt-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition text-center";
+      "mt-2 px-4 py-2 bg-btn-primary text-text text-sm font-medium rounded-lg hover:bg-hover transition text-center";
     viewLink.textContent = "View Listing";
     content.appendChild(viewLink);
 
