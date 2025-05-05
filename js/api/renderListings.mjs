@@ -37,11 +37,11 @@ export async function renderListings() {
     const card = document.createElement("a");
     card.className =
       "bg-background  shadow-xl overflow-hidden transition-all duration-300 transform  hover:shadow-xl w-full hover:border-hover hover:-translate-y-1";
-    card.href = `/listing/viewlisting.html?id=${listing.id}`;
+    card.href = `listing/viewlisting.html?id=${listing.id}`;
     // Fix this error in console from this: image.src = listing.media?.[0]?.url;
     const image = document.createElement("img");
-    image.src = listing.media?.[0]?.url || "#";
-    image.alt = listing.media?.[0]?.alt || "No image";
+    image.src = listing.media?.[0]?.url || "/images/placeholder.jpg";
+    image.alt = listing.media?.[0]?.alt || "Placeholder image";
     image.className = "w-full h-48 object-cover  ";
 
     const content = document.createElement("div");
