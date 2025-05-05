@@ -30,9 +30,10 @@ export async function renderUserListings() {
     //  "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2";
 
     userListings.forEach((listing) => {
-      const card = document.createElement("div");
+      const card = document.createElement("a");
       card.className =
         "flex flex-col bg-white border shadow p-2 max-w-[180px] transition-all duration-300 transform  hover:shadow-xl hover:border-hover hover:scale-105";
+      card.href = `../listing/viewlisting.html?id=${listing.id}`;
 
       const image = document.createElement("img");
       image.src = listing.media?.[0]?.url || "#";

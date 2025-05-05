@@ -36,7 +36,7 @@ export async function renderListingDetails() {
   card.className = "bg-white mt-4 shadow-lg overflow-hidden";
 
   const image = document.createElement("img");
-  image.src = listing.media?.[0]?.url;
+  image.src = listing.media?.[0]?.url || "../images/placeholder.jpg";
   image.alt = listing.media?.[0]?.url;
   image.className = "w-full h-80 object-cover"; // COME BACK TO FIX THIS.
 
