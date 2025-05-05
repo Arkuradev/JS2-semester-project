@@ -77,7 +77,8 @@ export async function renderListings() {
         const tagEl = document.createElement("span");
         tagEl.className =
           "bg-secondary text-text text-xs px-2 py-0.5 rounded-full";
-        tagEl.textContent = tag;
+        tagEl.textContent = `${tag}`;
+
         tagsContainer.appendChild(tagEl);
       });
 
@@ -96,5 +97,3 @@ export async function renderListings() {
     container.appendChild(card);
   });
 }
-
-renderListings();

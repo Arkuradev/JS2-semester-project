@@ -32,9 +32,13 @@ function route() {
       break;
 
     case path.includes("index"):
-      import("../js/api/renderListings.mjs").then((mod) =>
-        mod.renderListings()
-      );
+      try {
+        import("../js/api/renderListings.mjs").then((mod) =>
+          mod.renderListings()
+        );
+      } catch (error) {
+        console.log("Failed to load renderListings:", error);
+      }
       break;
 
     case path.includes("allListings"):
