@@ -18,6 +18,7 @@ export default {
         text: "rgb(var(--text) / <alpha-value>)",
         "text-secondary": "rgb(var(--text-secondary) / <alpha-value>)",
         "text-muted": "rgb(var(--text-muted) / <alpha-value>)",
+        funds: "rgb(var(--funds) / <alpha-value>)",
       },
     },
   },

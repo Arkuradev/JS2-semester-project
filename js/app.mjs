@@ -1,6 +1,7 @@
 import { loadNav } from "./components/loadNav.mjs";
 import { setupNavbar } from "./listeners/setupNav.mjs";
 import { themeToggle } from "./components/themeToggle.mjs";
+import { renderCreateListingModal } from "./components/createListing.mjs";
 
 loadNav().then(() => {
   setupNavbar();
@@ -59,3 +60,4 @@ function route() {
 
 route();
 themeToggle();
+renderCreateListingModal();

@@ -11,6 +11,7 @@ export async function setupNavbar() {
   const registerButton = document.getElementById("registerButton");
   const mobileMenuButton = document.getElementById("mobileMenuButton");
   const mobileMenu = document.getElementById("mobileMenu");
+  const newListingButton = document.getElementById("openCreateListingBtn");
 
   const isLoggedIn = localStorage.getItem("token");
   // const userFunds = localStorage.getItem("credits");
@@ -27,6 +28,7 @@ export async function setupNavbar() {
       creditsContainer.classList.remove("hidden");
       profileNavContainer.classList.remove("hidden");
       registerButton.classList.add("hidden");
+      newListingButton.classList.remove("hidden");
 
       // userCredits.textContent = userFunds;
     } else {
@@ -35,6 +37,7 @@ export async function setupNavbar() {
       creditsContainer.classList.add("hidden");
       profileNavContainer.classList.add("hidden");
       registerButton.classList.remove("hidden");
+      newListingButton.classList.add("hidden");
     }
 
     // Toggle profile dropdown
