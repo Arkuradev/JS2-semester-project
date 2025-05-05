@@ -86,7 +86,7 @@ export async function renderListings() {
     }
 
     const viewLink = document.createElement("a");
-    viewLink.href = `/listing/viewlisting.html?id=${listing.id}`;
+    viewLink.href = `listing/viewlisting.html?id=${listing.id}`;
     viewLink.className =
       "mt-2 px-4 py-2 bg-btn-primary text-text text-sm font-medium rounded-lg hover:bg-hover transition text-center";
     viewLink.textContent = "View Listing";

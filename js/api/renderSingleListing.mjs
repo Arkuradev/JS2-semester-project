@@ -4,18 +4,7 @@ import { createBidForm } from "../components/bidForm.mjs";
 import { createBidInfo } from "../components/bidInfo.mjs";
 import { createBidHistory } from "../components/bidHistory.mjs";
 
-// const token = localStorage.getItem("token");
-const params = new URLSearchParams(window.location.search);
-const listingId = params.get("id");
 const container = document.querySelector("#listingContainer");
-
-//Replace with error handling later....
-
-if (!listingId) {
-  showError("No listing ID found.");
-} else {
-  renderListingDetails(listingId);
-}
 
 function showError(message) {
   const error = document.createElement("p");
@@ -24,7 +13,9 @@ function showError(message) {
   container.appendChild(error);
 }
 
-export async function renderListingDetails(id) {
+export async function renderListingDetails() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
   const response = await apiFetch(`/auction/listings/${id}?_bids=true`);
   const listing = response?.data;
 
@@ -55,7 +46,7 @@ export async function renderListingDetails(id) {
   const header = createListingHeader(listing);
   const bidForm = createBidForm(id);
   // const bidInfo = createBidInfo(listing.bids || []);
-  const bidInfo = createBidInfo(bids, listingId);
+  const bidInfo = createBidInfo(bids, id);
   const bidHistorySection = createBidHistory(listing.bids || []);
 
   content.appendChild(header);
