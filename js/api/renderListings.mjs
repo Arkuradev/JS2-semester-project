@@ -29,7 +29,7 @@ export async function renderListings() {
   );
 
   if (activeListings.length === 0) {
-    container.innerHTML = `<p>No active listings found.</p>`;
+    container.innerHTML = `<p class="text-center text-text">No active listings found.</p>`;
     return;
   }
 
@@ -38,7 +38,7 @@ export async function renderListings() {
   activeListings.forEach((listing) => {
     const card = document.createElement("a");
     card.className =
-      "bg-background  shadow-xl overflow-hidden transition-all duration-300 transform  hover:shadow-xl w-full hover:border-hover hover:-translate-y-1";
+      "bg-background border border-hover shadow-xl overflow-hidden transition-all duration-300 transform  hover:shadow-xl w-full hover:border-hover hover:-translate-y-1";
     card.href = `listing/viewlisting.html?id=${listing.id}`;
     // Fix this error in console from this: image.src = listing.media?.[0]?.url;
     const image = document.createElement("img");
