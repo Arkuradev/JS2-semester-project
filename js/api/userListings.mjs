@@ -32,7 +32,7 @@ export async function renderUserListings() {
     userListings.forEach((listing) => {
       const card = document.createElement("a");
       card.className =
-        "flex flex-col bg-white border shadow p-2 max-w-[180px] transition-all duration-300 transform  hover:shadow-xl hover:border-hover hover:scale-105";
+        "flex flex-col bg-nav border shadow p-2 max-w-[180px] transition-all duration-300 transform  hover:shadow-xl hover:border-hover hover:scale-105";
       card.href = `../listing/viewlisting.html?id=${listing.id}`;
 
       const image = document.createElement("img");
@@ -41,11 +41,11 @@ export async function renderUserListings() {
       image.className = "block w-full h-20 object-cover  mb-2";
 
       const title = document.createElement("p");
-      title.className = "text-sm font-semibold text-gray-800 mb-1";
+      title.className = "text-text text-sm font-semibold text-gray-800 mb-1";
       title.textContent = listing.title;
 
       const endsAt = document.createElement("p");
-      endsAt.className = "text-xs text-gray-500 mb-2";
+      endsAt.className = "text-text text-xs text-gray-500 mb-2";
       endsAt.textContent = `Ends: ${new Date(listing.endsAt).toLocaleString()}`;
 
       const actions = document.createElement("div");

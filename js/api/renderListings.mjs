@@ -6,7 +6,7 @@ export async function renderListings() {
     return console.warn(
       "No container for listingContainer found. Please add one."
     );
-  container.innerHTML = `<p>Loading listings...</p>`;
+  container.innerHTML = `<p class="text-center text-text">Loading listings...</p>`;
 
   const response = await apiFetch(
     "/auction/listings?limit=15&sort=created&sortOrder=desc",
