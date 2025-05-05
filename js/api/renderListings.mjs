@@ -2,8 +2,10 @@ import { apiFetch } from "./apiFetch.mjs";
 
 export async function renderListings() {
   const container = document.querySelector("#listingContainer");
-  if (!container) return;
-
+  if (!container)
+    return console.warn(
+      "No container for listingContainer found. Please add one."
+    );
   container.innerHTML = `<p>Loading listings...</p>`;
 
   const response = await apiFetch(
