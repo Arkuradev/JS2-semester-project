@@ -28,7 +28,7 @@ function route() {
       // Create the page.
       break;
 
-    case path.includes("index"):
+    case path === "/" || path.includes("index.html"):
       try {
         import("../js/api/renderListings.mjs").then((mod) =>
           mod.renderListings()
