@@ -4,40 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/output.css" />
-    <script type="module" src="../js/user/login.mjs"></script>
-    <!-- <script type="module" src="../js/listeners/nav.mjs"></script> -->
+    <script type="module" src="../js/app.mjs"></script>
+    
     <title>Login</title>
   </head>
   <body>
     <header>
       <div id="navContainer"></div>
-      <!--
-      <nav class="bg-white shadow p-4 flex justify-between items-center">
-        <a href="/index.html" class="text-2xl font-bold text-indigo-600">AuctionFeed</a>
-        <div class="space-x-4">
-          <a
-            href="#"
-            class="hidden bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-700"
-            >Create Listing</a
-          >
-          <a href="#" class="text-gray-700 hover:text-indigo-600">Home</a>
-          <a href="#" class="text-gray-700 hover:text-indigo-600">Listings</a>
-          <a href="#" class="text-gray-700 hover:text-indigo-600">Dashboard</a>
-          <a
-            href="./auth/login.html" id="loginNavButton"
-            class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
-            >Login</a
-          >
-        </div>
-      </nav>
-      -->
       </header>
 
-      <div class="min-h-screen flex items-center justify-center bg-gray-100">
+      <div class="min-h-screen flex items-center justify-center bg-background">
     <section id="loginSection" class="w-full max-w-md mt-16">
       <div id="message" class="message px-4 py-2 rounded mb-4"></div>
       <div
-        class="loginContainer bg-gray-800 text-white shadow-lg rounded-2xl p-8"
+        class="loginContainer bg-nav text-text shadow-lg p-8"
       >
         <h2 class="text-2xl font-bold text-center mb-6">Login</h2>
         <form id="loginForm" class="space-y-4">
@@ -48,7 +28,7 @@
             type="text"
             placeholder="@stud.noroff.no"
             id="username"
-            class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-4 py-2 bg-background border border-border text-text placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-hover focus:border-hover"
           />
           <label for="password" class="block text-sm font-medium mb-1"
             >Password
@@ -57,23 +37,19 @@
             type="password"
             placeholder="Password"
             id="password"
-            class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            class="w-full px-4 py-2 bg-background border border-border text-text placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-hover focus:border-hover"
           />
           <!-- Login Button -->
           <button
             id="loginButton"
             type="submit"
-            class="w-full px-4 py-2 bg-blue-600 rounded-lg text-white font-bold hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500"
+            class="w-full px-4 py-2 mb-4 bg-btn-primary rounded text-text font-bold hover:bg-hover focus:outline-none focus:ring-4 focus:ring-blue-500"
           >
             Login
           </button>
+          <a href="./register.html" class="text-sm pt-3 mt-2 text-text hover:underline"
+            >Don't have an account? Register now!</a
+          >
         </div>
-        <script type="module">
-          import { loadNav } from "../js/components/loadNav.mjs";
-          import { setupNavbar } from "../js/listeners/setupNav.mjs";
-          loadNav().then(() => {
-            setupNavbar();
-          });
-        </script>
   </body>
 </html>

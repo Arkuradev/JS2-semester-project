@@ -8,7 +8,7 @@ export async function setupNavbar() {
   const profileMenu = document.getElementById("profileMenu");
   const logoutButton = document.getElementById("logoutButton");
   const creditsContainer = document.getElementById("creditsContainer");
-  // const userCredits = document.getElementById("user-credits");
+  const registerButton = document.getElementById("registerButton");
   const mobileMenuButton = document.getElementById("mobileMenuButton");
   const mobileMenu = document.getElementById("mobileMenu");
 
@@ -26,12 +26,15 @@ export async function setupNavbar() {
       profileButton.classList.remove("hidden");
       creditsContainer.classList.remove("hidden");
       profileNavContainer.classList.remove("hidden");
+      registerButton.classList.add("hidden");
+
       // userCredits.textContent = userFunds;
     } else {
       loginButton.classList.remove("hidden");
       profileButton.classList.add("hidden");
       creditsContainer.classList.add("hidden");
       profileNavContainer.classList.add("hidden");
+      registerButton.classList.remove("hidden");
     }
 
     // Toggle profile dropdown
