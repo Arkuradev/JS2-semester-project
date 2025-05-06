@@ -25,14 +25,14 @@
     <link rel="manifest" href="/images/site.webmanifest" />
     <title>Dashboard</title>
   </head>
+
   <body class="bg-background">
     <div id="navContainer"></div>
 
     <main>
-      <div id="message"></div>
       <template id="skeleton-loader">
         <div
-          class="mx-auto w-full max-w-3xl h-64 rounded-lg border border-blue-300 p-6 animate-pulse"
+          class="mx-auto w-full max-w-3xl h-64 rounded border border-blue-300 p-6 animate-pulse"
         >
           <div class="flex space-x-6 h-full">
             <div class="w-40 h-40 rounded-full bg-gray-200"></div>
@@ -50,7 +50,6 @@
           </div>
         </div>
       </template>
-
       <h1 class="text-3xl text-text font-bold mb-4 text-center mt-8">
         Manage Profile
       </h1>
@@ -68,7 +67,7 @@
       </section>
       <section
         id="userProfile"
-        class="bg-background p-4 shadow items-center flex justify-center"
+        class="bg-background p-4 shadow flex flex-col gap-4 w-full max-w-7xl mx-auto"
       >
         <div
           id="profileContainer"
