@@ -16,7 +16,14 @@ function showError(message) {
 export async function renderListingDetails() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
-  const response = await apiFetch(`/auction/listings/${id}?_bids=true`);
+  const response = await apiFetch(
+    `/auction/listings/${id}?_bids=true`,
+    "GET",
+    null,
+    false,
+    container,
+    1
+  );
   const listing = response?.data;
 
   container.innerHTML = "";
@@ -28,12 +35,12 @@ export async function renderListingDetails() {
   const backButton = document.createElement("a");
   backButton.href = "/index.html";
   backButton.className =
-    "inline-block mb-10 text-blue-600 hover:underline text-sm mb-4 font-medium";
+    "inline-block mb-10 text-text hover:underline hover:text-hover hover:scale-105 text-sm mb-4 font-medium";
   backButton.textContent = "← Back to Listings";
   container.appendChild(backButton);
 
   const card = document.createElement("article");
-  card.className = "bg-white mt-4 shadow-lg overflow-hidden";
+  card.className = "bg-nav mt-4 shadow-lg overflow-hidden";
 
   const image = document.createElement("img");
   image.src = listing.media?.[0]?.url || "../images/placeholder.jpg";
@@ -41,7 +48,7 @@ export async function renderListingDetails() {
   image.className = "w-full h-80 object-cover"; // COME BACK TO FIX THIS.
 
   const content = document.createElement("div");
-  content.className = "p-6 space-y-4";
+  content.className = "text-text p-6 space-y-4";
 
   const header = createListingHeader(listing);
   const bidForm = createBidForm(id);

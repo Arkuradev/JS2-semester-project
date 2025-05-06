@@ -18,7 +18,7 @@ export function createBidForm(listingId) {
   button.type = "submit";
   button.textContent = "Bid";
   button.className =
-    "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700";
+    "bg-btn-primary text-text px-4 py-2 rounded hover:bg-hover";
 
   form.appendChild(input);
   form.appendChild(button);

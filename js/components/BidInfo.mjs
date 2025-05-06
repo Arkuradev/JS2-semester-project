@@ -12,17 +12,17 @@ export function createBidInfo(bids, listingId) {
 
   const totalBids = document.createElement("p");
   totalBids.textContent = `Total Bids: ${bids.length}`;
-  totalBids.className = "text-gray-800 font-medium";
+  totalBids.className = "text-text font-medium";
 
   const highestBidText = document.createElement("p");
   highestBidText.textContent = `Highest Bid: ${highestBid} credits`;
-  highestBidText.className = "text-gray-800 font-medium";
+  highestBidText.className = "text-text font-medium";
 
   const quickBidButton = document.createElement("button");
   quickBidButton.type = "button";
   quickBidButton.textContent = `Quick Bid: ${minimumQuickBid} credits`;
   quickBidButton.className =
-    "bg-green-500 text-white px-4 py-2 rounded hover:bg-blue-700 w-fit";
+    "bg-btn-primary text-text px-4 py-2 rounded hover:bg-hover w-fit";
 
   quickBidButton.addEventListener("click", async () => {
     try {

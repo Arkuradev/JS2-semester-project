@@ -5,7 +5,7 @@ export function createBidHistory(bids = []) {
   if (bids.length === 0) {
     const noBidsText = document.createElement("p");
     noBidsText.textContent = "No bids yet.";
-    noBidsText.className = "text-gray-600";
+    noBidsText.className = "text-text";
     bidListContainer.appendChild(noBidsText);
     return bidListContainer;
   }
@@ -17,7 +17,7 @@ export function createBidHistory(bids = []) {
   );
 
   const highestBidText = document.createElement("p");
-  highestBidText.className = "text-green-600 font-bold mb-4";
+  highestBidText.className = "text-funds font-bold mb-4";
   highestBidText.textContent = `Highest Bidder: ${
     highestBid.bidder.name || "Anonymous"
   } with ${highestBid.amount} credits`;
@@ -25,7 +25,7 @@ export function createBidHistory(bids = []) {
   const toggleButton = document.createElement("button");
   toggleButton.textContent = "Show Bid History";
   toggleButton.className =
-    "mb-4 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded";
+    "mb-4 bg-btn-primary hover:bg-hover text-text font-semibold py-2 px-4 rounded";
 
   const bidListWrapper = document.createElement("div");
   bidListWrapper.className =
@@ -36,7 +36,7 @@ export function createBidHistory(bids = []) {
 
   const bidListTitle = document.createElement("h2");
   bidListTitle.textContent = "Bid History";
-  bidListTitle.className = "text-lg font-semibold text-gray-800 mb-2";
+  bidListTitle.className = "text-text text-lg font-semibold mb-2";
 
   const bidList = document.createElement("ul");
   bidList.className = "space-y-2";
@@ -45,10 +45,11 @@ export function createBidHistory(bids = []) {
   bids.sort((a, b) => b.amount - a.amount);
   bids.forEach((bid) => {
     const listItem = document.createElement("li");
-    listItem.className = "p-3 bg-gray-200 rounded-md shadow-sm";
+    listItem.className = "p-3 bg-text rounded-md shadow-sm";
 
     const listItemInner = document.createElement("div");
-    listItemInner.className = "flex justify-between items-center text-sm";
+    listItemInner.className =
+      "text-text flex justify-between items-center text-sm";
 
     const formattedDate = new Date(bid.created).toLocaleString();
     const bidderName = bid.bidder?.name || "Anonymous";
