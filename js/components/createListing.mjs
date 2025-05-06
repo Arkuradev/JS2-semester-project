@@ -9,7 +9,7 @@ export function renderCreateListingModal() {
       <div class="bg-background p-6 rounded shadow-xl max-w-md w-full relative">
         <button
           id="closeCreateListingModal"
-          class="absolute top-2 right-2 text-text hover:text-hover text-2xl"
+          class="absolute top-2 right-2 text-text hover:text-hover text-3xl"
         >
           &times;
         </button>

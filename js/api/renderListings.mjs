@@ -12,7 +12,9 @@ export async function renderListings() {
     "/auction/listings?limit=15&sort=created&sortOrder=desc",
     "GET",
     null,
-    container
+    false,
+    container,
+    4
   );
 
   const data = response?.data;

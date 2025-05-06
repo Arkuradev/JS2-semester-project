@@ -1,6 +1,8 @@
 import { apiFetch } from "../api/apiFetch.mjs";
 import { displayMessage } from "../utils/displayMessage.mjs";
 
+// THIS CODE IS TO BE REMOVED!
+
 export async function newListing() {
   const form = document.getElementById("createListingForm");
 
@@ -41,9 +43,6 @@ export async function newListing() {
       displayMessage("#message", "success", "Listing created successfully!");
       console.log(result);
       form.reset();
-      /* setTimeout(() => {
-      window.location.href = "/listing/new.html"; //Change this link to go directly to the listing that has been made.
-    }, 2000); */
     }
   });
 }

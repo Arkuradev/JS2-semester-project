@@ -8,7 +8,8 @@ export async function apiFetch(
   method = "GET",
   body = null,
   auth = true,
-  loaderContainer = null
+  loaderContainer = null,
+  loaderCount = 1
 ) {
   const token = localStorage.getItem("token");
   const headers = {
@@ -26,7 +27,7 @@ export async function apiFetch(
     options.body = JSON.stringify(body);
   }
 
-  if (loaderContainer) showSkeletonLoader(loaderContainer); // START LOADER.
+  if (loaderContainer) showSkeletonLoader(loaderContainer, loaderCount); // START LOADER.
   await new Promise((r) => setTimeout(r, 1000)); // 1 second fake delay
 
   try {
@@ -58,6 +59,6 @@ export async function apiFetch(
       displayMessage("#message", "error", error.message);
     }
   } finally {
-    if (loaderContainer) hideSkeletonLoader(loaderContainer); // REMOVE LOADER.
+    if (loaderContainer) hideSkeletonLoader(loaderContainer, loaderCount); // REMOVE LOADER.
   }
 }
