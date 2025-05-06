@@ -16,7 +16,9 @@ export async function renderUserListings() {
       `/auction/profiles/${username}/listings`,
       "GET",
       null,
-      "#dashboardListings"
+      true,
+      container,
+      4
     );
     const userListings = response?.data || [];
 

@@ -30,31 +30,29 @@
 
     <main>
       <div id="message"></div>
+
       <template id="skeleton-loader">
-        <div
-          class="mx-auto w-full max-w-sm rounded-md border border-blue-300 p-4 animate-pulse"
-        >
+        <div class="w-full rounded bg-background border border-border p-4 animate-pulse">
           <div class="flex space-x-4">
-            <div class="size-10 rounded-full bg-gray-200"></div>
+            <div class="size-10 rounded-full bg-main/20"></div>
             <div class="flex-1 space-y-6 py-1">
-              <div class="h-2 rounded bg-gray-200"></div>
+              <div class="h-2 rounded bg-main/20"></div>
               <div class="space-y-3">
                 <div class="grid grid-cols-3 gap-4">
-                  <div class="col-span-2 h-2 rounded bg-gray-200"></div>
-                  <div class="col-span-1 h-2 rounded bg-gray-200"></div>
+                  <div class="col-span-2 h-2 rounded bg-main/20"></div>
+                  <div class="col-span-1 h-2 rounded bg-main/20"></div>
                 </div>
-                <div class="h-2 rounded bg-gray-200"></div>
+                <div class="h-2 rounded bg-main/20"></div>
               </div>
             </div>
           </div>
         </div>
       </template>
-
       <section class="flex flex-col max-w-3xl mx-auto py-12 px-4">
-        <h1 class="text-3xl text-text font-bold mb-4">Your Listings</h1>
+        <h1 class="text-3xl text-text text-center font-bold mb-4">Your Listings</h1>
         <div
           id="dashboardListings"
-          class="bg-background grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+          class="mx-auto bg-background grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
         ></div>
       </section>
 
@@ -63,17 +61,14 @@
           id="profileContainer"
           class="flex flex-col justify-center p-2"
         >
-          
         </div>
-
-        <!-- Hidden edit form -->
 
         <form
           id="editProfileForm"
-          class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+          class="hidden fixed inset-0 flex items-center justify-center bg-background bg-opacity-50"
         >
           <div class="bg-background p-6 shadow-lg max-w-md w-full">
-            <h2 class="text-black text-xl font-semibold mb-4">Edit Profile</h2>
+            <h2 class="text-text text-xl font-semibold mb-4">Edit Profile</h2>
             <label for="editBanner" class="block text-sm font.medium text-text"
               >Banner URL:</label
             >
@@ -84,7 +79,7 @@
               class="w-full p-2 bg-background border border-border rounded text-text focus:outline-none focus:ring-2 focus:ring-hover mb-4"
               placeholder="Enter banner URL"
             />
-            <label for="editAvatar" class="block text-sm font.medium text-black"
+            <label for="editAvatar" class="block text-sm font.medium text-text"
               >Avatar URL:</label
             >
             <input
@@ -95,7 +90,7 @@
               placeholder="Enter avatar URL"
             />
 
-            <label for="editBio" class="block text-sm font.medium text-black"
+            <label for="editBio" class="block text-sm font.medium text-text"
               >Bio:</label
             >
             <textarea
@@ -107,14 +102,14 @@
             <button
               id="saveProfileButton"
               type="submit"
-              class="px-4 py-2 bg-btn-primary hover:bg-hover text-black font-semibold rounded-lg transition duration-300"
+              class="px-4 py-2 bg-btn-primary hover:bg-hover text-text font-semibold rounded-lg transition duration-300"
             >
               Save
             </button>
             <button
               id="cancelEditButton"
               type="button"
-              class="px-4 py-2 bg-red-500 hover:bg-hover text-white font-semibold rounded-lg transition duration-300"
+              class="px-4 py-2 bg-red-500 hover:bg-hover text-text font-semibold rounded-lg transition duration-300"
             >
               Cancel
             </button>

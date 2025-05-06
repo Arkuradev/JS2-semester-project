@@ -1,5 +1,6 @@
 import { apiFetch } from "./apiFetch.mjs";
 import { updateProfile } from "../user/updateProfile.mjs";
+import { updateProfileAvatar } from "../components/updateProfileAvatar.mjs";
 
 function renderProfile(data) {
   const profileContainer = document.getElementById("profileContainer");
@@ -124,6 +125,7 @@ export async function fetchProfile() {
     container
   );
   // Now render the profile once data is loaded
+  updateProfileAvatar(data);
   renderProfile(data);
 }
 

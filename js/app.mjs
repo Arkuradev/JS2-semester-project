@@ -2,9 +2,17 @@ import { loadNav } from "./components/loadNav.mjs";
 import { setupNavbar } from "./listeners/setupNav.mjs";
 import { themeToggle } from "./components/themeToggle.mjs";
 import { renderCreateListingModal } from "./components/createListing.mjs";
+import { getFullUserProfile } from "./api/getFullUserProfile.mjs";
+import { updateProfileAvatar } from "./components/updateProfileAvatar.mjs";
 
-loadNav().then(() => {
+loadNav().then(async () => {
   setupNavbar();
+
+  const user = await getFullUserProfile();
+
+  if (user) {
+    updateProfileAvatar(user);
+  }
 });
 
 function route() {
