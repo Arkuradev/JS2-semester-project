@@ -14,9 +14,12 @@ export function renderCreateListingModal() {
           &times;
         </button>
         <h2 class="text-xl text-text font-semibold mb-4">Create Listing</h2>
+        <div id="createListingMessage" class="mb-2 text-center text-sm"></div>
         <form id="createListingForm" class="space-y-4">
           <input type="text" name="title" placeholder="Title" class="w-full border p-2 rounded" required />
           <input type="url" name="media" placeholder="Image URL" class="w-full border p-2 rounded" />
+          <input type="text" name="mediaAlt" placeholder="Image Alt Text" class="w-full border p-2 rounded" />
+          <input type="text" name="tags" placeholder="Tags (comma separated)" class="w-full border p-2 rounded" />
           <textarea name="description" placeholder="Description" class="w-full border p-2 rounded"></textarea>
           <input type="datetime-local" name="endsAt" required class="w-full border p-2 rounded" />
           <button
@@ -32,17 +35,17 @@ export function renderCreateListingModal() {
 
   document.body.insertAdjacentHTML("beforeend", modalHtml);
 
-  // Modal functionality
   const modal = document.getElementById("createListingModal");
   const closeBtn = document.getElementById("closeCreateListingModal");
   const form = document.getElementById("createListingForm");
   const message = document.getElementById("createListingMessage");
 
-  // Open modal when button is clicked
+  // Open modal
   document.addEventListener("click", (e) => {
     if (e.target.id === "openCreateListingBtn") {
       modal.classList.remove("hidden");
       message.textContent = "";
+      message.className = "";
     }
   });
 
@@ -58,8 +61,10 @@ export function renderCreateListingModal() {
 
     const token = localStorage.getItem("token");
     const title = form.title.value.trim();
-    const media = form.media.value.trim();
+    const mediaUrl = form.media.value.trim();
+    const mediaAlt = form.mediaAlt.value.trim();
     const description = form.description.value.trim();
+    const tags = form.tags?.value.trim();
     const endsAt = new Date(form.endsAt.value).toISOString();
 
     if (!token) {
@@ -68,34 +73,47 @@ export function renderCreateListingModal() {
       return;
     }
 
+    if (new Date(endsAt) <= new Date()) {
+      message.textContent = "End date must be in the future.";
+      message.className = "text-red-600";
+      return;
+    }
+
     const listingData = {
       title,
       description,
-      endsAt,
-      ...(media ? { media: [media] } : {}),
+      endsAt: new Date(endsAt).toISOString(),
     };
+    if (mediaUrl) {
+      listingData.media = [
+        {
+          url: mediaUrl,
+          alt: mediaAlt || "Listing image",
+        },
+      ];
+    }
+
+    if (tags) {
+      listingData.tags = tags
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter((tag) => tag !== "");
+    }
 
     try {
-      const response = await apiFetch("/auction/listings", {
-        method: "POST",
-        body: JSON.stringify(listingData),
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (response.ok) {
+      console.log("📦 Payload being sent:", listingData);
+      const response = await apiFetch("/auction/listings", "POST", listingData);
+      if (response) {
         message.textContent = "Listing created successfully!";
         message.className = "text-green-600";
         form.reset();
 
         setTimeout(() => {
           modal.classList.add("hidden");
-          window.location.href = "/dashboard.html"; // Or reload listings
+          window.location.reload();
         }, 1500);
       } else {
-        throw new Error(response.message || "Failed to create listing");
+        throw new Error("Failed to create listing.");
       }
     } catch (err) {
       console.error(err);
