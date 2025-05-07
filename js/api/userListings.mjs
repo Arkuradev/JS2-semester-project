@@ -3,6 +3,14 @@ import { deleteListing } from "../user/deleteListing.mjs";
 const container = document.querySelector("#dashboardListings");
 const token = localStorage.getItem("token");
 
+const modal = document.getElementById("editListingModal");
+const form = document.getElementById("editListingForm");
+const titleInput = document.getElementById("editTitle");
+const descInput = document.getElementById("editDescription");
+const tagsInput = document.getElementById("editTags");
+const mediaInput = document.getElementById("editMedia");
+const endsAtInput = document.getElementById("editEndsAt");
+
 export async function renderUserListings() {
   const username = localStorage.getItem("name");
   if (!username) {
@@ -56,19 +64,23 @@ export async function renderUserListings() {
       editBtn.className =
         "mt-4 mb-4 px-4 bg-btn-primary hover:bg-hover text-white font-semibold py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300";
       editBtn.textContent = "Edit";
-      /*
 
-COME BACK TO FIX THIS PART :
-      editBtn.addEventListener("click", async (event) => {
+      editBtn.addEventListener("click", (event) => {
         event.preventDefault();
-        try {
-          await loadListingData(listing.id, token);
-          saveListing();
-        } catch (error) {
-          console.error("Error loading post:", error);
-        }
+
+        titleInput.value = listing.title;
+        descInput.value = listing.description || "";
+        tagsInput.value = (listing.tags || []).join(", ");
+        mediaInput.value = listing.media?.[0]?.url || "";
+        endsAtInput.value = listing.endsAt.slice(0, 16); // trims to YYYY-MM-DDTHH:mm
+
+        form.dataset.id = listing.id; // store ID for submission
+        modal.classList.remove("hidden");
       });
-*/
+
+      document.getElementById("cancelEdit").addEventListener("click", () => {
+        modal.classList.add("hidden");
+      });
 
       const deleteBtn = document.createElement("button");
       deleteBtn.className =
@@ -104,3 +116,27 @@ COME BACK TO FIX THIS PART :
   }
 }
 renderUserListings();
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const listingId = form.dataset.id;
+  const payload = {
+    title: titleInput.value.trim(),
+    description: descInput.value.trim(),
+    tags: tagsInput.value
+      .split(",")
+      .map((t) => t.trim())
+      .filter(Boolean),
+    media: [{ url: mediaInput.value.trim() }],
+    endsAt: new Date(endsAtInput.value).toISOString(),
+  };
+
+  try {
+    await apiFetch(`/auction/listings/${listingId}`, "PUT", payload, true);
+    modal.classList.add("hidden");
+    renderUserListings(); // Refresh listings
+  } catch (error) {
+    console.error("Failed to update listing:", error);
+  }
+});
