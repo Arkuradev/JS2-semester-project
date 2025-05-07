@@ -1,7 +1,7 @@
 import { apiFetch } from "./apiFetch.mjs";
 import { createListingHeader } from "../components/listingHeader.mjs";
 import { createBidForm } from "../components/bidForm.mjs";
-import { createBidInfo } from "../components/bidInfo.mjs";
+// import { createBidInfo } from "../components/bidInfo.mjs";
 import { createBidHistory } from "../components/bidHistory.mjs";
 
 const container = document.querySelector("#listingContainer");
@@ -17,12 +17,11 @@ export async function renderListingDetails() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
   const response = await apiFetch(
-    `/auction/listings/${id}?_bids=true`,
+    `/auction/listings/${id}?_bids=true&_seller=true`,
     "GET",
     null,
     false,
-    container,
-    1
+    container
   );
   const listing = response?.data;
 
@@ -30,7 +29,7 @@ export async function renderListingDetails() {
 
   if (!listing) return showError("Listing not found."); // Double check?? Remove?
 
-  const bids = listing.bids || [];
+  // const bids = listing.bids || [];
 
   const backButton = document.createElement("a");
   backButton.href = "/index.html";
@@ -51,14 +50,15 @@ export async function renderListingDetails() {
   content.className = "text-text p-6 space-y-4";
 
   const header = createListingHeader(listing);
-  const bidForm = createBidForm(id);
+  const sellerName = listing?.seller?.name || "";
+  const bidForm = createBidForm(listing.id, sellerName);
   // const bidInfo = createBidInfo(listing.bids || []);
-  const bidInfo = createBidInfo(bids, id);
+  //const bidInfo = createBidInfo(bids, id);
   const bidHistorySection = createBidHistory(listing.bids || []);
 
   content.appendChild(header);
   content.appendChild(bidForm);
-  content.appendChild(bidInfo);
+  //content.appendChild(bidInfo);
   if (bidHistorySection) content.appendChild(bidHistorySection);
 
   card.appendChild(image);

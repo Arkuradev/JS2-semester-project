@@ -1,3 +1,7 @@
+/* 
+THIS FEATURE IS DEPRECATED AND SHOULD BE REMOVED!
+
+
 import { apiFetch } from "../api/apiFetch.mjs";
 import { renderListingDetails } from "../api/renderSingleListing.mjs";
 
@@ -46,3 +50,5 @@ export function createBidInfo(bids, listingId) {
 
   return bidInfo;
 }
+
+*/

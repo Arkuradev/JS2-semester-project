@@ -83,6 +83,7 @@ export function renderCreateListingModal() {
       title,
       description,
       endsAt: new Date(endsAt).toISOString(),
+      "seller.name": localStorage.getItem("name"),
     };
     if (mediaUrl) {
       listingData.media = [
@@ -115,9 +116,9 @@ export function renderCreateListingModal() {
       } else {
         throw new Error("Failed to create listing.");
       }
-    } catch (err) {
-      console.error(err);
-      message.textContent = "Error: " + err.message;
+    } catch (error) {
+      console.error("Error creating listing:", error);
+      message.textContent = "Error: " + error.message;
       message.className = "text-red-600";
     }
   });
