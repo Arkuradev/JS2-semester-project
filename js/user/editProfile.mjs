@@ -10,7 +10,7 @@ function onCancelEditButtonClick() {
 
 export function editProfile() {
   fetchProfile();
-  updateProfile(); // attaches form submit listener
+  updateProfile();
   cancelEditButton.addEventListener("click", onCancelEditButtonClick);
 }
 

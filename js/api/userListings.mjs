@@ -82,6 +82,12 @@ export async function renderUserListings() {
         modal.classList.add("hidden");
       });
 
+      document
+        .getElementById("closeEditListingModal")
+        .addEventListener("click", () => {
+          modal.classList.add("hidden");
+        });
+
       const deleteBtn = document.createElement("button");
       deleteBtn.className =
         "mt-4 mb-4 px-4 bg-red-500 hover:bg-hover text-white font-semibold py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300";
