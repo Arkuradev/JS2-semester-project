@@ -54,7 +54,7 @@ export function setupAllListingsTabs() {
     url += `&limit=${limit}`;
 
     try {
-      const response = await apiFetch(url);
+      const response = await apiFetch(url, "GET", null, false, container, 4);
       let listings = response?.data || [];
 
       if (filter === "week") {

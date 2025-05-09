@@ -50,7 +50,7 @@ function route() {
 
     case path.includes("allListings"):
       if (window.location.pathname.endsWith("/allListings.html")) {
-        setupAllListingsTabs();
+        setupAllListingsTabs("all");
       }
       break;
 
