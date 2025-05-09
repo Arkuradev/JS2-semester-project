@@ -98,7 +98,7 @@ export function setupAllListingsTabs() {
           const card = document.createElement("a");
           card.href = `/listing/viewlisting.html?id=${listing.id}`;
           card.className =
-            "flex flex-col bg-nav border shadow p-2 max-w-[180px] transition-all duration-300 transform hover:shadow-xl hover:border-hover hover:scale-105";
+            "flex flex-col mx-auto bg-nav border shadow p-2 max-w-[180px] transition-all duration-300 transform hover:shadow-xl hover:border-hover hover:scale-105";
 
           const title = document.createElement("h2");
           title.className = "text-text text-sm font-semibold mb-1";
@@ -110,9 +110,23 @@ export function setupAllListingsTabs() {
             listing.endsAt
           ).toLocaleString()}`;
 
+          const tagsContainer = document.createElement("div");
+          tagsContainer.className = "flex flex-wrap gap-1 mt-2";
+
+          if (Array.isArray(listing.tags)) {
+            listing.tags.forEach((tag) => {
+              const tagBadge = document.createElement("span");
+              tagBadge.className =
+                "bg-hover text-xs text-text px-2 py-0.5 rounded-full";
+              tagBadge.textContent = `${tag}`;
+              tagsContainer.appendChild(tagBadge);
+            });
+          }
+
           card.appendChild(image);
           card.appendChild(title);
           card.appendChild(endsAt);
+          card.appendChild(tagsContainer);
           container.appendChild(card);
         };
 

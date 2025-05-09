@@ -721,6 +721,10 @@ video {
   margin-right: 0.25rem;
 }
 
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .mt-16 {
   margin-top: 4rem;
 }
@@ -743,10 +747,6 @@ video {
 
 .mt-auto {
   margin-top: auto;
-}
-
-.mt-10 {
-  margin-top: 2.5rem;
 }
 
 .block {
@@ -909,10 +909,6 @@ video {
 
 .max-w-xl {
   max-width: 36rem;
-}
-
-.max-w-5xl {
-  max-width: 64rem;
 }
 
 .flex-1 {
@@ -1136,6 +1132,11 @@ video {
 .bg-gray-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity, 1));
+}
+
+.bg-hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(var(--hover) / var(--tw-bg-opacity, 1));
 }
 
 .bg-indigo-400 {
