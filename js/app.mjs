@@ -4,7 +4,6 @@ import { themeToggle } from "./components/themeToggle.mjs";
 import { renderCreateListingModal } from "./components/createListing.mjs";
 import { getFullUserProfile } from "./api/getFullUserProfile.mjs";
 import { updateProfileAvatar } from "./components/updateProfileAvatar.mjs";
-import { setupAllListingsTabs } from "./components/allListings.mjs";
 
 loadNav().then(async () => {
   setupNavbar();
@@ -52,7 +51,6 @@ function route() {
       import("./components/allListings.mjs").then((mod) =>
         mod.setupAllListingsTabs()
       );
-
       break;
 
     case path.includes("new"):

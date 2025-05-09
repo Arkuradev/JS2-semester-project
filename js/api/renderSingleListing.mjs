@@ -1,7 +1,6 @@
 import { apiFetch } from "./apiFetch.mjs";
 import { createListingHeader } from "../components/listingHeader.mjs";
 import { createBidForm } from "../components/bidForm.mjs";
-// import { createBidInfo } from "../components/bidInfo.mjs";
 import { createBidHistory } from "../components/bidHistory.mjs";
 
 const container = document.querySelector("#listingContainer");
@@ -44,7 +43,15 @@ export async function renderListingDetails() {
   const image = document.createElement("img");
   image.src = listing.media?.[0]?.url || "../images/placeholder.jpg";
   image.alt = listing.media?.[0]?.url;
-  image.className = "w-full h-80 object-cover"; // COME BACK TO FIX THIS.
+  image.className = "w-full h-80 object-cover";
+
+  // Come back to fix this to make it look gooood! Because profile information is next on the block!
+
+  const sellerInfo = document.createElement("a");
+  sellerInfo.className =
+    "text-text hover:underline hover:text-hover hover:scale-105 text-sm mb-4 font-medium";
+  sellerInfo.textContent = `${listing.seller.name}`;
+  sellerInfo.href = `/profile.html?username=${listing.seller.name}`;
 
   const content = document.createElement("div");
   content.className = "text-text p-6 space-y-4";
@@ -58,10 +65,13 @@ export async function renderListingDetails() {
 
   content.appendChild(header);
   content.appendChild(bidForm);
+
   //content.appendChild(bidInfo);
   if (bidHistorySection) content.appendChild(bidHistorySection);
 
   card.appendChild(image);
+  card.appendChild(sellerInfo);
   card.appendChild(content);
+
   container.appendChild(card);
 }

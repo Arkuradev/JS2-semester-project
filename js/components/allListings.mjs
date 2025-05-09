@@ -17,7 +17,7 @@ export function setupAllListingsTabs() {
   });
 
   async function fetchAndRenderListings(filter, container) {
-    container.innerHTML = `<div class="col-span-full text-center text-gray-400 animate-pulse">Loading...</div>`;
+    container.innerHTML = `<div class="col-span-full text-center text-text animate-pulse">Loading...</div>`;
 
     let url = `/auction/listings?sort=created&_order=desc`;
     let limit = 25;
@@ -54,7 +54,7 @@ export function setupAllListingsTabs() {
     url += `&limit=${limit}`;
 
     try {
-      const response = await apiFetch(url, "GET", null, false, container, 4);
+      const response = await apiFetch(url, "GET", null, false, container, 8);
       let listings = response?.data || [];
 
       if (filter === "week") {
@@ -83,7 +83,7 @@ export function setupAllListingsTabs() {
       container.innerHTML = "";
 
       if (listings.length === 0) {
-        container.innerHTML = `<p class="col-span-full text-center text-gray-500">No listings found.</p>`;
+        container.innerHTML = `<p class="col-span-full text-center text-text">No listings found.</p>`;
         return;
       }
 
