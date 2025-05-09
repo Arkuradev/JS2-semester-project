@@ -49,9 +49,10 @@ function route() {
       break;
 
     case path.includes("alllistings"):
-      if (window.location.pathname.endsWith("/alllistings.html")) {
-        setupAllListingsTabs();
-      }
+      import("./components/allListings.mjs").then((mod) =>
+        mod.setupAllListingsTabs()
+      );
+
       break;
 
     case path.includes("new"):
