@@ -18,5 +18,3 @@ export function editProfile() {
   updateProfile();
   cancelEditButton.addEventListener("click", onCancelEditButtonClick);
 }
-
-editProfile();
