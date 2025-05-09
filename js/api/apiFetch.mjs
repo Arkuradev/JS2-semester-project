@@ -27,8 +27,7 @@ export async function apiFetch(
     options.body = JSON.stringify(body);
   }
 
-  if (loaderContainer) showSkeletonLoader(loaderContainer, loaderCount); // START LOADER.
-  await new Promise((r) => setTimeout(r, 1000)); // 1 second fake delay
+  if (loaderContainer) showSkeletonLoader(loaderContainer, loaderCount);
 
   try {
     const response = await fetch(`${BASE_API_ENDPOINT}${endpoint}`, options);

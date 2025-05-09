@@ -1,5 +1,5 @@
 // THIS IS THE NEXT ON THE LIST!
-
+/*
 const modal = document.getElementById("editListingModal");
 const form = document.getElementById("editListingForm");
 
@@ -66,3 +66,4 @@ form.addEventListener("submit", async (e) => {
 document.getElementById("cancelEditBtn").addEventListener("click", () => {
   modal.classList.add("hidden");
 });
+*/

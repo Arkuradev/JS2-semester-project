@@ -35,18 +35,18 @@ export function updateProfile() {
       );
 
       if (response) {
-        displayMessage("#message", "success", "Profile updated successfully!");
+        displayMessage("success", "Profile updated successfully!");
         document.getElementById("editProfileForm").classList.add("hidden");
         document.getElementById("userProfile").classList.remove("hidden");
 
         // Optional: reload to reflect changes
         setTimeout(() => window.location.reload(), 1000);
       } else {
-        displayMessage("#message", "error", "Failed to update profile.");
+        displayMessage("error", "Failed to update profile.");
       }
     } catch (error) {
       console.error("Error updating profile:", error);
-      displayMessage("#message", "error", "An unexpected error occurred.");
+      displayMessage("error", "An unexpected error occurred.");
     }
   });
 }

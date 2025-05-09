@@ -4,6 +4,7 @@ import { themeToggle } from "./components/themeToggle.mjs";
 import { renderCreateListingModal } from "./components/createListing.mjs";
 import { getFullUserProfile } from "./api/getFullUserProfile.mjs";
 import { updateProfileAvatar } from "./components/updateProfileAvatar.mjs";
+import { displayMessage } from "./utils/displayMessage.mjs";
 
 loadNav().then(async () => {
   setupNavbar();
@@ -43,6 +44,7 @@ function route() {
           mod.renderListings()
         );
       } catch (error) {
+        displayMessage("#message", "error", "Failed to load listings.");
         console.log("Failed to load renderListings:", error);
       }
       break;
@@ -62,12 +64,10 @@ function route() {
         mod.renderListingDetails()
       );
       break;
-    case path.includes("about"):
-      // Create the page.
-      break;
   }
 }
 
 route();
 themeToggle();
 renderCreateListingModal();
+window.displayMessage = displayMessage;

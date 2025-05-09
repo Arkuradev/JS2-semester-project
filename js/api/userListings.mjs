@@ -1,5 +1,6 @@
 import { apiFetch } from "./apiFetch.mjs";
 import { deleteListing } from "../user/deleteListing.mjs";
+import { displayMessage } from "../utils/displayMessage.mjs";
 const container = document.querySelector("#dashboardListings");
 const token = localStorage.getItem("token");
 
@@ -89,16 +90,16 @@ export async function renderUserListings() {
       deleteBtn.className =
         "mt-4 mb-4 px-4 bg-red-500 hover:bg-hover text-white font-semibold py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300";
 
-      // "color-red-500 hover:bg-red-600 text-xs text-black py-1 rounded";
       deleteBtn.textContent = "Delete";
 
       deleteBtn.addEventListener("click", async (event) => {
         event.preventDefault();
         try {
           await deleteListing(listing.id, token);
-          console.log("Successfully deleted post!");
+          displayMessage("success", "Successfully deleted listing.");
           renderUserListings();
         } catch (error) {
+          displayMessage("error", "Failed to delete listing.");
           console.error("Error deleting post:", error);
         }
       });
@@ -114,7 +115,7 @@ export async function renderUserListings() {
       container.appendChild(card);
     });
   } catch (error) {
-    container.innerHTML = "Error loading listings.";
+    displayMessage("error", "Failed to fetch listings.");
     console.error(error);
   }
 }
@@ -138,9 +139,10 @@ form.addEventListener("submit", async (e) => {
   try {
     await apiFetch(`/auction/listings/${listingId}`, "PUT", payload, true);
     modal.classList.add("hidden");
-    alert("Successfully updated listing!");
+    displayMessage("success", "Changes saved.");
     renderUserListings();
   } catch (error) {
+    displayMessage("error", "Failed to update listing.");
     console.error("Failed to update listing:", error);
   }
 });

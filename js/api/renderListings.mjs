@@ -79,8 +79,7 @@ export async function renderListings() {
 
       listing.tags.forEach((tag) => {
         const tagEl = document.createElement("span");
-        tagEl.className =
-          "bg-secondary text-text text-xs px-2 py-0.5 rounded-full";
+        tagEl.className = "bg-hover text-text text-xs px-2 py-0.5 rounded-full";
         tagEl.textContent = `${tag}`;
 
         tagsContainer.appendChild(tagEl);
