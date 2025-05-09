@@ -25,15 +25,31 @@
     <link rel="manifest" href="/images/site.webmanifest" />
     <title>All Listings</title>
   </head>
-  <body>
+  <body class="bg-background">
     <header>
       <div id="navContainer"></div>
     </header>
 
     <div id="message" class="message px-4 py-2 rounded mb-4"></div>
-    
-    </script>
 
-    <h1>ALL LISTINGS</h1>
+    <h1 class="text-text text-center text-3xl font-bold mb-10 mt-10">
+      ALL LISTINGS
+    </h1>
+
+    <section id="allListings" class="mx-auto max-w-2xl">
+      <div id="listingTabs" class="flex flex-wrap gap-2 mb-4">
+        <button class="tab-btn active" data-filter="all">All Listings</button>
+        <button class="tab-btn" data-filter="popular">Popular</button>
+        <button class="tab-btn" data-filter="new">New</button>
+        <button class="tab-btn" data-filter="ending">Ending Soon</button>
+        <button class="tab-btn" data-filter="week">This Week</button>
+        <button class="tab-btn" data-filter="nobids">No Bids</button>
+      </div>
+
+      <div
+        id="allListingsContainer"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+      ></div>
+    </section>
   </body>
 </html>

@@ -4,6 +4,7 @@ import { themeToggle } from "./components/themeToggle.mjs";
 import { renderCreateListingModal } from "./components/createListing.mjs";
 import { getFullUserProfile } from "./api/getFullUserProfile.mjs";
 import { updateProfileAvatar } from "./components/updateProfileAvatar.mjs";
+import { setupAllListingsTabs } from "./components/allListings.mjs";
 
 loadNav().then(async () => {
   setupNavbar();
@@ -48,7 +49,9 @@ function route() {
       break;
 
     case path.includes("allListings"):
-      // Create the page.
+      if (window.location.pathname.endsWith("/allListings.html")) {
+        setupAllListingsTabs();
+      }
       break;
 
     case path.includes("new"):

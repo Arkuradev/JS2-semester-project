@@ -15,10 +15,7 @@
   --btn-secondary: 255 138 138;
   --funds: 6 95 70;
 }
-/* 
-Fix this next! CORRECT COLOR PALETTE. 
---border: 42 46 44;
-*/
+
 .dark {
   --nav: 49 54 63;
   --background: 27 38 44;
@@ -31,6 +28,14 @@ Fix this next! CORRECT COLOR PALETTE.
   --btn-primary: 106 30 85;
   --btn-secondary: 136 48 78;
   --funds: 167 243 208;
+}
+
+.tab-btn {
+  @apply px-4 py-2 bg-btn-primary text-text rounded hover:bg-hover transition;
+}
+
+.tab-btn.active {
+  @apply bg-hover font-bold;
 }
 
 /* 

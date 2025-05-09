@@ -35,8 +35,6 @@ export async function renderUserListings() {
     }
 
     container.innerHTML = "";
-    // container.className =
-    //  "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2";
 
     userListings.forEach((listing) => {
       const card = document.createElement("a");
@@ -72,9 +70,8 @@ export async function renderUserListings() {
         descInput.value = listing.description || "";
         tagsInput.value = (listing.tags || []).join(", ");
         mediaInput.value = listing.media?.[0]?.url || "";
-        endsAtInput.value = listing.endsAt.slice(0, 16); // trims to YYYY-MM-DDTHH:mm
-
-        form.dataset.id = listing.id; // store ID for submission
+        endsAtInput.value = listing.endsAt.slice(0, 16);
+        form.dataset.id = listing.id;
         modal.classList.remove("hidden");
       });
 
@@ -141,7 +138,8 @@ form.addEventListener("submit", async (e) => {
   try {
     await apiFetch(`/auction/listings/${listingId}`, "PUT", payload, true);
     modal.classList.add("hidden");
-    renderUserListings(); // Refresh listings
+    alert("Successfully updated listing!");
+    renderUserListings();
   } catch (error) {
     console.error("Failed to update listing:", error);
   }
