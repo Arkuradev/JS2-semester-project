@@ -48,9 +48,9 @@ function route() {
       }
       break;
 
-    case path.includes("allListings"):
-      if (window.location.pathname.endsWith("/allListings.html")) {
-        setupAllListingsTabs("all");
+    case path.includes("alllistings"):
+      if (window.location.pathname.endsWith("/alllistings.html")) {
+        setupAllListingsTabs();
       }
       break;
 
