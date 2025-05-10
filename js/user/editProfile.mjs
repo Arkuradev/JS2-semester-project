@@ -8,13 +8,13 @@ const closeEditProfile = document.getElementById("closeEditProfile");
 function onCancelEditButtonClick() {
   editProfileForm.classList.add("hidden");
 }
-
-closeEditProfile.addEventListener("click", () => {
+function onCancelEditCrossButtonClick() {
   editProfileForm.classList.add("hidden");
-});
+}
 
 export function editProfile() {
   fetchProfile();
   updateProfile();
   cancelEditButton.addEventListener("click", onCancelEditButtonClick);
+  closeEditProfile.addEventListener("click", onCancelEditCrossButtonClick);
 }
