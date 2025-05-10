@@ -5,6 +5,7 @@ import { renderCreateListingModal } from "./components/createListing.mjs";
 import { getFullUserProfile } from "./api/getFullUserProfile.mjs";
 import { updateProfileAvatar } from "./components/updateProfileAvatar.mjs";
 import { displayMessage } from "./utils/displayMessage.mjs";
+import { initUI } from "./utils/initUI.mjs";
 
 loadNav().then(async () => {
   setupNavbar();
@@ -14,6 +15,7 @@ loadNav().then(async () => {
   if (user) {
     updateProfileAvatar(user);
   }
+  initUI();
 });
 
 function route() {
@@ -70,4 +72,5 @@ function route() {
 route();
 themeToggle();
 renderCreateListingModal();
+
 window.displayMessage = displayMessage;

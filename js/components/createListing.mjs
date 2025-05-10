@@ -1,4 +1,5 @@
 import { apiFetch } from "../api/apiFetch.mjs";
+import { displayMessage } from "../utils/displayMessage.mjs";
 
 export function renderCreateListingModal() {
   const modalHtml = `
@@ -46,6 +47,10 @@ export function renderCreateListingModal() {
       modal.classList.remove("hidden");
       message.textContent = "";
       message.className = "";
+    } else if (e.target.id === "openCreateListingBtnMobile") {
+      modal.classList.remove("hidden");
+      message.textContent = "";
+      message.className = "";
     }
   });
 
@@ -68,14 +73,12 @@ export function renderCreateListingModal() {
     const endsAt = new Date(form.endsAt.value).toISOString();
 
     if (!token) {
-      message.textContent = "You must be logged in to create a listing.";
-      message.className = "text-red-600";
+      displayMessage("error", "You must be logged in to create a listing.");
       return;
     }
 
     if (new Date(endsAt) <= new Date()) {
-      message.textContent = "End date must be in the future.";
-      message.className = "text-red-600";
+      displayMessage("error", "End date must be in the future.");
       return;
     }
 
@@ -102,11 +105,9 @@ export function renderCreateListingModal() {
     }
 
     try {
-      console.log("📦 Payload being sent:", listingData);
       const response = await apiFetch("/auction/listings", "POST", listingData);
       if (response) {
-        message.textContent = "Listing created successfully!";
-        message.className = "text-green-600";
+        displayMessage("success", "Listing created.");
         form.reset();
 
         setTimeout(() => {
@@ -118,8 +119,7 @@ export function renderCreateListingModal() {
       }
     } catch (error) {
       console.error("Error creating listing:", error);
-      message.textContent = "Error: " + error.message;
-      message.className = "text-red-600";
+      displayMessage("error", "Failed to create listing.");
     }
   });
 }
