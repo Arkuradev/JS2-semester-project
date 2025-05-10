@@ -3,9 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register |</title>
+    <link rel="stylesheet" href="../css/output.css" />
+    <script type="module" src="../js/app.mjs"></script>
+
+    <title>Register</title>
   </head>
   <body>
-    You have logged out!
+    <header>
+      <div id="navContainer"></div>
+    </header>
+
+    <div class="min-h-screen flex items-center justify-center bg-background">
+      <section id="registerSection" class="w-full max-w-md mt-8">
+        <div class="registerContainer bg-nav text-text shadow-lg p-8">
+          <h2 class="text-2xl font-bold text-center mb-6">Register</h2>
+          <form id="registerForm" class="space-y-2">
+            <label for="name" class="block text-sm font-medium"
+              >Username
+            </label>
+            <input
+              type="text"
+              placeholder="Username"
+              id="name"
+              class="w-full px-4 py-1 bg-background border border-border text-text placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-hover focus:border-hover"
+            />
+            <label for="email" class="block text-sm font-medium">Email </label>
+            <input
+              type="text"
+              placeholder="@stud.noroff.no"
+              id="email"
+              class="w-full px-4 py-1 bg-background border border-border text-text placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-hover focus:border-hover"
+            />
+            <label for="password" class="block text-sm font-medium"
+              >Password
+            </label>
+            <input
+              type="password"
+              placeholder="Password"
+              id="password"
+              class="w-full px-4 py-1 bg-background border border-border text-text placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-hover focus:border-hover"
+            />
+            <button
+              id="registerButton"
+              type="submit"
+              class="w-full px-4 py-2 mb-4 bg-btn-primary rounded text-text font-bold hover:bg-hover focus:outline-none focus:ring-4 focus:ring-hover"
+            >
+              Register
+            </button>
+          </form>
+        </div>
+      </section>
+    </div>
   </body>
 </html>

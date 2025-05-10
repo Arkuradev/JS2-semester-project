@@ -35,7 +35,7 @@ function route() {
       break;
 
     case path.includes("register"):
-      // Create the page.
+      import("./user/register.mjs");
       break;
 
     case path === "/" || path.includes("index.html"):

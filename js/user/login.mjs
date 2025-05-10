@@ -36,15 +36,13 @@ export async function loginUser() {
       localStorage.setItem("name", data.data?.name);
 
       // TEMP - EDIT LATER
-      displayMessage("#message", "success", "Login successful!");
+      displayMessage("success", "Login successful!");
       /* Set more statuses here if needed after user has logged in */
       setTimeout(() => {
         window.location.href = "../index.html";
       }, 2000);
     } catch (error) {
       console.error(error);
-      const messageElement = document.querySelector(".message");
-      messageElement.textContent = error.message;
     }
   });
 }
