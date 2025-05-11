@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/output.css" />
+    <script src="/js/app.mjs" type="module"></script>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/images/site.webmanifest" />
+
+    <title>Home | Auction Feed</title>
+  </head>
+  <body class="bg-background">
+    <div id="navContainer"></div>
+    <main class="pt-16">
+      <template id="skeleton-loader">
+        <div
+          class="mx-auto w-full max-w-sm rounded bg-background border border-border p-4 animate-pulse"
+        >
+          <div class="flex space-x-4">
+            <div class="size-10 rounded-full bg-main/20"></div>
+            <div class="flex-1 space-y-6 py-1">
+              <div class="h-2 rounded bg-main/20"></div>
+              <div class="space-y-3">
+                <div class="grid grid-cols-3 gap-4">
+                  <div class="col-span-2 h-2 rounded bg-main/20"></div>
+                  <div class="col-span-1 h-2 rounded bg-main/20"></div>
+                </div>
+                <div class="h-2 rounded bg-main/20"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+      <section
+        id="userProfile"
+        class="bg-background p-4 shadow flex flex-col gap-4 w-full max-w-7xl mx-auto"
+      >
+        <div
+          id="profileContainer"
+          class="flex flex-col justify-center p-2"
+        ></div>
+      </section>
+    </main>
+
+    <footer class="text-center text-text text-sm py-6 border-t">
+      &copy; 2025 AuctionSite. All rights reserved.
+    </footer>
+  </body>
+</html>

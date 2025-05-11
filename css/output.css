@@ -672,10 +672,6 @@ video {
   top: 0.5rem;
 }
 
-.top-4 {
-  top: 1rem;
-}
-
 .z-20 {
   z-index: 20;
 }
@@ -872,11 +868,6 @@ video {
 
 .w-8 {
   width: 2rem;
-}
-
-.w-fit {
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .w-full {

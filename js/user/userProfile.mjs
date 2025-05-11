@@ -1,8 +1,6 @@
-import { apiFetch } from "./apiFetch.mjs";
-import { updateProfile } from "../user/updateProfile.mjs";
-import { updateProfileAvatar } from "../components/updateProfileAvatar.mjs";
+import { apiFetch } from "../api/apiFetch.mjs";
 
-function renderProfile(data) {
+function renderUserProfile(data) {
   const profileContainer = document.getElementById("profileContainer");
   profileContainer.className =
     "w-full max-w-2xl mx-auto border-border border rounded-lg p-6 shadow-md relative";
@@ -46,40 +44,7 @@ function renderProfile(data) {
   profileBio.id = "profileBio";
   profileBio.textContent = data.bio || "No bio set yet";
 
-  const editProfileButton = document.createElement("button");
-  editProfileButton.id = "editProfileButton";
-  editProfileButton.textContent = "Edit Profile";
-  editProfileButton.className =
-    "mt-6 px-5 py-2 bg-btn-primary hover:bg-hover text-text font-semibold rounded transition duration-300";
-
-  document.getElementById("profileContainer").appendChild(editProfileButton);
-
-  const editProfileForm = document.getElementById("editProfileForm");
-  editProfileButton.addEventListener("click", () => {
-    document.getElementById("editBanner").value = data.banner?.url;
-    document.getElementById("editAvatar").value = data.avatar?.url;
-    document.getElementById("editBio").value = data.bio || "";
-    editProfileForm.classList.remove("hidden");
-  });
-
-  const cancelProfileButton = document.getElementById("cancelEditButton");
-  cancelProfileButton.addEventListener("click", () => {
-    editProfileForm.classList.add("hidden");
-  });
-
-  const saveProfileButton = document.getElementById("saveProfileButton");
-  saveProfileButton.addEventListener("click", () => {
-    updateProfile();
-    editProfileForm.classList.add("hidden");
-  });
-
-  detailsContainer.append(
-    profileName,
-    funds,
-    profileEmail,
-    profileBio,
-    editProfileButton
-  );
+  detailsContainer.append(profileName, profileEmail, profileBio);
 
   const bannerWrapper = document.createElement("div");
   bannerWrapper.className = "relative";
@@ -89,8 +54,24 @@ function renderProfile(data) {
   profileContainer.append(bannerWrapper, detailsContainer);
 }
 
+/*
+Some notes:
+
+Right now we finally fixed the issue with page not rendering properly. 
+I also modified the fetchProfile function by removing the edit section that is in manage.html
+Next up now is to modify the fetchProfile function to render the user profile of the user that is clicked on 
+to display the users profile. 
+
+
+IMPORTANT FIX!
+
+
+*/
+
 export async function fetchProfile() {
   const token = localStorage.getItem("token");
+  //const params = new URLSearchParams(window.location.search);
+  // const name = params.get("name");
   const username = localStorage.getItem("name");
 
   if (!token) {
@@ -101,7 +82,7 @@ export async function fetchProfile() {
   }
 
   const container = document.querySelector("#profileContainer");
-
+  // Fetch data and show skeleton loader in the meantime
   const { data } = await apiFetch(
     `/auction/profiles/${username}`,
     "GET",
@@ -109,12 +90,12 @@ export async function fetchProfile() {
     true,
     container
   );
-
-  updateProfileAvatar(data);
-  renderProfile(data);
+  // Now render the profile once data is loaded
+  renderUserProfile(data);
 }
 
 function main() {
   fetchProfile();
 }
+
 main();

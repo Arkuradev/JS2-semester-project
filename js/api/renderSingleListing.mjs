@@ -51,7 +51,7 @@ export async function renderListingDetails() {
   sellerInfo.className =
     "text-text hover:underline hover:text-hover hover:scale-105 text-sm mb-4 font-medium";
   sellerInfo.textContent = `${listing.seller.name}`;
-  sellerInfo.href = `/profile.html?username=${listing.seller.name}`;
+  sellerInfo.href = `/profile/user.html?user=${listing.seller.name}`;
 
   const content = document.createElement("div");
   content.className = "text-text p-6 space-y-4";

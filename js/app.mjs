@@ -6,6 +6,7 @@ import { getFullUserProfile } from "./api/getFullUserProfile.mjs";
 import { updateProfileAvatar } from "./components/updateProfileAvatar.mjs";
 import { displayMessage } from "./utils/displayMessage.mjs";
 import { initUI } from "./utils/initUI.mjs";
+// import { fetchUserProfile } from "./user/userProfile.mjs";
 
 loadNav().then(async () => {
   setupNavbar();
@@ -20,7 +21,6 @@ loadNav().then(async () => {
 
 function route() {
   const path = window.location.pathname;
-
   switch (true) {
     case path.includes("dashboard"):
       import("./api/userListings.mjs").then((mod) => mod.renderUserListings());
@@ -57,6 +57,11 @@ function route() {
       );
       break;
 
+    case path.endsWith("/user.html"):
+      // fetchUserProfile();
+      import("./user/userProfile.mjs").then((mod) => mod.renderUserProfile());
+      break;
+
     case path.includes("new"):
       import("./auctions/newListing.mjs").then((mod) => mod.newListing()); //newListing();
       break;
@@ -68,9 +73,7 @@ function route() {
       break;
   }
 }
-
 route();
 themeToggle();
 renderCreateListingModal();
-
 window.displayMessage = displayMessage;

@@ -8,7 +8,6 @@ export function updateProfile() {
 
   if (!form) return;
 
-  // Prevents duplicate event listeners
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -40,7 +39,6 @@ export function updateProfile() {
         document.getElementById("editProfileForm").classList.add("hidden");
         document.getElementById("userProfile").classList.remove("hidden");
 
-        // Optional: reload to reflect changes
         setTimeout(() => window.location.reload(), 1000);
       } else {
         displayMessage("error", "Failed to update profile.");

@@ -58,6 +58,6 @@ export async function apiFetch(
       displayMessage("#message", "error", error.message);
     }
   } finally {
-    if (loaderContainer) hideSkeletonLoader(loaderContainer, loaderCount); // REMOVE LOADER.
+    if (loaderContainer) hideSkeletonLoader(loaderContainer, loaderCount);
   }
 }

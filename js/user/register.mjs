@@ -1,4 +1,3 @@
-// WRITE IT ON YOUR OWN FOLLOWING THIS EXAMPLE AND MAKE IT WORK! :D
 import { apiFetch } from "../api/apiFetch.mjs";
 import { displayMessage } from "../utils/displayMessage.mjs";
 export async function register(name, email, password) {
@@ -23,9 +22,6 @@ export async function register(name, email, password) {
     console.error("Error:", error);
   }
 }
-
-// Retreiving form data
-
 document
   .getElementById("registerForm")
   .addEventListener("submit", async (event) => {
@@ -34,7 +30,6 @@ document
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    // const confirmPassword = document.getElementById("confirmPassword").value;
 
     if (password.length < 8) {
       displayMessage("error", "Password must be at least 8 characters long!");
