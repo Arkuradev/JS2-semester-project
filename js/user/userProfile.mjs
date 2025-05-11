@@ -70,7 +70,7 @@ IMPORTANT FIX!
 
 export async function fetchProfile() {
   const token = localStorage.getItem("token");
-  //const params = new URLSearchParams(window.location.search);
+  // const params = new URLSearchParams(window.location.search);
   // const name = params.get("name");
   const username = localStorage.getItem("name");
 
@@ -78,7 +78,7 @@ export async function fetchProfile() {
     console.error(
       "Missing token or username in localStorage. Please log in first."
     );
-    return (window.location.href = "/account/login.html");
+    return (window.location.href = "/auth/login.html");
   }
 
   const container = document.querySelector("#profileContainer");
