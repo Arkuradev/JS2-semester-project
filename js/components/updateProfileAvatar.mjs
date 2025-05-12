@@ -10,7 +10,7 @@ export function updateProfileAvatar(user) {
     avatarImg.alt = `${user.name}'s avatar`;
   } else {
     // fallback if no avatar is set
-    avatarImg.src = "/assets/img/default-avatar.png";
+    avatarImg.src = "/images/placeholder.jpg";
     avatarImg.alt = "Default avatar";
   }
 }

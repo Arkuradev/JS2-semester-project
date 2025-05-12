@@ -45,13 +45,12 @@ export async function renderListingDetails() {
   image.alt = listing.media?.[0]?.url;
   image.className = "w-full h-80 object-cover";
 
-  // Come back to fix this to make it look gooood! Because profile information is next on the block!
-
   const sellerInfo = document.createElement("a");
-  sellerInfo.className =
-    "text-text hover:underline hover:text-hover hover:scale-105 text-sm mb-4 font-medium";
-  sellerInfo.textContent = `${listing.seller.name}`;
-  sellerInfo.href = `/profile/user.html?user=${listing.seller.name}`;
+  sellerInfo.className = "text-text text-sm mb-4 font-medium";
+  sellerInfo.innerHTML = `<p class="text-text text-sm">Listed by: 
+  <a href="/profile/user.html?name=${listing.seller.name}" class="text-text hover:text-hover hover:underline font-semibold">
+    ${listing.seller.name}
+  </a></p>`;
 
   const content = document.createElement("div");
   content.className = "text-text p-6 space-y-4";

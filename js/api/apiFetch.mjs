@@ -35,6 +35,7 @@ export async function apiFetch(
     let data = null;
 
     if (response.status !== 204) {
+      await new Promise((r) => setTimeout(r, 800)); // 800ms delay
       data = await response.json();
     }
     if (!response.ok) {

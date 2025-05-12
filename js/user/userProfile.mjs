@@ -1,9 +1,9 @@
 import { apiFetch } from "../api/apiFetch.mjs";
 
-function renderUserProfile(data) {
+export function renderUserProfile(data) {
   const profileContainer = document.getElementById("profileContainer");
   profileContainer.className =
-    "w-full max-w-2xl mx-auto border-border border rounded-lg p-6 shadow-md relative";
+    "w-full max-w-2xl mx-auto border-hover border rounded-lg p-6 shadow-md relative";
 
   profileContainer.innerHTML = "";
 
@@ -50,41 +50,64 @@ function renderUserProfile(data) {
   bannerWrapper.className = "relative";
 
   bannerWrapper.append(profileBanner, profileAvatar);
-
   profileContainer.append(bannerWrapper, detailsContainer);
+
+  // Listing section:
+
+  const listingsSection = document.createElement("div");
+  listingsSection.className = "mt-10 space-y-4";
+
+  const listingsTitle = document.createElement("h3");
+  listingsTitle.className = "text-xl font-bold text-text";
+  listingsTitle.textContent = "Current Listings";
+
+  const listingsGrid = document.createElement("div");
+  listingsGrid.className = "grid gap-4 sm:grid-cols-2";
+
+  if (data.listings?.length > 0) {
+    data.listings.forEach((listing) => {
+      const card = document.createElement("div");
+      card.className = "border border-hover rounded p-4 shadow-lg";
+
+      const titleLink = document.createElement("a");
+      titleLink.href = `/listing.html?id=${listing.id}`;
+      titleLink.className =
+        "text-lg font-semibold text-text hover:text-hover hover:scale-105";
+      titleLink.textContent = listing.title;
+
+      const endsAt = document.createElement("p");
+      endsAt.className = "text-sm text-text";
+      endsAt.textContent = `Ends at: ${new Date(
+        listing.endsAt
+      ).toLocaleString()}`;
+
+      card.append(titleLink, endsAt);
+      listingsGrid.appendChild(card);
+    });
+  } else {
+    const noListings = document.createElement("p");
+    noListings.className = "text-text";
+    noListings.textContent = "No listings found.";
+    listingsGrid.appendChild(noListings);
+  }
+
+  listingsSection.append(listingsTitle, listingsGrid);
+  profileContainer.appendChild(listingsSection);
 }
-
-/*
-Some notes:
-
-Right now we finally fixed the issue with page not rendering properly. 
-I also modified the fetchProfile function by removing the edit section that is in manage.html
-Next up now is to modify the fetchProfile function to render the user profile of the user that is clicked on 
-to display the users profile. 
-
-
-IMPORTANT FIX!
-
-
-*/
-
 export async function fetchProfile() {
   const token = localStorage.getItem("token");
-  // const params = new URLSearchParams(window.location.search);
-  // const name = params.get("name");
-  const username = localStorage.getItem("name");
+  const params = new URLSearchParams(window.location.search);
+  const username = params.get("name");
 
-  if (!token) {
-    console.error(
-      "Missing token or username in localStorage. Please log in first."
-    );
-    return (window.location.href = "/auth/login.html");
+  if (!token || !username) {
+    console.error("Missing token or username. Please log in first.");
+    // return (window.location.href = "/auth/login.html");
   }
 
   const container = document.querySelector("#profileContainer");
   // Fetch data and show skeleton loader in the meantime
   const { data } = await apiFetch(
-    `/auction/profiles/${username}`,
+    `/auction/profiles/${username}?_listings=true`,
     "GET",
     null,
     true,
