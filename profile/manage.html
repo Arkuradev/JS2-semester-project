@@ -32,7 +32,7 @@
     <main>
       <template id="skeleton-loader">
         <div
-          class="mx-auto w-full max-w-3xl h-64 rounded border border-blue-300 p-6 animate-pulse"
+          class="mx-auto w-full max-w-3xl h-64 rounded border border-hover p-6 animate-pulse"
         >
           <div class="flex space-x-6 h-full">
             <div class="w-40 h-40 rounded-full bg-gray-200"></div>
@@ -58,9 +58,9 @@
         id="ToggleTheme"
         class="border border-hover rounded flex flex-col max-w-2xl mx-auto mt-8 py-12 px-4"
       >
-        <h1 class="text-3xl text-center text-text font-bold mb-4">
+        <h2 class="text-xl text-center text-text font-bold mb-4">
           Your Profile Settings
-        </h1>
+        </h2>
         <p class="text-lg text-text mb-4">Theme:</p>
 
         <input
@@ -78,8 +78,6 @@
           id="profileContainer"
           class="flex flex-col justify-center p-2"
         ></div>
-
-        <!-- Hidden edit form -->
 
         <form
           id="editProfileForm"

@@ -41,7 +41,6 @@ export function renderCreateListingModal() {
   const form = document.getElementById("createListingForm");
   const message = document.getElementById("createListingMessage");
 
-  // Open modal
   document.addEventListener("click", (e) => {
     if (e.target.id === "openCreateListingBtn") {
       modal.classList.remove("hidden");
@@ -54,13 +53,11 @@ export function renderCreateListingModal() {
     }
   });
 
-  // Close modal
   closeBtn.addEventListener("click", () => modal.classList.add("hidden"));
   modal.addEventListener("click", (e) => {
     if (e.target === modal) modal.classList.add("hidden");
   });
 
-  // Submit form
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 

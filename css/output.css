@@ -1533,7 +1533,7 @@ video {
   --border: 93 95 94;
   --primary: 196 217 255;
   --secondary: 196 217 255;
-  --text-secondary: 236 253 245;
+  --text-input: 58 58 63;
   --hover: 166 77 121;
   --btn-primary: 143 135 241;
   --btn-secondary: 255 138 138;
@@ -1546,6 +1546,7 @@ video {
   --main: 187 225 250;
   --hover: 143 135 241;
   --text: 255 255 255;
+  --text-input: 58 58 63;
   --primary: 15 76 117;
   --secondary: 49 54 63;
   --tertiary: 146 144 195;
@@ -1730,6 +1731,10 @@ video {
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.focus\:outline-hover:focus {
+  outline-color: rgb(var(--hover) / 1);
 }
 
 .focus\:ring-2:focus {

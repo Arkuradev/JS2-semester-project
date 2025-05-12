@@ -7,6 +7,8 @@ export function renderUserProfile(data) {
 
   profileContainer.innerHTML = "";
 
+  document.title = `${data?.name}'s profile`;
+
   const profileBanner = document.createElement("img");
   profileBanner.id = "profileBanner";
   profileBanner.className =
@@ -69,8 +71,13 @@ export function renderUserProfile(data) {
       const card = document.createElement("div");
       card.className = "border border-hover rounded p-4 shadow-lg";
 
+      const image = document.createElement("img");
+      image.src = listing.media?.[0]?.url || "/images/placeholder.jpg";
+      image.alt = listing.media?.[0]?.alt || "Placeholder image";
+      image.className = "w-full h-48 object-cover  ";
+
       const titleLink = document.createElement("a");
-      titleLink.href = `/listing.html?id=${listing.id}`;
+      titleLink.href = `/listing/viewlisting.html?id=${listing.id}`;
       titleLink.className =
         "text-lg font-semibold text-text hover:text-hover hover:scale-105";
       titleLink.textContent = listing.title;
@@ -81,7 +88,7 @@ export function renderUserProfile(data) {
         listing.endsAt
       ).toLocaleString()}`;
 
-      card.append(titleLink, endsAt);
+      card.append(image, titleLink, endsAt);
       listingsGrid.appendChild(card);
     });
   } else {
@@ -111,7 +118,8 @@ export async function fetchProfile() {
     "GET",
     null,
     true,
-    container
+    container,
+    1
   );
   // Now render the profile once data is loaded
   renderUserProfile(data);

@@ -5,7 +5,7 @@ import { updateProfileAvatar } from "../components/updateProfileAvatar.mjs";
 function renderProfile(data) {
   const profileContainer = document.getElementById("profileContainer");
   profileContainer.className =
-    "w-full max-w-2xl mx-auto border-border border rounded-lg p-6 shadow-md relative";
+    "w-full max-w-2xl mx-auto border-hover border rounded-lg p-6 shadow-md relative";
 
   profileContainer.innerHTML = "";
 

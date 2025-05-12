@@ -1,5 +1,11 @@
 {
-  "cSpell.words": ["labelledby", "Noroff", "viewlisting"],
+  "cSpell.words": [
+    "alllistings",
+    "labelledby",
+    "nobids",
+    "Noroff",
+    "viewlisting"
+  ],
   "files.associations": {
     "*.css": "tailwindcss"
   }

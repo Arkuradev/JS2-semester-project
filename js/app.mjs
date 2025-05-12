@@ -6,7 +6,6 @@ import { getFullUserProfile } from "./api/getFullUserProfile.mjs";
 import { updateProfileAvatar } from "./components/updateProfileAvatar.mjs";
 import { displayMessage } from "./utils/displayMessage.mjs";
 import { initUI } from "./utils/initUI.mjs";
-// import { fetchUserProfile } from "./user/userProfile.mjs";
 
 loadNav().then(async () => {
   setupNavbar();
@@ -58,8 +57,7 @@ function route() {
       break;
 
     case path.endsWith("/user.html"):
-      // fetchUserProfile();
-      import("./user/userProfile.mjs").then((mod) => mod.renderUserProfile());
+      import("./user/userProfile.mjs").then((mod) => mod.fetchProfile());
       break;
 
     case path.includes("new"):

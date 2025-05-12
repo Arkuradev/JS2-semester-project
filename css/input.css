@@ -9,7 +9,7 @@
   --border: 93 95 94;
   --primary: 196 217 255;
   --secondary: 196 217 255;
-  --text-secondary: 236 253 245;
+  --text-input: 58 58 63;
   --hover: 166 77 121;
   --btn-primary: 143 135 241;
   --btn-secondary: 255 138 138;
@@ -22,6 +22,7 @@
   --main: 187 225 250;
   --hover: 143 135 241;
   --text: 255 255 255;
+  --text-input: 58 58 63;
   --primary: 15 76 117;
   --secondary: 49 54 63;
   --tertiary: 146 144 195;

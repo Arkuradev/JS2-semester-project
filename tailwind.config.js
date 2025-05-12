@@ -16,7 +16,7 @@ export default {
         "btn-secondary": "rgb(var(--btn-secondary) / <alpha-value>)",
         border: "rgb(var(--border) / <alpha-value>)",
         text: "rgb(var(--text) / <alpha-value>)",
-        "text-secondary": "rgb(var(--text-secondary) / <alpha-value>)",
+        "text-input": "rgb(var(--text-input) / <alpha-value>)",
         "text-muted": "rgb(var(--text-muted) / <alpha-value>)",
         funds: "rgb(var(--funds) / <alpha-value>)",
       },
