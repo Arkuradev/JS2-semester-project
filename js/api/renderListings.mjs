@@ -48,6 +48,17 @@ export async function renderListings() {
     image.alt = listing.media?.[0]?.alt || "Placeholder image";
     image.className = "w-full h-48 object-cover  ";
 
+    image.onerror = () => {
+      if (!image.dataset.fallback) {
+        image.dataset.fallback = "true";
+        image.src = "/images/placeholder.jpg";
+        console.warn(
+          "Image failed to load:",
+          listing.media?.[0]?.url + ". Using fallback."
+        );
+      }
+    };
+
     const content = document.createElement("div");
     content.className =
       "font-sm p-4 bg-nav text-text flex flex-col justify-between flex-grow";
