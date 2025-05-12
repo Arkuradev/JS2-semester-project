@@ -46,7 +46,7 @@ export function setupAllListingsTabs() {
         limit = 25;
         break;
       case "ending":
-        url = `/auction/listings?sort=endsAt&order=asc`;
+        url = `/auction/listings?sort=endsAt&_order=asc`;
         limit = 20;
         break;
       case "week":
@@ -83,13 +83,19 @@ export function setupAllListingsTabs() {
           const endsAt = new Date(l.endsAt);
           return endsAt >= now && endsAt <= twoDaysFromNow;
         });
+        if (listings.length === 0) {
+          container.innerHTML = `<p class="col-span-full text-center text-text">No listings ending soon. (next 2 days).</p>`;
+          return;
+        }
+      } else {
+        const now = new Date();
+        listings = listings.filter((l) => new Date(l.endsAt) > now);
+        allFetchedListings = listings; // Store for searching
+        renderListings(listings);
       }
 
-      const now = new Date();
-      listings = listings.filter((l) => new Date(l.endsAt) > now);
-
-      allFetchedListings = listings; // Store for searching
-      renderListings(listings);
+      //const now = new Date();
+      //listings = listings.filter((l) => new Date(l.endsAt) > now);
     } catch (error) {
       container.innerHTML = `<p class="col-span-full text-red-500 text-center">Error loading listings.</p>`;
       console.error(error);

@@ -1,6 +1,6 @@
 import { apiFetch } from "./apiFetch.mjs";
 import { createListingHeader } from "../components/listingHeader.mjs";
-import { createBidForm } from "../components/bidForm.mjs";
+import { createBidForm } from "../components/BidForm.mjs";
 import { createBidHistory } from "../components/bidHistory.mjs";
 
 const container = document.querySelector("#listingContainer");
