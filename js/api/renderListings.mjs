@@ -9,7 +9,7 @@ export async function renderListings() {
   container.innerHTML = `<p class="text-center text-text">Loading listings...</p>`;
 
   const response = await apiFetch(
-    "/auction/listings?limit=15&sort=created&sortOrder=desc",
+    "/auction/listings?limit=15&sort=created&sortOrder=desc&_seller=true",
     "GET",
     null,
     false,
@@ -63,6 +63,10 @@ export async function renderListings() {
     content.className =
       "font-sm p-4 bg-nav text-text flex flex-col justify-between flex-grow";
 
+    const createdBy = document.createElement("p");
+    createdBy.className = "text-sm text-text mt-2 flex items-center gap-2 mb-2";
+    createdBy.innerHTML = `Listed by: <a class="text-text hover:text-hover font-semibold" href="/profile/user.html?name=${listing.seller.name}">${listing.seller.name}</a>`;
+
     const title = document.createElement("h3");
     title.className = "text-lg font-semibold text-text";
     title.textContent = listing.title;
@@ -83,6 +87,7 @@ export async function renderListings() {
     content.appendChild(title);
     content.appendChild(descriptionEl);
     content.appendChild(endsAt);
+    content.appendChild(createdBy);
 
     if (Array.isArray(listing.tags) && listing.tags.length > 0) {
       const tagsContainer = document.createElement("div");

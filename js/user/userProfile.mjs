@@ -106,13 +106,12 @@ export async function fetchProfile() {
   const params = new URLSearchParams(window.location.search);
   const username = params.get("name");
 
-  if (!token || !username) {
+  if (!token) {
     console.error("Missing token or username. Please log in first.");
-    // return (window.location.href = "/auth/login.html");
+    return (window.location.href = "/auth/login.html");
   }
 
   const container = document.querySelector("#profileContainer");
-  // Fetch data and show skeleton loader in the meantime
   const { data } = await apiFetch(
     `/auction/profiles/${username}?_listings=true`,
     "GET",
@@ -121,12 +120,10 @@ export async function fetchProfile() {
     container,
     1
   );
-  // Now render the profile once data is loaded
   renderUserProfile(data);
 }
 
 function main() {
   fetchProfile();
 }
-
 main();

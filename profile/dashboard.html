@@ -60,8 +60,15 @@
         ></div>
       </section>
 
-      <div id="profileContainer" class="flex flex-col justify-center p-2"></div>
+      <section class="flex flex-col max-w-3xl mx-auto py-12 px-4">
+        <h2 class="text-3xl text-text text-center font-bold mb-4">Your Bids</h2>
+        <div
+          id="dashboardBids"
+          class="mx-auto bg-background grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        ></div>
+      </section>
 
+      <div id="profileContainer" class="flex flex-col justify-center p-2"></div>
       <div
         id="editListingModal"
         class="fixed inset-0 bg-nav bg-opacity-50 backdrop-blur-sm flex justify-center items-center z-50 hidden"

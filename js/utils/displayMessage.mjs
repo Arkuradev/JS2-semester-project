@@ -1,9 +1,7 @@
 export function displayMessage(type = "info", message = "Something happened.") {
-  // Remove any existing messages
   const oldMessage = document.querySelector("#global-message");
   if (oldMessage) oldMessage.remove();
 
-  // Create the wrapper
   const wrapper = document.createElement("div");
   wrapper.id = "global-message";
   wrapper.className = `
@@ -19,7 +17,6 @@ export function displayMessage(type = "info", message = "Something happened.") {
   }
 `;
 
-  // Add icon and text
   const icon = document.createElement("span");
   icon.innerHTML = type === "success" ? "✅" : type === "error" ? "❌" : "ℹ️";
 
@@ -27,21 +24,17 @@ export function displayMessage(type = "info", message = "Something happened.") {
   text.textContent = message;
   text.className = "flex-1";
 
-  // Dismiss button
   const dismissBtn = document.createElement("button");
   dismissBtn.innerHTML = "&times;";
   dismissBtn.className = "ml-2 text-lg font-bold leading-none hover:opacity-75";
   dismissBtn.onclick = () => wrapper.remove();
 
-  // Append children
   wrapper.appendChild(icon);
   wrapper.appendChild(text);
   wrapper.appendChild(dismissBtn);
 
-  // Add to body
   document.body.appendChild(wrapper);
 
-  // Auto-dismiss after 5 seconds
   setTimeout(() => {
     wrapper.remove();
   }, 2000);
