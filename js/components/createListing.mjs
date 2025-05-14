@@ -17,15 +17,26 @@ export function renderCreateListingModal() {
         <h2 class="text-xl text-text font-semibold mb-4">Create Listing</h2>
         <div id="createListingMessage" class="mb-2 text-center text-sm"></div>
         <form id="createListingForm" class="space-y-4">
-          <input type="text" name="title" placeholder="Title" class="w-full border p-2 rounded" required />
-          <input type="url" name="media" placeholder="Image URL" class="w-full border p-2 rounded" />
-          <input type="text" name="mediaAlt" placeholder="Image Alt Text" class="w-full border p-2 rounded" />
-          <input type="text" name="tags" placeholder="Tags (comma separated)" class="w-full border p-2 rounded" />
-          <textarea name="description" placeholder="Description" class="w-full border p-2 rounded"></textarea>
-          <input type="datetime-local" name="endsAt" required class="w-full border p-2 rounded" />
+        <label for="title" class="sr-only">Title</label>
+<input type="text" name="title" id="title" placeholder="Title" class="w-full border p-2 rounded" required />
+
+<label for="media" class="sr-only">Image URL</label>
+<input type="url" name="media" id="media" placeholder="Image URL" class="w-full border p-2 rounded" />
+
+<label for="mediaAlt" class="sr-only">Image Alt Text</label>
+<input type="text" name="mediaAlt" id="mediaAlt" placeholder="Image Alt Text" class="w-full border p-2 rounded" />
+
+<label for="tags" class="sr-only">Tags</label>
+<input type="text" name="tags" id="tags" placeholder="Tags (comma separated)" class="w-full border p-2 rounded" />
+
+<label for="description" class="sr-only">Description</label>
+<textarea name="description" id="description" placeholder="Description" class="w-full border p-2 rounded"></textarea>
+
+<label for="endsAt" class="sr-only">Ends At</label>
+<input type="datetime-local" name="endsAt" id="endsAt" required class="w-full border p-2 rounded" />
           <button
             type="submit"
-            class="w-full bg-btn-primary text-text py-2 px-4 rounded hover:bg-hover"
+            class="w-full bg-btn-primary text-text font-semibold py-2 px-4 rounded hover:bg-hover"
           >
             Create
           </button>

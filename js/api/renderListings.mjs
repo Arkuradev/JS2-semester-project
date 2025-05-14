@@ -73,7 +73,7 @@ export async function renderListings() {
     title.textContent = listing.title;
 
     const endsAtText = document.createElement("p");
-    endsAtText.className = "text-text text-xs mt-2";
+    endsAtText.className = "text-text text-sm mt-2";
     card.appendChild(endsAtText);
 
     function updateCountdown() {
@@ -109,7 +109,8 @@ export async function renderListings() {
 
       listing.tags.forEach((tag) => {
         const tagEl = document.createElement("span");
-        tagEl.className = "bg-hover text-text text-xs px-2 py-0.5 rounded-full";
+        tagEl.className =
+          "bg-btn-primary text-text text-xs px-2 py-0.5 rounded-full";
         tagEl.textContent = `${tag}`;
 
         tagsContainer.appendChild(tagEl);

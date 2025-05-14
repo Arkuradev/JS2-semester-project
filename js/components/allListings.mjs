@@ -140,7 +140,7 @@ export function setupAllListingsTabs() {
           listing.tags.forEach((tag) => {
             const tagBadge = document.createElement("span");
             tagBadge.className =
-              "bg-hover text-xs text-text px-2 py-0.5 rounded-full";
+              "bg-btn-primary text-xs text-text px-2 py-0.5 rounded-full";
             tagBadge.textContent = `${tag}`;
             tagsContainer.appendChild(tagBadge);
           });
