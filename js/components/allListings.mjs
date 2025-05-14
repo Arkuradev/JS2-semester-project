@@ -31,7 +31,7 @@ export function setupAllListingsTabs() {
   });
 
   async function fetchAndRenderListings(filter) {
-    container.innerHTML = `<div class="col-span-full text-center text-text animate-pulse">Loading...</div>`;
+    container.innerHTML = `<div class="col-span-full text-center text-text">Loading...</div>`;
 
     let url = `/auction/listings?sort=created&_order=desc`;
     let limit = 25;

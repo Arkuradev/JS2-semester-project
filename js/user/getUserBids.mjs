@@ -1,5 +1,4 @@
 import { apiFetch } from "../api/apiFetch.mjs";
-// import { getUserFromStorage } from "./getUser.mjs";
 
 export async function loadUserBids() {
   const username = localStorage.getItem("name");
@@ -8,72 +7,71 @@ export async function loadUserBids() {
   if (!username || !container) return;
 
   try {
-    const response = await apiFetch("/auction/listings?_bids=true");
-    const allListings = response?.data || [];
+    // Step 1: Get only your own bids
+    const bidResponse = await apiFetch(
+      `/auction/profiles/${username}/bids?_listings=true`
+    );
+    const userBids = bidResponse?.data || [];
 
-    console.log("All listings:", allListings);
-    console.log("Username:", username);
-
-    // Filter listings where current user has any bids
-
-    const listingsWithUserBids = allListings.filter((listing) => {
-      if (!Array.isArray(listing.bids)) return false;
-
-      const matched = listing.bids.some((bid) => {
-        console.log("🔍 Bidder name:", bid.bidder?.name);
-        return (
-          bid.bidder?.name?.toLowerCase().trim() ===
-          username.toLowerCase().trim()
-        );
-      });
-
-      if (matched) {
-        console.log("✅ Matched listing:", listing.title);
-      }
-
-      return matched;
-    });
-
-    console.log("Found listings user has bid on:", listingsWithUserBids);
-
-    if (listingsWithUserBids.length === 0) {
-      container.innerHTML = `<p class="text-center text-text">No bids found.</p>`;
+    if (userBids.length === 0) {
+      container.innerHTML = `<p class="text-center text-text">You haven't placed any bids yet.</p>`;
       return;
     }
 
-    listingsWithUserBids.forEach((listing) => {
-      console.log("Listing title:", listing.title);
-      listing.bids.forEach((bid) => {
-        console.log("✅ User's bid:", bid.amount, "on listing:", listing.title);
-      });
-      const card = document.createElement("a");
-      card.href = `/listing/viewlisting.html?id=${listing.id}`;
-      card.className =
-        "flex flex-col mx-auto bg-nav border shadow p-2 max-w-[180px] transition-all duration-300 transform hover:shadow-xl hover:border-hover hover:scale-105";
+    const now = new Date();
 
-      const imageUrl = listing.media?.[0]?.url || "../images/placeholder.jpg";
-      const image = document.createElement("img");
-      image.src = imageUrl;
-      image.alt = listing.media?.[0]?.alt || "Listing image";
-      image.className = "w-full h-24 object-cover mb-2";
+    for (const bid of userBids) {
+      const listingId = bid?.listing?.id;
 
-      const title = document.createElement("h2");
-      title.textContent = listing.title;
-      title.className = "text-text text-sm font-semibold mb-1";
+      if (!listingId) {
+        console.warn("⚠️ Missing listing ID in bid:", bid);
+        continue;
+      }
 
-      const endsAt = document.createElement("p");
-      endsAt.textContent = `Ends at: ${new Date(
-        listing.endsAt
-      ).toLocaleString()}`;
-      endsAt.className = "text-text text-xs";
+      try {
+        const listingResponse = await apiFetch(
+          `/auction/listings/${listingId}`
+        );
+        const listing = listingResponse?.data;
 
-      card.appendChild(image);
-      card.appendChild(title);
-      card.appendChild(endsAt);
-      container.appendChild(card);
-    });
+        const endsAt = new Date(listing.endsAt);
+        if (endsAt <= now) continue; // Skip expired listings
+
+        // Render card
+        const card = document.createElement("a");
+        card.href = `/listing/viewlisting.html?id=${listing.id}`;
+        card.className =
+          "flex flex-col mx-auto bg-nav border shadow p-2 max-w-[180px] transition-all duration-300 transform hover:shadow-xl hover:border-hover hover:scale-105";
+
+        const imageUrl = listing.media?.[0]?.url || "../images/placeholder.jpg";
+        const image = document.createElement("img");
+        image.src = imageUrl;
+        image.alt = listing.media?.[0]?.alt || "Listing image";
+        image.className = "w-full h-24 object-cover mb-2";
+
+        const title = document.createElement("h2");
+        title.textContent = listing.title;
+        title.className = "text-text text-sm font-semibold mb-1";
+
+        const amount = document.createElement("p");
+        amount.textContent = `Your bid: ${bid.amount} credits`;
+        amount.className = "text-text text-xs";
+
+        const ends = document.createElement("p");
+        ends.textContent = `Ends at: ${endsAt.toLocaleString()}`;
+        ends.className = "text-text text-xs";
+
+        card.appendChild(image);
+        card.appendChild(title);
+        card.appendChild(amount);
+        card.appendChild(ends);
+        container.appendChild(card);
+      } catch (listingError) {
+        console.warn("❌ Failed to fetch listing for bid:", bid, listingError);
+      }
+    }
   } catch (error) {
-    console.error("Error loading user bids:", error);
+    console.error("❌ Error loading your bids:", error);
     container.innerHTML = `<p class="text-center text-text">Error loading bids.</p>`;
   }
 }
