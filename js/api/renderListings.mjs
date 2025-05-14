@@ -1,4 +1,5 @@
 import { apiFetch } from "./apiFetch.mjs";
+import { getCountDownText } from "../components/bidCountdown.mjs";
 
 export async function renderListings() {
   const container = document.querySelector("#listingContainer");
@@ -71,9 +72,22 @@ export async function renderListings() {
     title.className = "text-lg font-semibold text-text";
     title.textContent = listing.title;
 
-    const endsAt = document.createElement("p");
-    endsAt.className = "text-sm text-text mt-2 flex items-center gap-2";
-    endsAt.textContent = `Ends: ${new Date(listing.endsAt).toLocaleString()}`;
+    const endsAtText = document.createElement("p");
+    endsAtText.className = "text-text text-xs mt-2";
+    card.appendChild(endsAtText);
+
+    function updateCountdown() {
+      endsAtText.textContent = getCountDownText(listing.endsAt);
+    }
+
+    updateCountdown();
+    const countdownInterval = setInterval(() => {
+      updateCountdown();
+
+      if (new Date(listing.endsAt) <= new Date()) {
+        clearInterval(countdownInterval);
+      }
+    }, 1000);
 
     let description = listing.description?.trim() || "No description provided.";
     if (description.length > 50) {
@@ -86,7 +100,7 @@ export async function renderListings() {
 
     content.appendChild(title);
     content.appendChild(descriptionEl);
-    content.appendChild(endsAt);
+    content.appendChild(endsAtText);
     content.appendChild(createdBy);
 
     if (Array.isArray(listing.tags) && listing.tags.length > 0) {
