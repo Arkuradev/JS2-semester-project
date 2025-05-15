@@ -6,9 +6,11 @@ import { getFullUserProfile } from "./api/getFullUserProfile.mjs";
 import { updateProfileAvatar } from "./components/updateProfileAvatar.mjs";
 import { displayMessage } from "./utils/displayMessage.mjs";
 import { initUI } from "./utils/initUI.mjs";
+import { loadFooter } from "./components/loadFooter.mjs";
 
 loadNav().then(async () => {
   setupNavbar();
+  loadFooter();
 
   const user = await getFullUserProfile();
 

@@ -2,6 +2,26 @@ import { apiFetch } from "./apiFetch.mjs";
 import { getCountDownText } from "../components/bidCountdown.mjs";
 
 export async function renderListings() {
+  function createStatsStrip() {
+    const stats = document.createElement("div");
+    stats.className = `
+    col-span-full w-full py-20 px-4 mt-14 mb-10
+    bg-secondary text-main
+    flex flex-col items-center justify-center text-center
+  `;
+    stats.innerHTML = `
+    <p class="text-xl sm:text-2xl font-bold mb-6">
+      Join the auction. Win the moment.
+    </p>
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-8 text-xl sm:text-2xl font-semibold">
+      <span class="mt-15">📦 1200+ Items</span>
+      <span class="mt-15">🧑‍💻 500+ Users</span>
+      <span class="mt-15">🏆 97% Win Rate</span>
+    </div>
+  `;
+    return stats;
+  }
+
   const container = document.querySelector("#listingContainer");
   if (!container)
     return console.warn(
@@ -10,7 +30,7 @@ export async function renderListings() {
   container.innerHTML = "";
 
   const response = await apiFetch(
-    "/auction/listings?limit=15&sort=created&sortOrder=desc&_seller=true",
+    "/auction/listings?limit=100&sort=created&sortOrder=desc&_seller=true",
     "GET",
     null,
     false,
@@ -38,10 +58,10 @@ export async function renderListings() {
 
   container.textContent = "";
 
-  activeListings.forEach((listing) => {
+  activeListings.forEach((listing, index) => {
     const card = document.createElement("a");
     card.className =
-      "bg-background border border-hover shadow-xl overflow-hidden transition-all duration-300 transform hover:shadow-xl w-full hover:border-hover hover:-translate-y-1 flex flex-col h-full";
+      "bg-background font-sans border border-hover shadow-xl overflow-hidden transition-all duration-300 transform hover:shadow-xl w-full hover:border-hover hover:-translate-y-1 flex flex-col h-full";
     card.href = `listing/viewlisting.html?id=${listing.id}`;
     const image = document.createElement("img");
     image.src = listing.media?.[0]?.url || "/images/placeholder.jpg";
@@ -128,5 +148,9 @@ export async function renderListings() {
     card.appendChild(image);
     card.appendChild(content);
     container.appendChild(card);
+    if (index === 19) {
+      console.log("✅ Injecting stats strip after 20th listing");
+      container.appendChild(createStatsStrip());
+    }
   });
 }

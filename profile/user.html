@@ -26,9 +26,9 @@
 
     <title>Loading...</title>
   </head>
-  <body class="bg-background">
+  <body class="bg-background min-h-screen flex flex-col">
     <div id="navContainer"></div>
-    <main class="pt-16">
+    <main class="pt-16 flex-grow">
       <template id="skeleton-loader">
         <div
           class="mx-auto w-full max-w-sm rounded bg-background border border-border p-4 animate-pulse"
@@ -52,15 +52,12 @@
         id="userProfile"
         class="bg-background p-4 shadow flex flex-col gap-4 w-full max-w-7xl mx-auto"
       >
+        <h2 class="sr-only">User Profile</h2>
         <div
           id="profileContainer"
           class="flex flex-col justify-center p-2"
         ></div>
       </section>
     </main>
-
-    <footer class="text-center text-text text-sm py-6 border-t">
-      &copy; 2025 AuctionSite. All rights reserved.
-    </footer>
   </body>
 </html>

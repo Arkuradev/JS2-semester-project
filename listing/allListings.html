@@ -25,7 +25,7 @@
     <link rel="manifest" href="/images/site.webmanifest" />
     <title>All Listings</title>
   </head>
-  <body class="bg-background">
+  <body class="bg-background min-h-screen flex flex-col">
     <header>
       <div id="navContainer"></div>
     </header>
@@ -50,34 +50,36 @@
         </div>
       </div>
     </template>
+    <main class="flex-grow">
+      <h1 class="text-text text-center text-3xl font-bold mb-10 mt-10">
+        All Listings
+      </h1>
 
-    <h1 class="text-text text-center text-3xl font-bold mb-10 mt-10">
-      All Listings
-    </h1>
+      <section id="allListings" class="mx-auto max-w-2xl">
+        <div class="search-wrapper mb-4 text-center">
+          <h2 class="sr-only">Search Listings</h2>
+          <label for="listingSearch" class="sr-only">Search</label>
+          <input
+            type="text"
+            id="listingSearch"
+            placeholder="Search listings..."
+            class="px-4 py-2 w-full border border-hover rounded text-input focus:outline-hover"
+          />
+        </div>
+        <div id="listingTabs" class="justify-center flex flex-wrap gap-2 mb-4">
+          <button class="tab-btn active" data-filter="all">All Listings</button>
+          <button class="tab-btn" data-filter="popular">Popular</button>
+          <button class="tab-btn" data-filter="new">New</button>
+          <button class="tab-btn" data-filter="ending">Ending Soon</button>
+          <button class="tab-btn" data-filter="week">This Week</button>
+          <button class="tab-btn" data-filter="nobids">No Bids</button>
+        </div>
 
-    <section id="allListings" class="mx-auto max-w-2xl">
-      <div class="search-wrapper mb-4 text-center">
-        <label for="listingSearch" class="sr-only">Search</label>
-        <input
-          type="text"
-          id="listingSearch"
-          placeholder="Search listings..."
-          class="px-4 py-2 w-full border border-hover rounded text-input focus:outline-hover"
-        />
-      </div>
-      <div id="listingTabs" class="justify-center flex flex-wrap gap-2 mb-4">
-        <button class="tab-btn active" data-filter="all">All Listings</button>
-        <button class="tab-btn" data-filter="popular">Popular</button>
-        <button class="tab-btn" data-filter="new">New</button>
-        <button class="tab-btn" data-filter="ending">Ending Soon</button>
-        <button class="tab-btn" data-filter="week">This Week</button>
-        <button class="tab-btn" data-filter="nobids">No Bids</button>
-      </div>
-
-      <div
-        id="allListingsContainer"
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-      ></div>
-    </section>
+        <div
+          id="allListingsContainer"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+        ></div>
+      </section>
+    </main>
   </body>
 </html>

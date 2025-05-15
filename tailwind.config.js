@@ -4,6 +4,9 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+      },
       colors: {
         nav: "rgb(var(--nav) / <alpha-value>)",
         background: "rgb(var(--background) / <alpha-value>)",

@@ -26,7 +26,7 @@
     />
     <link rel="manifest" href="/images/site.webmanifest" />
   </head>
-  <body class="bg-background">
+  <body class="bg-background min-h-screen flex flex-col">
     <header>
       <div id="navContainer"></div>
     </header>
@@ -51,8 +51,6 @@
         </div>
       </div>
     </template>
-    <main class="max-w-4xl mx-auto p-6" id="listingContainer">
-      <p>Loading listing...</p>
-    </main>
+    <main class="max-w-4xl mx-auto p-6 flex-grow" id="listingContainer"></main>
   </body>
 </html>

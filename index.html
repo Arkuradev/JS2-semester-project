@@ -24,9 +24,9 @@
     />
     <link rel="manifest" href="/images/site.webmanifest" />
 
-    <title>Home | Auction Feed</title>
+    <title>Home | CrestAuction</title>
   </head>
-  <body class="bg-background">
+  <body class="bg-background font-sans">
     <div id="navContainer"></div>
     <main class="pt-16">
       <template id="skeleton-loader">
@@ -49,6 +49,33 @@
         </div>
       </template>
 
+      <section
+        class="bg-secondary text-main py-16 px-6 text-center rounded-lg shadow-md"
+      >
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+          Find It. Bid It. Win It.
+        </h1>
+        <p class="text-lg max-w-xl mx-auto mb-6">
+          Discover unique listings, place competitive bids, and win the auctions
+          that matter to you. Join the marketplace made for true auction lovers.
+        </p>
+        <div class="flex justify-center gap-4 flex-wrap">
+          <a
+            href="/listing/alllistings.html"
+            class="bg-[rgb(var(--btn-primary))] font-semibold text-text px-6 py-2 rounded border border-btn-primary hover:bg-background transition"
+          >
+            Browse Auctions
+          </a>
+          <a
+            id="openCreateListingBtn"
+            href="#"
+            class="border border-btn-primary text-text font-semibold px-6 py-2 rounded hover:bg-btn-primary hover:text-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-btn-primary"
+          >
+            Create a Listing
+          </a>
+        </div>
+      </section>
+
       <section class="max-w-6xl mx-auto py-12 px-4">
         <h2 class="text-text text-3xl font-bold mb-6">Latest Listings</h2>
         <div
@@ -56,22 +83,6 @@
           class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center p-4 auto-rows-fr"
         ></div>
       </section>
-
-      <section class="text-center py-16 px-4 bg-tertiary">
-        <h1 class="text-4xl font-bold mb-4">Buy & Sell in Real Time</h1>
-        <p class="text-lg text-text mb-6">
-          Discover great deals and auction your items to the highest bidder.
-        </p>
-        <a
-          href="#"
-          class="bg-btn-primary text-text font-semibold px-6 py-3 rounded hover:bg-hover"
-          >Get Started</a
-        >
-      </section>
     </main>
-
-    <footer class="text-center text-text text-sm py-6 border-t">
-      &copy; 2025 AuctionSite. All rights reserved.
-    </footer>
   </body>
 </html>

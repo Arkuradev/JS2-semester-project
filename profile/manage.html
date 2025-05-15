@@ -26,10 +26,10 @@
     <title>Dashboard</title>
   </head>
 
-  <body class="bg-background">
+  <body class="bg-background min-h-screen flex flex-col">
     <div id="navContainer"></div>
 
-    <main>
+    <main class="flex-grow">
       <template id="skeleton-loader">
         <div
           class="mx-auto w-full max-w-3xl h-64 rounded border border-hover p-6 animate-pulse"
@@ -59,16 +59,23 @@
         class="border border-hover rounded flex flex-col max-w-2xl mx-auto mt-8 py-12 px-4"
       >
         <h2 class="text-xl text-center text-text font-bold mb-4">
-          Your Profile Settings
+          Choose Theme
         </h2>
-        <p class="text-lg text-text mb-4">Theme:</p>
+        <div class="flex items-center justify-center gap-4">
+          <span class="text-xl" aria-hidden="true">🌞</span>
 
-        <input
-          aria-label="Toggle theme"
-          type="checkbox"
-          id="themeToggle"
-          class="w-10 h-5 rounded-full appearance-none bg-gray-300 checked:bg-hover relative transition-all duration-300 before:content-[''] before:absolute before:top-0.5 before:left-0.5 before:w-4 before:h-4 before:bg-white before:rounded-full before:transition-all before:duration-300 checked:before:translate-x-5"
-        />
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" id="themeToggle" class="sr-only peer" />
+            <div
+              class="w-14 h-8 bg-[rgb(var(--border))] rounded-full peer peer-checked:bg-[rgb(var(--btn-primary))] transition-all"
+            ></div>
+            <div
+              class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow-md transform peer-checked:translate-x-6 transition-transform"
+            ></div>
+          </label>
+
+          <span class="text-xl" aria-hidden="true">🌙</span>
+        </div>
       </section>
       <section
         id="userProfile"
