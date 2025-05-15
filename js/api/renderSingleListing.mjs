@@ -28,21 +28,31 @@ export async function renderListingDetails() {
 
   if (!listing) return showError("Listing not found.");
 
+  const layoutWrapper = document.createElement("div");
+  layoutWrapper.className = "w-full flex justify-center px-4";
+
+  // Create a container inside the wrapper to stack the button and card
+  const innerWrapper = document.createElement("div");
+  innerWrapper.className = "w-full max-w-3xl";
+
+  // Create back button
   const backButton = document.createElement("a");
   backButton.href = "/index.html";
   backButton.className =
-    "inline-block mb-10 text-text hover:underline hover:text-hover hover:scale-105 text-sm mb-4 font-medium";
+    "inline-block mb-6 text-text hover:underline hover:text-hover hover:scale-105 transition-transform text-sm font-medium";
   backButton.textContent = "← Back to Listings";
-  container.appendChild(backButton);
 
   const card = document.createElement("article");
-  card.className = "bg-nav mt-4 shadow-lg overflow-hidden";
+  card.className =
+    "w-full max-w-3xl bg-nav mt-4 shadow-lg overflow-hidden rounded";
 
+  // Main image
   const image = document.createElement("img");
   image.src = listing.media?.[0]?.url || "../images/placeholder.jpg";
-  image.alt = listing.media?.[0]?.url;
+  image.alt = listing.media?.[0]?.alt || "Listing image";
   image.className = "w-full h-80 object-cover";
 
+  // Seller info
   const sellerInfo = document.createElement("a");
   sellerInfo.className = "text-text text-sm mb-4 font-medium";
   sellerInfo.innerHTML = `<p class="text-text text-sm">Listed by: 
@@ -50,6 +60,7 @@ export async function renderListingDetails() {
     ${listing.seller.name}
   </a></p>`;
 
+  // Content section
   const content = document.createElement("div");
   content.className = "text-text p-6 space-y-4";
 
@@ -60,12 +71,15 @@ export async function renderListingDetails() {
 
   content.appendChild(header);
   content.appendChild(bidForm);
-
   if (bidHistorySection) content.appendChild(bidHistorySection);
 
   card.appendChild(image);
   card.appendChild(sellerInfo);
   card.appendChild(content);
 
-  container.appendChild(card);
+  innerWrapper.appendChild(backButton);
+  innerWrapper.appendChild(card);
+
+  layoutWrapper.appendChild(innerWrapper);
+  container.appendChild(layoutWrapper);
 }

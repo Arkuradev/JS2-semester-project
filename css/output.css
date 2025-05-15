@@ -1331,6 +1331,11 @@ video {
   padding-bottom: 1.5rem;
 }
 
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 .pb-3 {
   padding-bottom: 0.75rem;
 }
@@ -1575,7 +1580,6 @@ video {
   --primary: 40 183 215;
   /* #64748B */
   --secondary: 226 248 248;
-  /* Light coral background area */
   --text-input: 45 45 50;
   /* Input text */
   --hover: 30 193 230;
@@ -1672,6 +1676,28 @@ video {
   animation: fade-in 0.3s ease-out forwards;
 }
 
+.section-fade {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-fade::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  /* top half */
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background)) 0%,
+    rgb(var(--secondary)) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
 .hover\:-translate-y-1:hover {
   --tw-translate-y: -0.25rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1718,9 +1744,9 @@ video {
   color: rgb(var(--hover) / var(--tw-text-opacity, 1));
 }
 
-.hover\:text-white:hover {
+.hover\:text-text:hover {
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+  color: rgb(var(--text) / var(--tw-text-opacity, 1));
 }
 
 .hover\:underline:hover {

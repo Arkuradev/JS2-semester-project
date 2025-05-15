@@ -8,7 +8,7 @@
   --main: 24 24 27; /* Near-black text (true readable) */
   --border: 228 228 231; /* Soft gray border */
   --primary: 40 183 215; /* #64748B */
-  --secondary: 226 248 248; /* Light coral background area */
+  --secondary: 226 248 248;
   --text-input: 45 45 50; /* Input text */
   --hover: 30 193 230; /* #475569 */
   --btn-primary: 40 183 215; /* #64748B */
@@ -67,4 +67,24 @@
 
 .animate-fade-in {
   animation: fade-in 0.3s ease-out forwards;
+}
+.section-fade {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-fade::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%; /* top half */
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background)) 0%,
+    rgb(var(--secondary)) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
 }

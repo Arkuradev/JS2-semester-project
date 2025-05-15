@@ -1,6 +1,19 @@
 import { API_LOGIN } from "../utils/constants.mjs";
 import { displayMessage } from "../utils/displayMessage.mjs";
 
+const token = localStorage.getItem("token");
+const username = localStorage.getItem("name");
+
+if (token && username) {
+  displayMessage("error", "You are already logged in.");
+
+  setTimeout(() => {
+    window.location.href = "../index.html";
+  }, 1500);
+
+  throw new Error("User already logged in");
+}
+
 export async function loginUser() {
   const loginForm = document.querySelector("#loginForm");
   const emailInput = document.querySelector("#username");

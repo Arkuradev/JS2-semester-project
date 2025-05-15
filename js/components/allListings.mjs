@@ -138,14 +138,21 @@ export function setupAllListingsTabs() {
         title.className = "text-text text-sm font-semibold mb-1";
         title.textContent = listing.title;
 
-        const endsAt = document.createElement("p");
-        endsAt.className = "text-text text-xs";
+        const endsAtText = document.createElement("p");
+        endsAtText.className = "text-text text-sm mt-2";
+        card.appendChild(endsAtText);
 
         function updateCountdown() {
-          endsAt.textContent = getCountDownText(listing.endsAt);
+          // Clear the previous content
+          endsAtText.textContent = "";
+
+          // Append the updated span
+          const countdownElement = getCountDownText(listing.endsAt);
+          endsAtText.appendChild(countdownElement);
         }
 
         updateCountdown();
+
         const countdownInterval = setInterval(() => {
           updateCountdown();
 
@@ -158,7 +165,7 @@ export function setupAllListingsTabs() {
         const count = listing._count?.bids || 0;
         bidCount.textContent = `${count} ${count === 1 ? "bid" : "bids"}`;
         bidCount.className =
-          "bg-btn-primary text-xs text-center text-text px-2 py-0.5 rounded w-fit mt-2";
+          "bg-btn-primary text-sm text-center text-text px-2 py-0.5 rounded w-full mt-2 mb-2";
 
         const tagsContainer = document.createElement("div");
         tagsContainer.className = "flex flex-wrap gap-1 mt-2";
@@ -175,7 +182,7 @@ export function setupAllListingsTabs() {
 
         card.appendChild(image);
         card.appendChild(title);
-        card.appendChild(endsAt);
+        card.appendChild(endsAtText);
         card.appendChild(bidCount);
         card.appendChild(tagsContainer);
 

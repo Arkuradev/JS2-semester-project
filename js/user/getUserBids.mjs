@@ -59,7 +59,7 @@ export async function loadUserBids() {
         amount.className = "text-text text-xs";
 
         const endsAtText = document.createElement("p");
-        endsAt.className = "text-text text-sm mt-2";
+        endsAtText.className = "text-text text-sm mt-2";
         card.appendChild(endsAtText);
 
         function updateCountdown() {
