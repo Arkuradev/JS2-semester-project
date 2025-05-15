@@ -1,5 +1,6 @@
 import { apiFetch } from "../api/apiFetch.mjs";
 import { debounce } from "../utils/debounce.mjs";
+import { getCountDownText } from "./bidCountdown.mjs";
 
 export function setupAllListingsTabs() {
   const tabs = document.querySelectorAll(".tab-btn");
@@ -39,14 +40,14 @@ export function setupAllListingsTabs() {
     switch (filter) {
       case "popular":
         url += "&_bids=true";
-        limit = 20;
+        limit = 30;
         break;
       case "new":
         url += "&_new=true";
         limit = 25;
         break;
       case "ending":
-        url = `/auction/listings?sort=endsAt&_order=asc`;
+        url = `/auction/listings?sort=endsAt&sortOrder=asc&_active=true&_limit=20`;
         limit = 20;
         break;
       case "week":
@@ -67,32 +68,47 @@ export function setupAllListingsTabs() {
       const response = await apiFetch(url, "GET", null, false, container, 8);
       let listings = response?.data || [];
 
+      const now = new Date();
+
       if (filter === "week") {
         const oneWeekAgo = new Date();
         oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
         listings = listings.filter((l) => new Date(l.created) >= oneWeekAgo);
       }
+
       if (filter === "nobids") {
         listings = listings.filter((l) => !l._count?.bids);
       }
+
       if (filter === "ending") {
-        const now = new Date();
         const twoDaysFromNow = new Date();
         twoDaysFromNow.setDate(now.getDate() + 2);
-        listings = listings.filter((l) => {
-          const endsAt = new Date(l.endsAt);
-          return endsAt >= now && endsAt <= twoDaysFromNow;
-        });
+
+        listings = listings
+          .filter((l) => {
+            const endsAt = new Date(l.endsAt);
+            return endsAt >= now && endsAt <= twoDaysFromNow;
+          })
+          .sort((a, b) => new Date(a.endsAt) - new Date(b.endsAt));
+
         if (listings.length === 0) {
-          container.innerHTML = `<p class="col-span-full text-center text-text">No listings ending soon. (next 2 days).</p>`;
+          container.innerHTML = `<p class="col-span-full text-center text-text">No listings ending soon (next 2 days).</p>`;
           return;
         }
-      } else {
-        const now = new Date();
-        listings = listings.filter((l) => new Date(l.endsAt) > now);
-        allFetchedListings = listings; // Store for searching
-        renderListings(listings);
       }
+
+      if (filter === "popular") {
+        listings = listings.sort(
+          (a, b) => (b._count?.bids || 0) - (a._count?.bids || 0)
+        );
+      }
+
+      // For all filters, still remove expired listings
+      listings = listings.filter((l) => new Date(l.endsAt) > now);
+
+      // Store filtered list for search, then render
+      allFetchedListings = listings;
+      renderListings(listings);
 
       //const now = new Date();
       //listings = listings.filter((l) => new Date(l.endsAt) > now);
@@ -121,7 +137,7 @@ export function setupAllListingsTabs() {
         const card = document.createElement("a");
         card.href = `/listing/viewlisting.html?id=${listing.id}`;
         card.className =
-          "flex flex-col mx-auto bg-nav border shadow p-2 max-w-[180px] transition-all duration-300 transform hover:shadow-xl hover:border-hover hover:scale-105";
+          "flex flex-col bg-nav border shadow p-2 max-w-[180px] transition-all duration-300 transform  hover:shadow-xl hover:border-hover hover:scale-105";
 
         const title = document.createElement("h2");
         title.className = "text-text text-sm font-semibold mb-1";
@@ -129,9 +145,25 @@ export function setupAllListingsTabs() {
 
         const endsAt = document.createElement("p");
         endsAt.className = "text-text text-xs";
-        endsAt.textContent = `Ends at: ${new Date(
-          listing.endsAt
-        ).toLocaleString()}`;
+
+        function updateCountdown() {
+          endsAt.textContent = getCountDownText(listing.endsAt);
+        }
+
+        updateCountdown();
+        const countdownInterval = setInterval(() => {
+          updateCountdown();
+
+          if (new Date(listing.endsAt) <= new Date()) {
+            clearInterval(countdownInterval);
+          }
+        }, 1000);
+
+        const bidCount = document.createElement("p");
+        const count = listing._count?.bids || 0;
+        bidCount.textContent = `${count} ${count === 1 ? "bid" : "bids"}`;
+        bidCount.className =
+          "bg-btn-primary text-xs text-center text-text px-2 py-0.5 rounded w-fit mt-2";
 
         const tagsContainer = document.createElement("div");
         tagsContainer.className = "flex flex-wrap gap-1 mt-2";
@@ -149,7 +181,9 @@ export function setupAllListingsTabs() {
         card.appendChild(image);
         card.appendChild(title);
         card.appendChild(endsAt);
+        card.appendChild(bidCount);
         card.appendChild(tagsContainer);
+
         container.appendChild(card);
       };
 
