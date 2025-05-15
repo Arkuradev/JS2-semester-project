@@ -62,7 +62,7 @@ function route() {
       break;
 
     case path.includes("new"):
-      import("./auctions/newListing.mjs").then((mod) => mod.newListing()); //newListing();
+      import("./auctions/newListing.mjs").then((mod) => mod.newListing());
       break;
 
     case path.includes("viewlisting"):

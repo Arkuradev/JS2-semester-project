@@ -35,9 +35,7 @@ export async function loginUser() {
       localStorage.setItem("token", data.data?.accessToken);
       localStorage.setItem("name", data.data?.name);
 
-      // TEMP - EDIT LATER
       displayMessage("success", "Login successful!");
-      /* Set more statuses here if needed after user has logged in */
       setTimeout(() => {
         window.location.href = "../index.html";
       }, 2000);

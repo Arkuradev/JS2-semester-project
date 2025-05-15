@@ -10,7 +10,6 @@ export function createBidHistory(bids = []) {
     return bidListContainer;
   }
 
-  // Find the highest bid
   const highestBid = bids.reduce(
     (max, bid) => (bid.amount > max.amount ? bid : max),
     bids[0]
@@ -30,7 +29,7 @@ export function createBidHistory(bids = []) {
   const bidListWrapper = document.createElement("div");
   bidListWrapper.className =
     "transition-all duration-500 ease-in-out overflow-hidden";
-  bidListWrapper.style.maxHeight = "0px"; // Start collapsed
+  bidListWrapper.style.maxHeight = "0px";
 
   const bidListInner = document.createElement("div");
 
@@ -41,7 +40,6 @@ export function createBidHistory(bids = []) {
   const bidList = document.createElement("ul");
   bidList.className = "space-y-2";
 
-  // Sort oldest to newest
   bids.sort((a, b) => b.amount - a.amount);
   bids.forEach((bid) => {
     const listItem = document.createElement("li");
