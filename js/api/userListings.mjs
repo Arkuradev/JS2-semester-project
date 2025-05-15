@@ -1,6 +1,7 @@
 import { apiFetch } from "./apiFetch.mjs";
 import { deleteListing } from "../user/deleteListing.mjs";
 import { displayMessage } from "../utils/displayMessage.mjs";
+import { getCountDownText } from "../components/bidCountdown.mjs";
 const container = document.querySelector("#dashboardListings");
 const token = localStorage.getItem("token");
 
@@ -53,8 +54,27 @@ export async function renderUserListings() {
       title.textContent = listing.title;
 
       const endsAt = document.createElement("p");
-      endsAt.className = "text-text text-xs text-gray-500 mb-2";
-      endsAt.textContent = `Ends: ${new Date(listing.endsAt).toLocaleString()}`;
+      endsAt.className = "text-text text-sm mt-2";
+      card.appendChild(endsAt);
+
+      function updateCountdown() {
+        // Clear the previous content
+        endsAt.textContent = "";
+
+        // Append the updated span
+        const countdownElement = getCountDownText(listing.endsAt);
+        endsAt.appendChild(countdownElement);
+      }
+
+      updateCountdown();
+
+      const countdownInterval = setInterval(() => {
+        updateCountdown();
+
+        if (new Date(listing.endsAt) <= new Date()) {
+          clearInterval(countdownInterval);
+        }
+      }, 1000);
 
       const actions = document.createElement("div");
       actions.className = "flex gap-1 justify-between mt-auto";

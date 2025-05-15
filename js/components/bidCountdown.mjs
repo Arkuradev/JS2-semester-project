@@ -3,7 +3,13 @@ export function getCountDownText(endsAt) {
   const endTime = new Date(endsAt);
   const diff = endTime - now;
 
-  if (diff < 0) return "Ended";
+  const span = document.createElement("span");
+
+  if (diff < 0) {
+    span.textContent = "❌ Ended";
+    span.className = "text-red-600 font-semibold";
+    return span;
+  }
 
   const totalSeconds = Math.floor(diff / 1000);
   const days = Math.floor(totalSeconds / 86400);
@@ -17,5 +23,6 @@ export function getCountDownText(endsAt) {
   if (minutes > 0) parts.push(`${minutes}m`);
   if (seconds > 0) parts.push(`${seconds}s`);
 
-  return `Ends in: ${parts.join(" ")}`;
+  span.textContent = `⏱ Ends in: ${parts.join(" ")}`;
+  return span;
 }

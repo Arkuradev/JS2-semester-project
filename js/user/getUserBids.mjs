@@ -1,4 +1,5 @@
 import { apiFetch } from "../api/apiFetch.mjs";
+import { getCountDownText } from "../components/bidCountdown.mjs";
 
 export async function loadUserBids() {
   const username = localStorage.getItem("name");
@@ -57,14 +58,33 @@ export async function loadUserBids() {
         amount.textContent = `Your bid: ${bid.amount} credits`;
         amount.className = "text-text text-xs";
 
-        const ends = document.createElement("p");
-        ends.textContent = `Ends at: ${endsAt.toLocaleString()}`;
-        ends.className = "text-text text-xs";
+        const endsAtText = document.createElement("p");
+        endsAt.className = "text-text text-sm mt-2";
+        card.appendChild(endsAtText);
+
+        function updateCountdown() {
+          // Clear the previous content
+          endsAtText.textContent = "";
+
+          // Append the updated span
+          const countdownElement = getCountDownText(listing.endsAt);
+          endsAtText.appendChild(countdownElement);
+        }
+
+        updateCountdown();
+
+        const countdownInterval = setInterval(() => {
+          updateCountdown();
+
+          if (new Date(listing.endsAt) <= new Date()) {
+            clearInterval(countdownInterval);
+          }
+        }, 1000);
 
         card.appendChild(image);
         card.appendChild(title);
         card.appendChild(amount);
-        card.appendChild(ends);
+        card.appendChild(endsAtText);
         container.appendChild(card);
       } catch (listingError) {
         console.warn("❌ Failed to fetch listing for bid:", bid, listingError);
