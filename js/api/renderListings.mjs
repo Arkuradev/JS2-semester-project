@@ -6,7 +6,7 @@ export async function renderListings() {
     const stats = document.createElement("div");
     stats.className = `
     col-span-full w-full py-20 px-4 mt-14 mb-10
-    bg-secondary text-main
+    bg-gradient-to-b from-[rgb(var(--background))] to-[rgb(var(--secondary))] shadow-xl text-main
     flex flex-col items-center justify-center text-center
   `;
     stats.innerHTML = `
