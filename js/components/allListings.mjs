@@ -103,15 +103,10 @@ export function setupAllListingsTabs() {
         );
       }
 
-      // For all filters, still remove expired listings
       listings = listings.filter((l) => new Date(l.endsAt) > now);
 
-      // Store filtered list for search, then render
       allFetchedListings = listings;
       renderListings(listings);
-
-      //const now = new Date();
-      //listings = listings.filter((l) => new Date(l.endsAt) > now);
     } catch (error) {
       container.innerHTML = `<p class="col-span-full text-red-500 text-center">Error loading listings.</p>`;
       console.error(error);

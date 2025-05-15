@@ -7,7 +7,7 @@ export async function renderListings() {
     return console.warn(
       "No container for listingContainer found. Please add one."
     );
-  container.innerHTML = `<p class="text-center text-text">Loading listings...</p>`;
+  container.innerHTML = "";
 
   const response = await apiFetch(
     "/auction/listings?limit=15&sort=created&sortOrder=desc&_seller=true",
@@ -43,7 +43,6 @@ export async function renderListings() {
     card.className =
       "bg-background border border-hover shadow-xl overflow-hidden transition-all duration-300 transform hover:shadow-xl w-full hover:border-hover hover:-translate-y-1 flex flex-col h-full";
     card.href = `listing/viewlisting.html?id=${listing.id}`;
-    // Fix this error in console from this: image.src = listing.media?.[0]?.url;
     const image = document.createElement("img");
     image.src = listing.media?.[0]?.url || "/images/placeholder.jpg";
     image.alt = listing.media?.[0]?.alt || "Placeholder image";

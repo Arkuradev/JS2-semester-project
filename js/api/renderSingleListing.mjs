@@ -26,9 +26,7 @@ export async function renderListingDetails() {
 
   container.innerHTML = "";
 
-  if (!listing) return showError("Listing not found."); // Double check?? Remove?
-
-  // const bids = listing.bids || [];
+  if (!listing) return showError("Listing not found.");
 
   const backButton = document.createElement("a");
   backButton.href = "/index.html";
@@ -58,14 +56,11 @@ export async function renderListingDetails() {
   const header = createListingHeader(listing);
   const sellerName = listing?.seller?.name || "";
   const bidForm = createBidForm(listing.id, sellerName);
-  // const bidInfo = createBidInfo(listing.bids || []);
-  //const bidInfo = createBidInfo(bids, id);
   const bidHistorySection = createBidHistory(listing.bids || []);
 
   content.appendChild(header);
   content.appendChild(bidForm);
 
-  //content.appendChild(bidInfo);
   if (bidHistorySection) content.appendChild(bidHistorySection);
 
   card.appendChild(image);
