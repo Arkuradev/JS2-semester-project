@@ -1,8 +1,8 @@
 export function loadFooter() {
   const footer = document.createElement("footer");
   footer.innerHTML = `
-  <footer class="bg-nav text-main border-t border-border py-6 mt-10">
-  <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-center sm:text-left">
+  <footer class="bg-secondary shadow-[0_-4px_12px_rgba(0,0,0,0.15)] text-main border-t border-border py-6 mt-10">
+  <div class="max-w-6xl  mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-center sm:text-left">
     <div class="flex gap-4">
       <a href="/index.html" class="hover:text-hover">Home</a>
       <a href="/listings/alllistings.html" class="hover:text-hover">Auctions</a>

@@ -155,7 +155,6 @@ export async function renderListings() {
     card.appendChild(content);
     container.appendChild(card);
     if (index === 19) {
-      console.log("✅ Injecting stats strip after 20th listing");
       container.appendChild(createStatsStrip());
     }
   });
