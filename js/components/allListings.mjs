@@ -168,7 +168,7 @@ export function setupAllListingsTabs() {
           "bg-btn-primary text-sm text-center text-text px-2 py-0.5 rounded w-full mt-2 mb-2";
 
         const tagsContainer = document.createElement("div");
-        tagsContainer.className = "flex flex-wrap gap-1 mt-2";
+        tagsContainer.className = "flex flex-wrap gap-1 mt-2 ml-2 mb-2";
 
         if (Array.isArray(listing.tags)) {
           listing.tags.forEach((tag) => {
