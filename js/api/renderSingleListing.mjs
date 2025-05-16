@@ -29,7 +29,7 @@ export async function renderListingDetails() {
   if (!listing) return showError("Listing not found.");
 
   const layoutWrapper = document.createElement("div");
-  layoutWrapper.className = "w-full flex justify-center px-4";
+  layoutWrapper.className = "w-full flex justify-center px-4 mt-16";
 
   // Create a container inside the wrapper to stack the button and card
   const innerWrapper = document.createElement("div");
@@ -39,7 +39,7 @@ export async function renderListingDetails() {
   const backButton = document.createElement("a");
   backButton.href = "/index.html";
   backButton.className =
-    "inline-block mb-6 text-text hover:underline hover:text-hover hover:scale-105 transition-transform text-sm font-medium";
+    "inline-block mb-6 text-text hover:underline font-semibold hover:text-hover hover:scale-105 transition-transform text-sm font-medium";
   backButton.textContent = "← Back to Listings";
 
   const card = document.createElement("article");
