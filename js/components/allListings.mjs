@@ -132,7 +132,7 @@ export function setupAllListingsTabs() {
         const card = document.createElement("a");
         card.href = `/listing/viewlisting.html?id=${listing.id}`;
         card.className =
-          "flex flex-col bg-nav border shadow p-2 max-w-[180px] transition-all duration-300 transform  hover:shadow-xl hover:border-hover hover:scale-105";
+          "bg-background font-sans border border-hover shadow-xl overflow-hidden transition-all duration-300 transform hover:shadow-xl w-full hover:border-hover hover:-translate-y-1 flex flex-col h-full";
 
         const title = document.createElement("h2");
         title.className = "text-text text-sm font-semibold mb-1";

@@ -33,6 +33,7 @@ export async function renderUserListings() {
 
     if (!userListings || userListings.length === 0) {
       container.textContent = "You have no listings yet.";
+      container.className = "text-center text-text mt-5";
       return;
     }
 

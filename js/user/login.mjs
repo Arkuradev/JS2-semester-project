@@ -5,7 +5,7 @@ const token = localStorage.getItem("token");
 const username = localStorage.getItem("name");
 
 if (token && username) {
-  displayMessage("error", "You are already logged in.");
+  displayMessage("error", "You are already logged in. Redirecting...");
 
   setTimeout(() => {
     window.location.href = "../index.html";

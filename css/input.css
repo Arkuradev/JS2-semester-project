@@ -9,7 +9,7 @@
   --border: 228 228 231; /* Soft gray border */
   --primary: 40 183 215; /* #64748B */
   --secondary: 226 248 248;
-  --text-input: 45 45 50; /* Input text */
+  --input: 45 45 50; /* Input text */
   --hover: 30 193 230; /* #475569 */
   --btn-primary: 40 183 215; /* #64748B */
   --btn-secondary: 240 240 240; /* Soft neutral buttons */
@@ -17,27 +17,13 @@
 }
 
 .dark {
-  /*
-  --nav: 49 54 63;
-  --background: 27 38 44;
-  --main: 187 225 250;
-  --hover: 143 135 241;
-  --text: 255 255 255;
-  --text-input: 58 58 63;
-  --primary: 15 76 117;
-  --secondary: 49 54 63;
-  --tertiary: 146 144 195;
-  --btn-primary: 106 30 85;
-  --btn-secondary: 136 48 78;
-  --funds: 167 243 208;
-  */
   --nav: 24 24 27; /* Dark navbar */
   --background: 30 30 34; /* True dark background */
   --main: 245 245 245; /* Light gray-white text */
   --border: 48 48 51; /* Subtle gray border */
   --primary: 100 116 139; /* #64748B */
   --secondary: 38 38 42; /* Secondary dark area (cards, tabs) */
-  --text-input: 58 58 63;
+  --input: 58 58 63;
   --text-input2: 58 58 63;
   --text: 255 255 255;
   --hover: 71 85 105; /* #475569 */
