@@ -35,16 +35,16 @@
           class="mx-auto w-full max-w-3xl h-64 rounded border border-hover p-6 animate-pulse"
         >
           <div class="flex space-x-6 h-full">
-            <div class="w-40 h-40 rounded-full bg-gray-200"></div>
+            <div class="w-40 h-40 rounded-full bg-primary"></div>
             <div class="flex-1 space-y-6 py-2">
-              <div class="h-6 w-3/4 rounded bg-gray-200"></div>
+              <div class="h-6 w-3/4 rounded bg-primary"></div>
               <div class="space-y-4">
                 <div class="grid grid-cols-3 gap-4">
-                  <div class="col-span-2 h-4 rounded bg-gray-200"></div>
-                  <div class="col-span-1 h-4 rounded bg-gray-200"></div>
+                  <div class="col-span-2 h-4 rounded bg-primary"></div>
+                  <div class="col-span-1 h-4 rounded bg-primary"></div>
                 </div>
-                <div class="h-4 w-full rounded bg-gray-200"></div>
-                <div class="h-4 w-5/6 rounded bg-gray-200"></div>
+                <div class="h-4 w-full rounded bg-primary"></div>
+                <div class="h-4 w-5/6 rounded bg-primary"></div>
               </div>
             </div>
           </div>
@@ -64,7 +64,10 @@
         <div class="flex items-center justify-center gap-4">
           <span class="text-xl" aria-hidden="true">🌞</span>
 
-          <label class="relative inline-flex items-center cursor-pointer">
+          <label
+            for="themeToggle"
+            class="relative inline-flex items-center cursor-pointer"
+          >
             <input type="checkbox" id="themeToggle" class="sr-only peer" />
             <div
               class="w-14 h-8 bg-[rgb(var(--border))] rounded-full peer peer-checked:bg-[rgb(var(--btn-primary))] transition-all"
@@ -90,7 +93,7 @@
           id="editProfileForm"
           class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
         >
-          <div class="relative bg-nav p-6 shadow-lg max-w-md w-full">
+          <div class="relative bg-secondary p-6 shadow-lg max-w-md w-full">
             <button
               id="closeEditProfile"
               type="button"
@@ -107,7 +110,7 @@
               type="text"
               id="editBanner"
               name="editBanner"
-              class="w-full p-2 bg-background rounded text-text focus:outline-none focus:ring-2 focus:ring-hover mb-4"
+              class="w-full p-2 bg-main rounded text-input focus:outline-none focus:ring-2 focus:ring-hover mb-4"
               placeholder="Enter banner URL"
             />
             <label for="editAvatar" class="block text-sm font-md text-text"
@@ -117,7 +120,7 @@
               type="text"
               id="editAvatar"
               name="editAvatar"
-              class="w-full p-2 bg-background rounded text-text focus:outline-none focus:ring-2 focus:ring-hover mb-4"
+              class="w-full p-2 bg-main rounded text-input focus:outline-none focus:ring-2 focus:ring-hover mb-4"
               placeholder="Enter avatar URL"
             />
 
@@ -126,7 +129,7 @@
             >
             <textarea
               id="editBio"
-              class="w-full h-20 p-2 bg-background rounded text-text focus:outline-none focus:ring-2 focus:ring-hover mb-4"
+              class="w-full h-20 p-2 bg-main rounded text-input focus:outline-none focus:ring-2 focus:ring-hover mb-4"
               placeholder="Tell us about yourself..."
             ></textarea>
             <button
@@ -139,7 +142,7 @@
             <button
               id="cancelEditButton"
               type="button"
-              class="px-4 py-2 bg-red-500 hover:bg-hover text-white font-semibold rounded-lg transition duration-300"
+              class="px-4 py-2 bg-red-500 hover:bg-btn-primary text-black hover:text-white font-semibold rounded-lg transition duration-300"
             >
               Cancel
             </button>

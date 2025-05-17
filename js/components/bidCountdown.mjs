@@ -7,7 +7,7 @@ export function getCountDownText(endsAt) {
 
   if (diff < 0) {
     span.textContent = "❌ Ended";
-    span.className = "text-red-600 font-semibold";
+    span.className = "text-red-500 font-semibold";
     return span;
   }
 

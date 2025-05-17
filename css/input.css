@@ -3,32 +3,32 @@
 @tailwind utilities;
 
 :root {
-  --nav: 255 255 255; /* Clean white navbar */
-  --background: 250 250 250; /* Light warm-gray background */
-  --main: 24 24 27; /* Near-black text (true readable) */
-  --border: 228 228 231; /* Soft gray border */
-  --primary: 40 183 215; /* #64748B */
+  --nav: 255 255 255;
+  --background: 250 250 250;
+  --main: 24 24 27;
+  --border: 228 228 231;
+  --primary: 40 183 215;
   --secondary: 226 248 248;
-  --input: 45 45 50; /* Input text */
-  --hover: 30 193 230; /* #475569 */
-  --btn-primary: 40 183 215; /* #64748B */
-  --btn-secondary: 240 240 240; /* Soft neutral buttons */
+  --input: 45 45 50;
+  --hover: 30 193 230;
+  --btn-primary: 40 183 215;
+  --btn-secondary: 240 240 240;
   --funds: 6 95 70;
 }
 
 .dark {
-  --nav: 24 24 27; /* Dark navbar */
-  --background: 30 30 34; /* True dark background */
-  --main: 245 245 245; /* Light gray-white text */
-  --border: 48 48 51; /* Subtle gray border */
-  --primary: 100 116 139; /* #64748B */
-  --secondary: 38 38 42; /* Secondary dark area (cards, tabs) */
+  --nav: 24 24 27;
+  --background: 30 30 34;
+  --main: 245 245 245;
+  --border: 48 48 51;
+  --primary: 100 116 139;
+  --secondary: 38 38 42;
   --input: 58 58 63;
   --text-input2: 58 58 63;
   --text: 255 255 255;
-  --hover: 71 85 105; /* #475569 */
-  --btn-primary: 100 116 139; /* #64748B */
-  --btn-secondary: 60 60 65; /* Muted dark button */
+  --hover: 71 85 105;
+  --btn-primary: 100 116 139;
+  --btn-secondary: 60 60 65;
   --funds: 167 243 208;
 }
 
@@ -57,20 +57,4 @@
 .section-fade {
   position: relative;
   overflow: hidden;
-}
-
-.section-fade::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 50%; /* top half */
-  background: linear-gradient(
-    to bottom,
-    rgb(var(--background)) 0%,
-    rgb(var(--secondary)) 100%
-  );
-  z-index: 1;
-  pointer-events: none;
 }

@@ -109,7 +109,7 @@ export async function renderUserListings() {
 
       const deleteBtn = document.createElement("button");
       deleteBtn.className =
-        "mt-4 mb-4 px-4 bg-red-500 hover:bg-hover text-white font-semibold py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300";
+        "mt-4 mb-4 px-4 bg-red-500 hover:bg-btn-primary text-black hover:text-white font-semibold py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300";
 
       deleteBtn.textContent = "Delete";
 

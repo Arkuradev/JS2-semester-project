@@ -73,7 +73,9 @@
         id="editListingModal"
         class="fixed inset-0 bg-nav bg-opacity-50 backdrop-blur-sm flex justify-center items-center z-50 hidden"
       >
-        <div class="bg-nav p-6 rounded shadow-xl max-w-md w-full relative">
+        <div
+          class="bg-secondary p-6 rounded shadow-xl max-w-md w-full relative"
+        >
           <button
             id="closeEditListingModal"
             class="absolute top-2 right-2 text-text hover:text-hover text-3xl"
@@ -82,6 +84,7 @@
           </button>
           <h2 class="text-xl text-text font-semibold mb-4">Edit Listing</h2>
           <form id="editListingForm" class="space-y-4">
+            <label for="editTitle" class="sr-only">Title</label>
             <input
               type="text"
               id="editTitle"
@@ -89,23 +92,27 @@
               placeholder="Title"
               required
             />
+            <label for="editDescription" class="sr-only">Description</label>
             <textarea
               id="editDescription"
               class="w-full p-2 border rounded"
               placeholder="Description"
             ></textarea>
+            <label for="editTags" class="sr-only">Edit Tags</label>
             <input
               type="text"
               id="editTags"
               class="w-full p-2 border rounded"
               placeholder="Tags (comma separated)"
             />
+            <label for="editMedia" class="sr-only">Edit Image</label>
             <input
               type="url"
               id="editMedia"
               class="w-full p-2 border rounded"
               placeholder="Media URL"
             />
+            <label for="editEndsAt" class="sr-only">Change End Date</label>
             <input
               type="datetime-local"
               id="editEndsAt"
@@ -122,7 +129,7 @@
               <button
                 type="button"
                 id="cancelEdit"
-                class="px-4 py-2 bg-red-500 hover:bg-red-600 text-text rounded"
+                class="px-4 py-2 bg-red-500 hover:bg-btn-primary text-black hover:text-white rounded"
               >
                 Cancel
               </button>
@@ -130,59 +137,6 @@
           </form>
         </div>
       </div>
-
-      <form
-        id="editProfileForm"
-        class="hidden fixed inset-0 flex items-center justify-center bg-background bg-opacity-50"
-      >
-        <div class="bg-background p-6 shadow-lg max-w-md w-full">
-          <h2 class="text-text text-xl font-semibold mb-4">Edit Profile</h2>
-          <label for="editBanner" class="block text-sm font-medium text-text"
-            >Banner URL:</label
-          >
-          <input
-            type="text"
-            id="editBanner"
-            name="editBanner"
-            class="w-full p-2 bg-background border border-border rounded text-text focus:outline-none focus:ring-2 focus:ring-hover mb-4"
-            placeholder="Enter banner URL"
-          />
-          <label for="editAvatar" class="block text-sm font-medium text-text"
-            >Avatar URL:</label
-          >
-          <input
-            type="text"
-            id="editAvatar"
-            name="editAvatar"
-            class="w-full p-2 bg-background border border-border rounded text-text focus:outline-none focus:ring-2 focus:ring-hover mb-4"
-            placeholder="Enter avatar URL"
-          />
-
-          <label for="editBio" class="block text-sm font-medium text-text"
-            >Bio:</label
-          >
-          <textarea
-            id="editBio"
-            class="w-full p-2 bg-background border border-border rounded text-text focus:outline-none focus:ring-2 focus:ring-hover mb-4"
-            placeholder="Tell us about yourself..."
-          ></textarea>
-
-          <button
-            id="saveProfileButton"
-            type="submit"
-            class="px-4 py-2 bg-btn-primary hover:bg-hover text-text font-semibold rounded-lg transition duration-300"
-          >
-            Save
-          </button>
-          <button
-            id="cancelEditButton"
-            type="button"
-            class="px-4 py-2 bg-red-500 hover:bg-hover text-text font-semibold rounded-lg transition duration-300"
-          >
-            Cancel
-          </button>
-        </div>
-      </form>
     </main>
   </body>
 </html>

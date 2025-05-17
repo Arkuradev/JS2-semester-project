@@ -7,7 +7,7 @@ export function renderCreateListingModal() {
       id="createListingModal"
       class="fixed inset-0 bg-nav bg-opacity-50 backdrop-blur-sm flex justify-center items-center z-50 hidden"
     >
-      <div class="bg-nav p-6 rounded  shadow-2xl max-w-md w-full relative">
+      <div class="bg-secondary p-6 rounded  shadow-2xl max-w-md w-full relative">
         <button
           id="closeCreateListingModal"
           class="absolute top-2 right-2 text-text hover:text-hover text-3xl"
@@ -30,7 +30,12 @@ export function renderCreateListingModal() {
 <input type="text" name="tags" id="tags" placeholder="Tags (comma separated)" class="w-full border p-2 rounded" />
 
 <label for="description" class="sr-only">Description</label>
-<textarea name="description" id="description" placeholder="Description" class="w-full border p-2 rounded"></textarea>
+<textarea
+  id="description"
+  name="description"
+  placeholder="Description"
+  class="w-full border p-2 rounded"
+></textarea>
 
 <label for="endsAt" class="sr-only">Ends At</label>
 <input type="datetime-local" name="endsAt" id="endsAt" required class="w-full border p-2 rounded" />
