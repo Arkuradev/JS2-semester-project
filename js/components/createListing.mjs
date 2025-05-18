@@ -65,12 +65,8 @@ export function renderCreateListingModal() {
   document.addEventListener("click", (e) => {
     if (e.target.id === "openCreateListingBtn") {
       modal.classList.remove("hidden");
-      message.textContent = "";
-      message.className = "";
     } else if (e.target.id === "openCreateListingBtnMobile") {
       modal.classList.remove("hidden");
-      message.textContent = "";
-      message.className = "";
     }
   });
 
