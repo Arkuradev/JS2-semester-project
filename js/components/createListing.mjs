@@ -60,7 +60,6 @@ export function renderCreateListingModal() {
   const modal = document.getElementById("createListingModal");
   const closeBtn = document.getElementById("closeCreateListingModal");
   const form = document.getElementById("createListingForm");
-  const message = document.getElementById("createListingMessage");
 
   document.addEventListener("click", (e) => {
     if (e.target.id === "openCreateListingBtn") {
