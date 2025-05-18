@@ -3,13 +3,13 @@ import { displayMessage } from "../utils/displayMessage.mjs";
 
 const username = localStorage.getItem("name");
 
-let formListenerAttached = false; // 🔒 prevent duplicate listeners
+let formListenerAttached = false;
 
 export function updateProfile() {
   const form = document.getElementById("editProfileForm");
   if (!form || formListenerAttached) return;
 
-  formListenerAttached = true; // ✅ flag it once attached
+  formListenerAttached = true;
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();

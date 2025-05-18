@@ -48,8 +48,8 @@ function route() {
           mod.renderListings()
         );
       } catch (error) {
+        console.error("Failed to load listings:", error);
         displayMessage("#message", "error", "Failed to load listings.");
-        console.log("Failed to load renderListings:", error);
       }
       break;
 

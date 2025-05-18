@@ -8,7 +8,6 @@ export async function register(name, email, password) {
       { name, email, password },
       false
     );
-    console.log("Received response:", data);
 
     if (data) {
       displayMessage("success", "Registration successful! You can now log in.");

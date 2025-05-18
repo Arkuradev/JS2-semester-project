@@ -146,18 +146,6 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const listingId = form.dataset.id;
-  /*
-  const payload = {
-    title: titleInput.value.trim(),
-    description: descInput.value.trim(),
-    tags: tagsInput.value
-      .split(",")
-      .map((t) => t.trim())
-      .filter(Boolean),
-    media: [{ url: mediaInput.value.trim() }],
-    endsAt: new Date(endsAtInput.value).toISOString(),
-  };
-  */
   const payload = {
     title: titleInput.value.trim(),
     description: descInput.value.trim(),

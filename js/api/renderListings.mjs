@@ -96,10 +96,8 @@ export async function renderListings() {
     card.appendChild(endsAtText);
 
     function updateCountdown() {
-      // Clear the previous content
       endsAtText.textContent = "";
 
-      // Append the updated span
       const countdownElement = getCountDownText(listing.endsAt);
       endsAtText.appendChild(countdownElement);
     }
