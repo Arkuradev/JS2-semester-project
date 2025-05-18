@@ -24,7 +24,7 @@ export function renderCreateListingModal() {
 <textarea
   name="media"
   id="media"
-  placeholder="Image URLs (comma separated)"
+  placeholder="Full Image URLs (comma separated)"
   class="w-full border p-2 rounded"
 ></textarea>
 
@@ -84,8 +84,6 @@ export function renderCreateListingModal() {
 
     const token = localStorage.getItem("token");
     const title = form.title.value.trim();
-    // const mediaUrl = form.media.value.trim();
-    // const mediaAlt = form.mediaAlt.value.trim();
     const description = form.description.value.trim();
     const tags = form.tags?.value.trim();
     const endsAt = new Date(form.endsAt.value).toISOString();
@@ -120,15 +118,6 @@ export function renderCreateListingModal() {
         alt: mediaAlt,
       }));
     }
-    /* if (mediaUrl) {
-      listingData.media = [
-        {
-          url: mediaUrl,
-          alt: mediaAlt || "Listing image",
-        },
-      ];
-    }
-*/
     if (tags) {
       listingData.tags = tags
         .split(",")
