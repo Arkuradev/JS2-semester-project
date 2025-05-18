@@ -46,7 +46,6 @@ function renderProfile(data) {
   profileBio.id = "profileBio";
   profileBio.textContent = data.bio || "No bio set yet";
 
-  // Total wins heading
   const totalWins = document.createElement("h3");
   totalWins.className = "text-xl font-semibold text-text mt-12";
   totalWins.textContent = `🏆 Total Wins: ${data._count?.wins || 0}`;

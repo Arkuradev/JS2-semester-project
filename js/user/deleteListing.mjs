@@ -1,4 +1,5 @@
 import { apiFetch } from "../api/apiFetch.mjs";
+import { displayMessage } from "../utils/displayMessage.mjs";
 
 export async function deleteListing(listingId) {
   const confirmDelete = confirm(
@@ -7,7 +8,9 @@ export async function deleteListing(listingId) {
 
   if (confirmDelete) {
     await apiFetch(`/auction/listings/${listingId}`, "DELETE");
-    window.location.reload();
+    displayMessage("success", "Listing deleted successfully.");
+    setTimeout(() => {
+      window.location.reload();
+    }, 1500);
   }
-  // DISPLAY MESSAGE HERE.
 }
