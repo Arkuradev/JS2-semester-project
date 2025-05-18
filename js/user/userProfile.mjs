@@ -41,12 +41,16 @@ export function renderUserProfile(data) {
   profileEmail.id = "profileEmail";
   profileEmail.textContent = `Email: ${data.email}`;
 
+  const totalWins = document.createElement("h3");
+  totalWins.className = "text-xl font-semibold text-text mt-12";
+  totalWins.textContent = `🏆 Total Wins: ${data._count?.wins || 0}`;
+
   const profileBio = document.createElement("p");
   profileBio.className = "text-base text-text mt-4";
   profileBio.id = "profileBio";
   profileBio.textContent = data.bio || "No bio set yet";
 
-  detailsContainer.append(profileName, profileEmail, profileBio);
+  detailsContainer.append(profileName, profileEmail, totalWins, profileBio);
 
   const bannerWrapper = document.createElement("div");
   bannerWrapper.className = "relative";
@@ -113,7 +117,7 @@ export async function fetchProfile() {
 
   const container = document.querySelector("#profileContainer");
   const { data } = await apiFetch(
-    `/auction/profiles/${username}?_listings=true`,
+    `/auction/profiles/${username}?_listings=true&?_wins=true`,
     "GET",
     null,
     true,
