@@ -62,7 +62,7 @@ export async function renderListingDetails() {
       thumb.src = media.url;
       thumb.alt = media.alt || `Image ${index + 1}`;
       thumb.className =
-        "flex gap-2 overflow-y-auto max-w-full ml-2 h-20 w-20 object-cover border border-hover rounded cursor-pointer transition hover:scale-105";
+        "flex gap-2 overflow-y-auto max-w-full ml-2 h-20 w-20 object-cover border border-hover rounded cursor-pointer transition";
 
       thumb.addEventListener("click", () => {
         mainImage.src = media.url;

@@ -9,8 +9,5 @@ export async function deleteListing(listingId) {
   if (confirmDelete) {
     await apiFetch(`/auction/listings/${listingId}`, "DELETE");
     displayMessage("success", "Listing deleted successfully.");
-    /* setTimeout(() => {
-      window.location.reload();
-    }, 1500); */
   }
 }
