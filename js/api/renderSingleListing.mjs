@@ -31,11 +31,9 @@ export async function renderListingDetails() {
   const layoutWrapper = document.createElement("div");
   layoutWrapper.className = "w-full flex justify-center px-4 mt-16";
 
-  // Create a container inside the wrapper to stack the button and card
   const innerWrapper = document.createElement("div");
   innerWrapper.className = "w-full max-w-3xl";
 
-  // Create back button
   const backButton = document.createElement("a");
   backButton.href = "/index.html";
   backButton.className =
@@ -46,18 +44,15 @@ export async function renderListingDetails() {
   card.className =
     "w-full max-w-3xl bg-nav mt-4 shadow-lg overflow-hidden rounded";
 
-  // Gallery container
   const galleryWrapper = document.createElement("div");
-  galleryWrapper.className = "w-full";
+  galleryWrapper.className = "w-full ml-2 mb-4";
 
-  // Main image element
   const mainImage = document.createElement("img");
   mainImage.src = listing.media?.[0]?.url || "../images/placeholder.jpg";
   mainImage.alt = listing.media?.[0]?.alt || "Listing image";
   mainImage.className = "w-full h-80 object-cover rounded mb-4";
   galleryWrapper.appendChild(mainImage);
 
-  // Thumbnail row
   if (Array.isArray(listing.media) && listing.media.length > 1) {
     const thumbnails = document.createElement("div");
     thumbnails.className = "flex gap-2 overflow-x-auto";
@@ -80,15 +75,13 @@ export async function renderListingDetails() {
     galleryWrapper.appendChild(thumbnails);
   }
 
-  // Seller info
   const sellerInfo = document.createElement("a");
   sellerInfo.className = "text-text text-sm mb-4 font-medium";
-  sellerInfo.innerHTML = `<p class="text-text text-sm">Listed by: 
+  sellerInfo.innerHTML = `<p class="text-text text-sm ml-2">Listed by: 
   <a href="/profile/user.html?name=${listing.seller.name}" class="text-text hover:text-hover hover:underline font-semibold">
     ${listing.seller.name}
   </a></p>`;
 
-  // Content section
   const content = document.createElement("div");
   content.className = "text-text p-6 space-y-4";
 
