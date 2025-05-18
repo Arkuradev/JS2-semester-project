@@ -29,7 +29,7 @@ Welcome to CrestAuction, a modern, responsive online auction platform build as p
 ![Light mode version of CrestAuction](/images/screenshot2.png)
 ![Dark mode version of CrestAuction](/images/screenshot1.png)
 
-## Tailwind CSS Setup
+## 🧩 Tailwind CSS Setup
 
 Tailwind is already configured in this project. If you want to modify or build styles:
 
