@@ -148,7 +148,7 @@ export async function fetchProfile() {
       window.location.href = "/account/login.html";
     }, 1500);
 
-    return; // stop further execution
+    return;
   }
 
   updateProfileAvatar(data);
