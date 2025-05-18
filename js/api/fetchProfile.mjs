@@ -46,11 +46,50 @@ function renderProfile(data) {
   profileBio.id = "profileBio";
   profileBio.textContent = data.bio || "No bio set yet";
 
+  // Total wins heading
+  const totalWins = document.createElement("h3");
+  totalWins.className = "text-xl font-semibold text-text mt-12";
+  totalWins.textContent = `🏆 Total Wins: ${data._count?.wins || 0}`;
+
+  // Won auctions list
+  const winsContainer = document.createElement("div");
+  winsContainer.className = "grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4";
+
+  if (Array.isArray(data.wins) && data.wins.length > 0) {
+    data.wins.forEach((win) => {
+      const winCard = document.createElement("a");
+      winCard.href = `/listing/viewlisting.html?id=${win.id}`;
+      winCard.className =
+        "block bg-nav border border-hover rounded-lg overflow-hidden shadow-md hover:shadow-lg transition transform hover:scale-105";
+
+      const img = document.createElement("img");
+      img.src = win.media?.[0]?.url || "/images/placeholder.jpg";
+      img.alt = win.media?.[0]?.alt || "Won listing image";
+      img.className = "w-full h-32 object-cover";
+
+      const title = document.createElement("h4");
+      title.textContent = win.title;
+      title.className = "p-2 text-text font-semibold";
+
+      winCard.append(img, title);
+      winsContainer.appendChild(winCard);
+    });
+  } else {
+    const noWins = document.createElement("p");
+    noWins.className = "text-text text-sm mt-2";
+    noWins.textContent = "You haven’t won any auctions yet.";
+    winsContainer.appendChild(noWins);
+  }
+
+  detailsContainer.appendChild(totalWins);
+  detailsContainer.appendChild(winsContainer);
+  console.log(data?.wins);
+
   const editProfileButton = document.createElement("button");
   editProfileButton.id = "editProfileButton";
   editProfileButton.textContent = "Edit Profile";
   editProfileButton.className =
-    "mt-6 px-5 py-2 bg-btn-primary hover:bg-hover text-text font-semibold rounded transition duration-300";
+    "mt-6 mb-6 px-5 py-2 bg-btn-primary hover:bg-hover text-text font-semibold rounded transition duration-300";
 
   document.getElementById("profileContainer").appendChild(editProfileButton);
 
@@ -80,6 +119,8 @@ function renderProfile(data) {
     profileBio,
     editProfileButton
   );
+  detailsContainer.appendChild(totalWins);
+  detailsContainer.appendChild(winsContainer);
 
   const bannerWrapper = document.createElement("div");
   bannerWrapper.className = "relative";
@@ -103,7 +144,7 @@ export async function fetchProfile() {
   const container = document.querySelector("#profileContainer");
 
   const { data } = await apiFetch(
-    `/auction/profiles/${username}`,
+    `/auction/profiles/${username}?_wins=true`,
     "GET",
     null,
     true,

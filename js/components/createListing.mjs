@@ -15,7 +15,7 @@ export function renderCreateListingModal() {
           &times;
         </button>
         <h2 class="text-xl text-text font-semibold mb-4">Create Listing</h2>
-        <div id="createListingMessage" class="mb-2 text-center text-sm"></div>
+        <div id="global-message" class="mb-2 text-center text-sm"></div>
         <form id="createListingForm" class="space-y-4">
         <label for="title" class="sr-only">Title</label>
 <input type="text" name="title" id="title" placeholder="Title" class="w-full border p-2 rounded" required />

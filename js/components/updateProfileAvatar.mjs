@@ -1,3 +1,5 @@
+// Profile avatar on navigation.
+
 export function updateProfileAvatar(user) {
   const avatarImg = document.querySelector("#profileAvatar");
 

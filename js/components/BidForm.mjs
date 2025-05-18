@@ -8,7 +8,14 @@ export function createBidForm(listingId, sellerName) {
   const form = document.createElement("form");
   form.className = "flex flex-col gap-2 mt-4";
 
+  const label = document.createElement("label");
+  label.textContent = "Bid amount:";
+  label.className = "font-semibold sr-only";
+  label.htmlFor = "bidAmount";
+
+  form.appendChild(label);
   const input = document.createElement("input");
+  input.id = "bidAmount";
   input.type = "number";
   input.min = 1;
   input.placeholder = "Bid amount";
