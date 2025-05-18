@@ -50,7 +50,7 @@ export async function renderListingDetails() {
   const mainImage = document.createElement("img");
   mainImage.src = listing.media?.[0]?.url || "../images/placeholder.jpg";
   mainImage.alt = listing.media?.[0]?.alt || "Listing image";
-  mainImage.className = "w-full h-100 object-cover rounded mb-4";
+  mainImage.className = "w-full h-80 object-cover rounded mb-4";
   galleryWrapper.appendChild(mainImage);
 
   if (Array.isArray(listing.media) && listing.media.length > 1) {
@@ -62,7 +62,7 @@ export async function renderListingDetails() {
       thumb.src = media.url;
       thumb.alt = media.alt || `Image ${index + 1}`;
       thumb.className =
-        "h-20 w-20 object-cover border border-hover rounded cursor-pointer transition hover:scale-105";
+        "flex gap-2 overflow-x-auto max-w-full ml-2 h-20 w-20 object-cover border border-hover rounded cursor-pointer transition hover:scale-105";
 
       thumb.addEventListener("click", () => {
         mainImage.src = media.url;
