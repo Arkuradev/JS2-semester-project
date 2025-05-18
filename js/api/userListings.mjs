@@ -59,10 +59,8 @@ export async function renderUserListings() {
       card.appendChild(endsAt);
 
       function updateCountdown() {
-        // Clear the previous content
         endsAt.textContent = "";
 
-        // Append the updated span
         const countdownElement = getCountDownText(listing.endsAt);
         endsAt.appendChild(countdownElement);
       }
@@ -91,7 +89,9 @@ export async function renderUserListings() {
         titleInput.value = listing.title;
         descInput.value = listing.description || "";
         tagsInput.value = (listing.tags || []).join(", ");
-        mediaInput.value = listing.media?.[0]?.url || "";
+        mediaInput.value = Array.isArray(listing.media)
+          ? listing.media.map((m) => m.url).join(", ")
+          : "";
         endsAtInput.value = listing.endsAt.slice(0, 16);
         form.dataset.id = listing.id;
         modal.classList.remove("hidden");
@@ -146,6 +146,7 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const listingId = form.dataset.id;
+  /*
   const payload = {
     title: titleInput.value.trim(),
     description: descInput.value.trim(),
@@ -154,6 +155,21 @@ form.addEventListener("submit", async (e) => {
       .map((t) => t.trim())
       .filter(Boolean),
     media: [{ url: mediaInput.value.trim() }],
+    endsAt: new Date(endsAtInput.value).toISOString(),
+  };
+  */
+  const payload = {
+    title: titleInput.value.trim(),
+    description: descInput.value.trim(),
+    tags: tagsInput.value
+      .split(",")
+      .map((t) => t.trim())
+      .filter(Boolean),
+    media: mediaInput.value
+      .split(",")
+      .map((url) => url.trim())
+      .filter(Boolean)
+      .map((url) => ({ url, alt: "Listing image" })),
     endsAt: new Date(endsAtInput.value).toISOString(),
   };
 
