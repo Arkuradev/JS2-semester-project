@@ -20,8 +20,13 @@ export function renderCreateListingModal() {
         <label for="title" class="sr-only">Title</label>
 <input type="text" name="title" id="title" placeholder="Title" class="w-full border p-2 rounded" required />
 
-<label for="media" class="sr-only">Image URL</label>
-<input type="url" name="media" id="media" placeholder="Image URL" class="w-full border p-2 rounded" />
+<label for="media" class="sr-only">Image URLs</label>
+<textarea
+  name="media"
+  id="media"
+  placeholder="Image URLs (comma separated)"
+  class="w-full border p-2 rounded"
+></textarea>
 
 <label for="mediaAlt" class="sr-only">Image Alt Text</label>
 <input type="text" name="mediaAlt" id="mediaAlt" placeholder="Image Alt Text" class="w-full border p-2 rounded" />
@@ -79,8 +84,8 @@ export function renderCreateListingModal() {
 
     const token = localStorage.getItem("token");
     const title = form.title.value.trim();
-    const mediaUrl = form.media.value.trim();
-    const mediaAlt = form.mediaAlt.value.trim();
+    // const mediaUrl = form.media.value.trim();
+    // const mediaAlt = form.mediaAlt.value.trim();
     const description = form.description.value.trim();
     const tags = form.tags?.value.trim();
     const endsAt = new Date(form.endsAt.value).toISOString();
@@ -101,7 +106,21 @@ export function renderCreateListingModal() {
       endsAt: new Date(endsAt).toISOString(),
       "seller.name": localStorage.getItem("name"),
     };
-    if (mediaUrl) {
+
+    const mediaRaw = form.media.value.trim();
+    const mediaAlt = form.mediaAlt.value.trim() || "Listing image";
+
+    if (mediaRaw) {
+      const mediaUrls = mediaRaw
+        .split(",")
+        .map((url) => url.trim())
+        .filter(Boolean);
+      listingData.media = mediaUrls.map((url) => ({
+        url,
+        alt: mediaAlt,
+      }));
+    }
+    /* if (mediaUrl) {
       listingData.media = [
         {
           url: mediaUrl,
@@ -109,7 +128,7 @@ export function renderCreateListingModal() {
         },
       ];
     }
-
+*/
     if (tags) {
       listingData.tags = tags
         .split(",")

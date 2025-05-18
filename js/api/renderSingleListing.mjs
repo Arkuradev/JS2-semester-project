@@ -46,11 +46,39 @@ export async function renderListingDetails() {
   card.className =
     "w-full max-w-3xl bg-nav mt-4 shadow-lg overflow-hidden rounded";
 
-  // Main image
-  const image = document.createElement("img");
-  image.src = listing.media?.[0]?.url || "../images/placeholder.jpg";
-  image.alt = listing.media?.[0]?.alt || "Listing image";
-  image.className = "w-full h-80 object-cover";
+  // Gallery container
+  const galleryWrapper = document.createElement("div");
+  galleryWrapper.className = "w-full";
+
+  // Main image element
+  const mainImage = document.createElement("img");
+  mainImage.src = listing.media?.[0]?.url || "../images/placeholder.jpg";
+  mainImage.alt = listing.media?.[0]?.alt || "Listing image";
+  mainImage.className = "w-full h-80 object-cover rounded mb-4";
+  galleryWrapper.appendChild(mainImage);
+
+  // Thumbnail row
+  if (Array.isArray(listing.media) && listing.media.length > 1) {
+    const thumbnails = document.createElement("div");
+    thumbnails.className = "flex gap-2 overflow-x-auto";
+
+    listing.media.forEach((media, index) => {
+      const thumb = document.createElement("img");
+      thumb.src = media.url;
+      thumb.alt = media.alt || `Image ${index + 1}`;
+      thumb.className =
+        "h-20 w-20 object-cover border border-hover rounded cursor-pointer transition hover:scale-105";
+
+      thumb.addEventListener("click", () => {
+        mainImage.src = media.url;
+        mainImage.alt = media.alt;
+      });
+
+      thumbnails.appendChild(thumb);
+    });
+
+    galleryWrapper.appendChild(thumbnails);
+  }
 
   // Seller info
   const sellerInfo = document.createElement("a");
@@ -73,7 +101,7 @@ export async function renderListingDetails() {
   content.appendChild(bidForm);
   if (bidHistorySection) content.appendChild(bidHistorySection);
 
-  card.appendChild(image);
+  card.appendChild(galleryWrapper);
   card.appendChild(sellerInfo);
   card.appendChild(content);
 
