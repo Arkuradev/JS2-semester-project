@@ -45,12 +45,12 @@ export async function renderListingDetails() {
     "w-full max-w-3xl bg-nav mt-4 shadow-lg overflow-hidden rounded";
 
   const galleryWrapper = document.createElement("div");
-  galleryWrapper.className = "w-full ml-2 mb-4";
+  galleryWrapper.className = "w-full  mb-4";
 
   const mainImage = document.createElement("img");
   mainImage.src = listing.media?.[0]?.url || "../images/placeholder.jpg";
   mainImage.alt = listing.media?.[0]?.alt || "Listing image";
-  mainImage.className = "w-full h-80 object-cover rounded mb-4";
+  mainImage.className = "w-full h-100 object-cover rounded mb-4";
   galleryWrapper.appendChild(mainImage);
 
   if (Array.isArray(listing.media) && listing.media.length > 1) {
