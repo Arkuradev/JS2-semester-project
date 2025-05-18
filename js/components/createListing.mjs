@@ -97,7 +97,6 @@ export function renderCreateListingModal() {
       title,
       description,
       endsAt: new Date(endsAt).toISOString(),
-      "seller.name": localStorage.getItem("name"),
     };
 
     const mediaRaw = form.media.value.trim();
