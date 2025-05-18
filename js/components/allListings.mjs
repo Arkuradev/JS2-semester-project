@@ -32,7 +32,7 @@ export function setupAllListingsTabs() {
   });
 
   async function fetchAndRenderListings(filter) {
-    container.innerHTML = `<div class="col-span-full text-center text-text">Loading...</div>`;
+    container.innerHTML = `<div class="col-span-full text-center text-text"></div>`;
 
     let url = `/auction/listings?sort=created&_order=desc`;
     let limit = 25;
@@ -108,7 +108,7 @@ export function setupAllListingsTabs() {
       allFetchedListings = listings;
       renderListings(listings);
     } catch (error) {
-      container.innerHTML = `<p class="col-span-full text-red-500 text-center">Error loading listings.</p>`;
+      container.innerHTML = `<p class="col-span-full text-text text-center">Error loading listings.</p>`;
       console.error(error);
     }
   }
@@ -132,21 +132,19 @@ export function setupAllListingsTabs() {
         const card = document.createElement("a");
         card.href = `/listing/viewlisting.html?id=${listing.id}`;
         card.className =
-          "bg-background font-sans border border-hover shadow-xl overflow-hidden transition-all duration-300 transform hover:shadow-xl w-full hover:border-hover hover:-translate-y-1 flex flex-col h-full";
+          "bg-secondary font-sans border border-hover shadow-xl overflow-hidden transition-all duration-300 transform hover:shadow-xl w-full hover:border-hover hover:-translate-y-1 flex flex-col h-full";
 
         const title = document.createElement("h2");
-        title.className = "text-text text-sm font-semibold mb-1";
+        title.className = "text-text text-sm font-semibold mb-1 ml-1";
         title.textContent = listing.title;
 
         const endsAtText = document.createElement("p");
-        endsAtText.className = "text-text text-sm mt-2";
+        endsAtText.className = "text-text text-sm mt-2 ml-1";
         card.appendChild(endsAtText);
 
         function updateCountdown() {
-          // Clear the previous content
           endsAtText.textContent = "";
 
-          // Append the updated span
           const countdownElement = getCountDownText(listing.endsAt);
           endsAtText.appendChild(countdownElement);
         }

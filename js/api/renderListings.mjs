@@ -61,7 +61,7 @@ export async function renderListings() {
   activeListings.forEach((listing, index) => {
     const card = document.createElement("a");
     card.className =
-      "bg-background font-sans border border-hover shadow-xl overflow-hidden transition-all duration-300 transform hover:shadow-xl w-full hover:border-hover hover:-translate-y-1 flex flex-col h-full";
+      "bg-secondary font-sans border border-hover shadow-xl overflow-hidden transition-all duration-300 transform hover:shadow-xl w-full hover:border-hover hover:-translate-y-1 flex flex-col h-full";
     card.href = `listing/viewlisting.html?id=${listing.id}`;
     const image = document.createElement("img");
     image.src = listing.media?.[0]?.url || "/images/placeholder.jpg";

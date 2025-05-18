@@ -61,23 +61,27 @@
         <h2 class="text-xl text-center text-text font-bold mb-4">
           Choose Theme
         </h2>
+
         <div class="flex items-center justify-center gap-4">
-          <span class="text-xl" aria-hidden="true">🌞</span>
+          <span class="text-text" aria-hidden="true">🌞 Light</span>
 
           <label
             for="themeToggle"
             class="relative inline-flex items-center cursor-pointer"
           >
+            <span class="sr-only">Toggle dark mode</span>
+
             <input type="checkbox" id="themeToggle" class="sr-only peer" />
+
             <div
-              class="w-14 h-8 bg-[rgb(var(--border))] rounded-full peer peer-checked:bg-[rgb(var(--btn-primary))] transition-all"
+              class="w-14 h-8 bg-[rgb(var(--border))] rounded-full peer-checked:bg-[rgb(var(--btn-primary))] transition-all"
             ></div>
             <div
               class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow-md transform peer-checked:translate-x-6 transition-transform"
             ></div>
           </label>
 
-          <span class="text-xl" aria-hidden="true">🌙</span>
+          <span class="text-text" aria-hidden="true">Dark 🌙</span>
         </div>
       </section>
       <section

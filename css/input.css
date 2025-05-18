@@ -18,7 +18,7 @@
 
 .dark {
   --nav: 24 24 27;
-  --background: 30 30 34;
+  --background: 47 47 54; /* 30 30 34 */
   --main: 245 245 245;
   --border: 48 48 51;
   --primary: 100 116 139;
@@ -54,7 +54,7 @@
 .animate-fade-in {
   animation: fade-in 0.3s ease-out forwards;
 }
-.section-fade {
-  position: relative;
-  overflow: hidden;
+
+.sr-only {
+  color: rgb(var(--text));
 }
