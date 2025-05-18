@@ -74,7 +74,7 @@ export function renderUserProfile(data) {
   if (data.listings?.length > 0) {
     data.listings.forEach((listing) => {
       const card = document.createElement("div");
-      card.className = "border border-hover rounded p-4 shadow-lg";
+      card.className = "border border-hover bg-secondary rounded p-4 shadow-lg";
 
       const image = document.createElement("img");
       image.src = listing.media?.[0]?.url || "/images/placeholder.jpg";

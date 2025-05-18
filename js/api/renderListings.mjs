@@ -81,7 +81,7 @@ export async function renderListings() {
 
     const content = document.createElement("div");
     content.className =
-      "font-sm p-4 bg-nav text-text flex flex-col justify-between flex-grow";
+      "font-sm p-4 bg-secondary text-text flex flex-col justify-between flex-grow";
 
     const createdBy = document.createElement("p");
     createdBy.className = "text-sm text-text mt-2 flex items-center gap-2 mb-2";
