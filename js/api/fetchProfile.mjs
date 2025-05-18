@@ -1,6 +1,7 @@
 import { apiFetch } from "./apiFetch.mjs";
 import { updateProfile } from "../user/updateProfile.mjs";
 import { updateProfileAvatar } from "../components/updateProfileAvatar.mjs";
+import { displayMessage } from "../utils/displayMessage.mjs";
 
 function renderProfile(data) {
   const profileContainer = document.getElementById("profileContainer");
@@ -50,7 +51,6 @@ function renderProfile(data) {
   totalWins.className = "text-xl font-semibold text-text mt-12";
   totalWins.textContent = `🏆 Total Wins: ${data._count?.wins || 0}`;
 
-  // Won auctions list
   const winsContainer = document.createElement("div");
   winsContainer.className = "grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4";
 
@@ -82,7 +82,6 @@ function renderProfile(data) {
 
   detailsContainer.appendChild(totalWins);
   detailsContainer.appendChild(winsContainer);
-  console.log(data?.wins);
 
   const editProfileButton = document.createElement("button");
   editProfileButton.id = "editProfileButton";
@@ -133,13 +132,6 @@ export async function fetchProfile() {
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("name");
 
-  if (!token) {
-    console.error(
-      "Missing token or username in localStorage. Please log in first."
-    );
-    return (window.location.href = "/account/login.html");
-  }
-
   const container = document.querySelector("#profileContainer");
 
   const { data } = await apiFetch(
@@ -149,6 +141,15 @@ export async function fetchProfile() {
     true,
     container
   );
+  if (!token) {
+    displayMessage("error", "Please log in first to view a user profile.");
+
+    setTimeout(() => {
+      window.location.href = "/account/login.html";
+    }, 1500);
+
+    return; // stop further execution
+  }
 
   updateProfileAvatar(data);
   renderProfile(data);

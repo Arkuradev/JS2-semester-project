@@ -1,4 +1,5 @@
 import { apiFetch } from "../api/apiFetch.mjs";
+import { displayMessage } from "../utils/displayMessage.mjs";
 
 export function renderUserProfile(data) {
   const profileContainer = document.getElementById("profileContainer");
@@ -111,8 +112,16 @@ export async function fetchProfile() {
   const username = params.get("name");
 
   if (!token) {
-    console.error("Missing token or username. Please log in first.");
-    return (window.location.href = "/auth/login.html");
+    displayMessage(
+      "error",
+      "Please log in first to view a user profile. Redirecting..."
+    );
+
+    setTimeout(() => {
+      window.location.href = "/auth/login.html";
+    }, 1500);
+
+    return;
   }
 
   const container = document.querySelector("#profileContainer");
