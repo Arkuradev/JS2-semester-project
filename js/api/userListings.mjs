@@ -42,7 +42,7 @@ export async function renderUserListings() {
     userListings.forEach((listing) => {
       const card = document.createElement("a");
       card.className =
-        "flex flex-col bg-nav border shadow p-2 max-w-[180px] transition-all duration-300 transform  hover:shadow-xl hover:border-hover hover:scale-105";
+        "flex flex-col bg-secondary border shadow p-2 max-w-[180px] transition-all duration-300 transform  hover:shadow-xl hover:border-hover hover:scale-105";
       card.href = `../listing/viewlisting.html?id=${listing.id}`;
 
       const image = document.createElement("img");

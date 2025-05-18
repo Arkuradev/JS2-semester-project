@@ -42,7 +42,7 @@ export async function loadUserBids() {
         const card = document.createElement("a");
         card.href = `/listing/viewlisting.html?id=${listing.id}`;
         card.className =
-          "flex flex-col mx-auto bg-nav border shadow p-2 max-w-[180px] transition-all duration-300 transform hover:shadow-xl hover:border-hover hover:scale-105";
+          "flex flex-col mx-auto bg-secondary border shadow p-2 max-w-[180px] transition-all duration-300 transform hover:shadow-xl hover:border-hover hover:scale-105";
 
         const imageUrl = listing.media?.[0]?.url || "../images/placeholder.jpg";
         const image = document.createElement("img");

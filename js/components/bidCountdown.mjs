@@ -6,8 +6,8 @@ export function getCountDownText(endsAt) {
   const span = document.createElement("span");
 
   if (diff < 0) {
-    span.textContent = "❌ Ended";
-    span.className = "text-red-500 font-semibold";
+    span.textContent = "❌ Listing closed.";
+    span.className = "text-red-400 font-semibold";
     return span;
   }
 
