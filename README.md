@@ -6,6 +6,9 @@ Welcome to CrestAuction, a modern, responsive online auction platform build as p
 
 [Visit CrestAuction Live](https://crestauction.netlify.app/)
 
+
+
+
 ## 📌 Features
 
 - 🔐 User Authentication (Register, Login, Logout)
@@ -23,6 +26,11 @@ Welcome to CrestAuction, a modern, responsive online auction platform build as p
 - ✅ Uses semantic HTML and screen reader support
 
 - ✅ Dark/light theme switch with proper contrast ratios
+
+
+## Updates to JS2-Semester-project
+
+ - Improved card styling on cards. 
 
 ## 📸 Screenshots
 
