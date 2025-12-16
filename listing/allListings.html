@@ -35,25 +35,28 @@
     </header>
 
     <div id="message" class="message px-4 py-2 rounded mb-4"></div>
-    <template id="skeleton-loader">
-      <div
-        class="mx-auto w-full max-w-sm rounded bg-background border border-hover p-4 animate-pulse"
-      >
-        <div class="flex space-x-4">
-          <div class="size-10 rounded-full bg-btn-primary"></div>
-          <div class="flex-1 space-y-6 py-1">
-            <div class="h-2 rounded bg-btn-primary"></div>
-            <div class="space-y-3">
-              <div class="grid grid-cols-3 gap-4">
-                <div class="col-span-2 h-2 rounded bg-btn-primary"></div>
-                <div class="col-span-1 h-2 rounded bg-btn-primary"></div>
-              </div>
-              <div class="h-2 rounded bg-btn-primary"></div>
-            </div>
-          </div>
+  <!-- Skeleton card template -->
+      <template id="skeleton-loader">
+  <div
+    class="bg-secondary font-sans border border-hover/20 overflow-hidden transition-all duration-300 transform w-full flex flex-col h-full animate-pulse shadow-md"
+  >
+    <div class="w-full h-48 bg-btn-primary/30"></div>
+    <div class="p-4 bg-secondary text-text flex flex-col justify-between flex-grow">
+      <div class="space-y-3">
+        <div class="h-4 w-3/4 rounded bg-btn-primary/30"></div>
+        <div class="h-3 w-full rounded bg-btn-primary/30"></div>
+        <div class="h-3 w-5/6 rounded bg-btn-primary/30"></div>
+        <div class="h-3 w-1/2 rounded bg-btn-primary/30 mt-2"></div>
+        <div class="h-3 w-2/3 rounded bg-btn-primary/30 mt-2"></div>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <div class="h-5 w-12 rounded-full bg-btn-primary/30"></div>
+          <div class="h-5 w-16 rounded-full bg-btn-primary/30"></div>
+          <div class="h-5 w-10 rounded-full bg-btn-primary/30"></div>
         </div>
       </div>
-    </template>
+    </div>
+  </div>
+</template>
     <main class="flex-grow">
       <h1 class="text-text text-center text-3xl font-bold mb-10 mt-10">
         All Listings

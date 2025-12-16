@@ -37,6 +37,9 @@ Welcome to CrestAuction, a modern, responsive online auction platform build as p
   - Added a shadow effect around cards when hovered. 
   - All these changes are applied to cards in index.html (latest) and allListings.html. 
 
+- Updated Skeleton for card listings to look similar to the new card size. 
+- Updated Skeleton for user profile and manage profile. 
+
 - Made theme toggle button a global accessible button instead of inside manage profile. 
 
 ## 📸 Screenshots
