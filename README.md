@@ -30,7 +30,14 @@ Welcome to CrestAuction, a modern, responsive online auction platform build as p
 
 ## Updates to JS2-Semester-project
 
- - Improved card styling on cards. 
+ - Improved card styling on cards, made cards a little wider, display max 6 tags to reduce height stretching of cards. 
+  - Made cards a little wider. 
+  - Max 6 tags are now displayed at once to reduce height stretching of listing cards. 
+  - Max columns is now 3 instead of 4 to make room for the wider card containers. 
+  - Added a shadow effect around cards when hovered. 
+  - All these changes are applied to cards in index.html (latest) and allListings.html. 
+
+- Made theme toggle button a global accessible button instead of inside manage profile. 
 
 ## 📸 Screenshots
 
