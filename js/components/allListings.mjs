@@ -126,13 +126,14 @@ export function setupAllListingsTabs() {
       const image = new Image();
       image.src = imageUrl;
       image.alt = listing.media?.[0]?.alt || "Placeholder image";
-      image.className = "w-full h-24 object-cover mb-2";
+      image.className = "w-full h-28 object-cover mb-2";
 
       image.onload = () => {
         const card = document.createElement("a");
         card.href = `/listing/viewlisting.html?id=${listing.id}`;
         card.className =
-          "bg-secondary font-sans border border-hover shadow-xl overflow-hidden transition-all duration-300 transform hover:shadow-xl w-full hover:border-hover hover:-translate-y-1 flex flex-col h-full";
+          "bg-secondary font-sans border border-hover/20 overflow-hidden transition-all duration-300 transform w-full flex flex-col h-full " +
+  "shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.45)] hover:-translate-y-1";
 
         const title = document.createElement("h2");
         title.className = "text-text text-sm font-semibold mb-1 ml-1";
@@ -166,17 +167,28 @@ export function setupAllListingsTabs() {
           "bg-btn-primary text-sm text-center text-text px-2 py-0.5 rounded w-full mt-2 mb-2";
 
         const tagsContainer = document.createElement("div");
-        tagsContainer.className = "flex flex-wrap gap-1 mt-2 ml-2 mb-2git add";
+        tagsContainer.className = "flex flex-wrap gap-1 mt-2 ml-2";
 
-        if (Array.isArray(listing.tags)) {
-          listing.tags.forEach((tag) => {
-            const tagBadge = document.createElement("span");
-            tagBadge.className =
-              "bg-btn-primary mb-2 text-xs text-text px-2 py-0.5 rounded-full";
-            tagBadge.textContent = `${tag}`;
-            tagsContainer.appendChild(tagBadge);
-          });
-        }
+if (Array.isArray(listing.tags) && listing.tags.length > 0) {
+  const maxTags = 6;
+
+  listing.tags.slice(0, maxTags).forEach((tag) => {
+    const tagBadge = document.createElement("span");
+    tagBadge.className =
+      "bg-btn-primary text-xs text-text px-2 py-0.5 rounded-full";
+    tagBadge.textContent = tag;
+    tagsContainer.appendChild(tagBadge);
+  });
+
+  const remaining = listing.tags.length - maxTags;
+  if (remaining > 0) {
+    const moreBadge = document.createElement("span");
+    moreBadge.className =
+      "text-xs text-text/80 px-2 py-0.5 rounded-full border border-hover/30";
+    moreBadge.textContent = `+${remaining}`;
+    tagsContainer.appendChild(moreBadge);
+  }
+}
 
         card.appendChild(image);
         card.appendChild(title);

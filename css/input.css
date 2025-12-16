@@ -32,6 +32,14 @@
   --funds: 167 243 208;
 }
 
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, .card-title {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .tab-btn {
   @apply px-4 py-2 bg-btn-primary text-text rounded hover:bg-hover transition;
 }

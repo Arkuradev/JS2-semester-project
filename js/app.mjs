@@ -11,6 +11,7 @@ import { loadFooter } from "./components/loadFooter.mjs";
 loadNav().then(async () => {
   setupNavbar();
   loadFooter();
+  themeToggle();
 
   const user = await getFullUserProfile();
 
@@ -75,6 +76,5 @@ function route() {
   }
 }
 route();
-themeToggle();
 renderCreateListingModal();
 window.displayMessage = displayMessage;

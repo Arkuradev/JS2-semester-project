@@ -61,7 +61,8 @@ export async function renderListings() {
   activeListings.forEach((listing, index) => {
     const card = document.createElement("a");
     card.className =
-      "bg-secondary font-sans border border-hover shadow-xl overflow-hidden transition-all duration-300 transform hover:shadow-xl w-full hover:border-hover hover:-translate-y-1 flex flex-col h-full";
+  "bg-secondary font-sans border border-hover/20 overflow-hidden transition-all duration-300 transform w-full flex flex-col h-full " +
+  "shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.45)] hover:-translate-y-1";
     card.href = `listing/viewlisting.html?id=${listing.id}`;
     const image = document.createElement("img");
     image.src = listing.media?.[0]?.url || "/images/placeholder.jpg";
@@ -93,7 +94,6 @@ export async function renderListings() {
 
     const endsAtText = document.createElement("p");
     endsAtText.className = "text-text text-sm mt-2";
-    card.appendChild(endsAtText);
 
     function updateCountdown() {
       endsAtText.textContent = "";
@@ -126,22 +126,28 @@ export async function renderListings() {
     content.appendChild(endsAtText);
     content.appendChild(createdBy);
 
-    if (Array.isArray(listing.tags) && listing.tags.length > 0) {
-      const tagsContainer = document.createElement("div");
-      tagsContainer.className = "flex flex-wrap gap-1";
+  if (Array.isArray(listing.tags) && listing.tags.length > 0) {
+  const tagsContainer = document.createElement("div");
+  tagsContainer.className = "flex flex-wrap gap-1 mt-3";
 
-      listing.tags.forEach((tag) => {
-        const tagEl = document.createElement("span");
-        tagEl.className =
-          "bg-btn-primary text-text text-xs px-2 py-0.5 rounded-full";
-        tagEl.textContent = `${tag}`;
+  const maxTags = 6;
+  listing.tags.slice(0, maxTags).forEach((tag) => {
+    const tagEl = document.createElement("span");
+    tagEl.className = "bg-btn-primary text-text text-xs px-2 py-0.5 rounded-full";
+    tagEl.textContent = tag;
+    tagsContainer.appendChild(tagEl);
+  });
 
-        tagsContainer.appendChild(tagEl);
-      });
+  const remaining = listing.tags.length - maxTags;
+  if (remaining > 0) {
+    const more = document.createElement("span");
+    more.className = "text-xs text-text/80 px-2 py-0.5";
+    more.textContent = `+${remaining}`;
+    tagsContainer.appendChild(more);
+  }
 
-      content.appendChild(tagsContainer);
-    }
-
+  content.appendChild(tagsContainer);
+}
     const viewLink = document.createElement("a");
     viewLink.href = `listing/viewlisting.html?id=${listing.id}`;
     viewLink.className =

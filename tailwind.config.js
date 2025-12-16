@@ -1,11 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./**/*.html", "./js/**/*.mjs", "!./node_modules/**/*"],
+  content: ["./**/*.html", "./js/**/*.mjs", "!./node_modules/**/*", "./components/**/*.html"],
   darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
         sans: ["Inter", "sans-serif"],
+        heading: ["Montserrat", "sans-serif"],
       },
       colors: {
         nav: "rgb(var(--nav) / <alpha-value>)",
